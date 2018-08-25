@@ -1,0 +1,16 @@
+@import 'reset';
+@import 'globals';
+
+// ===== VARIABLES ===== // 
+@import 'variables';
+
+// ===== MIXINS ===== // 
+@import 'mixins';
+
+// ===== COMPONENTS ===== //
+@import './components/App';
+@import './components/Home';
+
+
+// ===== Responsive ===== // 
+@import 'responsive';
