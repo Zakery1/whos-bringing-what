@@ -30,6 +30,11 @@
     "eject": "react-scripts eject"
   },
   "proxy": {
+    "/auth/callback": {
       "target": "http://localhost:4000"
+    },
+    "/api": {
+      "target": "http://localhost:4000"
+    }
   }
 }
