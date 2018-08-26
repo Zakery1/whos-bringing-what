@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
       <div className="Home_parent">
-        Home
+        <h1 className="Home_header">Home</h1>
         <Header />
         <Footer />
         <Link to="/about">About</Link>
