@@ -5,10 +5,19 @@ import { Link } from 'react-router-dom';
 function Nav() {
     return (
       <div className="Nav_parent">
-        
-        <Link>Feed</Link>
-        <Link>About</Link>
-        <Link>Logout</Link>
+
+        <div className="Nav_small">
+            <Link to="/">Feed small</Link>
+            <Link to="/about" >About</Link>
+            <button>Logout</button>
+        </div>
+
+        <div className="Nav_big">
+            <Link to="/">Feed</Link>
+            <Link to="/about" >About</Link>
+            <button>Logout</button>
+        </div>
+
       </div>
     );
   }

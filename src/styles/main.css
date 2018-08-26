@@ -110,3 +110,12 @@ body {
 
 .About_headshot {
   width: 200px; }
+
+.Nav_big {
+  display: none; }
+
+@media (min-width: 380px) {
+  .Nav_small {
+    display: none; }
+  .Nav_big {
+    display: initial; } }
