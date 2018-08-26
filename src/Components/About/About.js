@@ -1,10 +1,35 @@
 import React from 'react';
+import './About.css'
+import Andrew from '../../assets/andrew-headshot.png';
+import Zak from '../../assets/zachary-headshot.png';
 
 
 function About() {
     return (
       <div className="About_parent">
-        About
+
+        <div className="abouts-container">
+
+          <div className="about-person">
+            <img className="about-headshot" src="https://scontent.fphx1-1.fna.fbcdn.net/v/t1.0-9/31946707_10156174403132527_4457505119226822656_n.jpg?_nc_cat=0&oh=275144c227de9569d348ba1d4659c9df&oe=5C369934" alt="Danielle Headshot" />
+            <h4>Danielle Lyn</h4>
+            <p>Danielle comes from Seattle and loves using React to solve problems.</p>
+          </div>
+
+          <div className="about-person">
+            <img className="about-headshot" src={Andrew} alt="Andrew Headshot" />
+            <h4>Andrew Nam</h4>
+            <p>Andrew is from Dallas and enjoys working with Node.js.</p>
+          </div>
+
+          <div className="about-person">
+            <img className="about-headshot" src={Zak} alt="Zachary Headshot" />
+            <h4>Zachary Graham</h4>
+            <p>Zachary is from Phoenix and takes a keen interest in working with APIs.</p>
+          </div>
+
+        </div>
+
       </div>
     );
   }

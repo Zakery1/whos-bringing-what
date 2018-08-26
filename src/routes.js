@@ -6,6 +6,6 @@ import About from './Components/About/About';
 export default (
         <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path='/about' component={About}/>
+            <Route path="/about" component={About}/>
         </Switch>
 )
