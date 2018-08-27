@@ -27,7 +27,7 @@ module.exports = {
                 if (users.length) {
                     const user = users[0]
                     req.session.user = user;
-                    res.redirect('/');
+                    res.redirect('/feed');
                 } else {
                     const createUserData = {
                         auth0id,
@@ -38,7 +38,7 @@ module.exports = {
                  return dbInstance.create_user(createUserData).then(newUsers => {
                      const user = newUsers[0];
                      req.session.user = user;
-                     res.redirect('/');
+                     res.redirect('/feed');
                  })
                 }
             })

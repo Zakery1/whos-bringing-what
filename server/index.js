@@ -1,10 +1,13 @@
 const express = require("express");
+const expressGraphQL = require("express-graphql");
 const massive = require("massive");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const path = require('path');
 const c = require('./controller/controller');
 const uC = require('./controller/user_controller');
+const schema = require("./schema")
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +18,10 @@ app.use(session({
     saveUninitialized: false, 
     resave: false
   }));
+app.use('/graphql', expressGraphQL({
+  schema,
+  graphiql: true
+}))
 app.use(express.static( `${__dirname}/../build`));
 
 
