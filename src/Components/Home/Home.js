@@ -10,7 +10,6 @@ function Home() {
         <h1 className="Home_header">Home</h1>
         <Header />
         <Footer />
-        <Link to="/about">About</Link>
       </div>
     );
   }

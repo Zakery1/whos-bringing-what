@@ -6,8 +6,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav/>
-        {routes}
+          <div className="App_navContainer">
+            <Nav/>
+          </div>
+          <div className="App_routesContainer">
+            {routes}
+          </div>
       </div>
     );
   }

@@ -98,7 +98,25 @@ body {
     font-size: 20px; }
 
 .App {
-  text-align: center; }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch; }
+
+.App_navContainer {
+  align-self: stretch;
+  widows: 20vw;
+  order: 0;
+  flex: 0 0 0px;
+  flex-grow: 0;
+  flex-shrink: 0; }
+
+.App_routesContainer {
+  align-self: stretch;
+  order: 0;
+  width: 80vw; }
 
 .Home_parent {
   background: springgreen;
@@ -108,8 +126,17 @@ body {
 .Home_header {
   color: blue; }
 
+.About_peopleContainer {
+  background: hotpink; }
+
 .About_headshot {
   width: 200px; }
+
+h4 {
+  background: green; }
+
+p {
+  background: gold; }
 
 .Nav_big {
   display: none; }

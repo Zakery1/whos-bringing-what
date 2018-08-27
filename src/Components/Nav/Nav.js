@@ -7,7 +7,7 @@ function Nav() {
       <div className="Nav_parent">
 
         <div className="Nav_small">
-            <Link to="/">Feed small</Link>
+            <Link to="/" className="Nav_feedLinkSmall">Feed </Link>
             <Link to="/about" >About</Link>
             <button>Logout</button>
         </div>
