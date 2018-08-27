@@ -57,7 +57,7 @@ VALUES
 
 INSERT INTO invitations 
 (event_id, user_id)
-VALUE
+VALUES
 (1,1)
 , (1,2);
 
