@@ -53,11 +53,11 @@ function checkLoggedIn(req, res, next) {
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
 
-// app.get('*', (req, res)=>{
-//     res.sendFile(path.join(__dirname, '../build/index.html'));
-//   })
-// Server request to get all events through user 
-app.get('/api/events', c.readEvents);
+
+// Server request to get all Created Events through user 
+app.get('/api/createdEvents', c.readCreatedEvents);
+
+
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));

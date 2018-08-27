@@ -44,10 +44,12 @@ VALUES
 ('123abc','gmail@andrew.com','andrew','http://www.readersdigest.ca/wp-content/uploads/2013/03/6-facts-to-know-before-owning-a-puppy.jpg')
 , ('123ade', 'gmail@zak.com', 'zak', 'https://snworksceo.imgix.net/dtc/10ec0a64-8f9d-46d9-acee-5ef9094d229d.sized-1000x1000.jpg');
 
+-- Have to insert users then log in for INSERT INTO events to work
 INSERT INTO events 
 (event_id, event_name, cover_photo, description, place, start_time, user_id)
 VALUES 
-('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3);
+('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3)
+('10', 'Disneyland', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/640/360/75/dam/wdpro-assets/dlr/gallery/destinations/disneyland-park/disneyland-gallery00.jpg?1504908934350', 'Fun times with the family', 'Anaheim, CA', 6, 1);
 
 INSERT INTO requesteditems 
 (name, event_id, user_id, spokenfor)
@@ -59,7 +61,8 @@ INSERT INTO invitations
 (event_id, user_id)
 VALUES
 (1,1)
-, (1,2);
+, (1,2)
+, (2,3);
 
 -- Select ALL
 SELECT * FROM users;

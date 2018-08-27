@@ -10,7 +10,7 @@ class Feed extends Component {
     return (
       <div className="Feed_parent">
         <h1>Who Brings What?</h1>
-        <Fetcher url='/api/events' render={(data) => {
+        <Fetcher url='/api/createdEvents' render={(data) => {
           console.log('data',data)
           return ( 
             <div>

@@ -6,11 +6,11 @@ module.exports = {
           userId: req.session.user.id
         })
     },
-    readEvents: (req, res) => {
+    readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])
         .then(users => {
-            dbInstance.read_events([users[0].id])
+            dbInstance.read_created_events([users[0].id])
             .then(events => {
                 console.log('events', events)
                 res.status(200).json(events)
