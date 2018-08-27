@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import EventMap from './EventMap';
 
 
-process.env.REACT_APP_GOOGLE_MAPS_API = API_KEY
+var API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API 
 
 class EventMapContainer extends Component {
 
     render() {
         return (
-            <JobMap
+            <EventMap
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
                 loadingElement={<div style={{ height: `90%` }} />}
                 containerElement={<div />}
@@ -17,3 +17,5 @@ class EventMapContainer extends Component {
         )
     }
 }
+
+export default EventMapContainer;

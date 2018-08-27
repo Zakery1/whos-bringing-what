@@ -12,10 +12,10 @@ render(){
             mapTypeId='satellite'
             center={ { lat: 40.5928, lng: 50.3055  } }
             >
-            <JobMarker isMarkerShown={false} location={this.props.location} />
+            <EventMarker isMarkerShown={false} location={this.props.location} />
         </GoogleMap>
     )
   }
 }
 
-export default withScriptjs(withGoogleMap(JobMap));
+export default withScriptjs(withGoogleMap(EventMap));

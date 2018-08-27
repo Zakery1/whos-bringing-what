@@ -26,7 +26,7 @@ class JobMarker extends Component {
     return(
       <div>
       <Marker
-                position={ {  lat: +job.longitude, lng: +job.latitude  } }
+                position={ {  lat: -34.397, lng: 150.644  } }
                 >
               </Marker>
       </div>
