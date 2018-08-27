@@ -17,7 +17,7 @@ function About() {
           <div className="About_person">
             <img className="About_headshot" src={Andrew} alt="Andrew Headshot" />
             <h4 className="About_creatorName">Andrew Nam</h4>
-            <p className="About_creatorDetails">Andrew is from Dallas and enjoys working with Node.js.</p>
+            <p className="About_creatorDetails">Andrew is from Dallas and enjoys working with Node.js!</p>
           </div>
 
           <div className="About_person">
