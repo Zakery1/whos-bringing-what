@@ -1,8 +1,25 @@
 .Nav_parent {
-    background: firebrick;
+    background: $facebook-blue;
 }
 
 .Nav_container {
-    background: blue;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    // justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    
 }
 
+.Nav_mobileIcons {
+    margin: 3px 16px 15px 16px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.Nav_linkMobile {
+    margin: 0 16px 15px 16px;
+    text-decoration: none;
+}

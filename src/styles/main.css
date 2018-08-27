@@ -135,13 +135,27 @@ body {
   width: 70vw; }
 
 .Nav_parent {
-  background: firebrick; }
+  background: #395CA9; }
 
 .Nav_container {
-  background: blue; }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center; }
+
+.Nav_mobileIcons {
+  margin: 3px 16px 15px 16px;
+  text-align: center;
+  white-space: nowrap; }
+
+.Nav_linkMobile {
+  margin: 0 16px 15px 16px;
+  text-decoration: none; }
 
 .Feed_eventPhoto {
-  max-width: 200px; }
+  max-width: 100%; }
 
 .big {
   display: none; }
@@ -152,4 +166,4 @@ body {
   .big {
     display: initial; }
   .Nav_container {
-    background: red; } }
+    height: 100vh; } }

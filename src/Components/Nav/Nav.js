@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser } from '../../redux/reducer';
 import axios from 'axios';
+import { Icon } from 'react-icons-kit';
+import { home } from 'react-icons-kit/icomoon/home';
+import {menu} from 'react-icons-kit/icomoon/menu';
+import {ic_tag_faces} from 'react-icons-kit/md/ic_tag_faces';
+import {login} from 'react-icons-kit/iconic/login';
+import {logout} from 'react-icons-kit/iconic/logout';
+import {user_circle} from 'react-icons-kit/ikons/user_circle';
+
 
 class Nav extends Component {
   constructor() {
@@ -42,18 +50,18 @@ class Nav extends Component {
         <div className="Nav_parent">
 
           <div className="Nav_container small">
-              <p>{username ? "Welcome: " + username : "No user is logged in"}</p>
-              <Link to="/" className="Nav_homeLink">Home</Link>
-              <Link to="/feed" className="Nav_feedLink">Feed </Link>
-              <Link to="/about" className="Nav_aboutLink">About</Link>
-              {username ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
+              <div className="Nav_mobileIcons" style={{ color: 'white' }}> <Icon size={32} icon={user_circle} /> <p >{username ? `${username}` : "No User"}</p></div>
+              <Link to="/" className="Nav_linkMobile"  style={{ color: 'white' }}><Icon size={32} icon={home} /> <p>Home</p> </Link>
+              <Link to="/feed" className="Nav_linkMobile" style={{ color: 'white' }}><Icon size={32} icon={menu} /> <p>Feed</p> </Link>
+              <Link to="/about" className="Nav_linkMobile" style={{ color: 'white' }}> <Icon size={32} icon={ic_tag_faces} /> <p>About</p> </Link>
+              {username ? <Link className="Nav_linkMobile" to='/' ><button style={{ color: 'white' }} onClick={()=>this.logout()}> <Icon size={28} icon={logout} /> <p>Logout</p> </button></Link> : <button className="Nav_linkMobile" style={{ color: 'white' }} onClick={() => {this.login()}}> <Icon size={28} icon={login} /> <p>Login</p>  </button>}
           </div>
 
           <div className="Nav_container big">
               <p>{username ? "Welcome: " + username : "No user is logged in"}</p>
-              <Link to="/" className="Nav_homeLink">Home</Link>
-              <Link to="/feed" className="Nav_feedLink">Feed</Link>
-              <Link to="/about" className="Nav_aboutLink">About</Link>
+               <Link to="/" className="Nav_homeLink">Home</Link>
+               <Link to="/feed" className="Nav_feedLink">Feed</Link>
+               <Link to="/about" className="Nav_aboutLink">About</Link>
               {username ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
           </div>
 
