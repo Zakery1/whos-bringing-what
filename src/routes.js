@@ -10,6 +10,6 @@ export default (
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
             <Route path="/feed" component={Feed}/>
-            <Route path="/event" component={SpecificEvent}/>
+            <Route path="/event/:id" component={SpecificEvent}/>
         </Switch>
 )

@@ -60,6 +60,11 @@ app.get('/api/createdEvents', c.readCreatedEvents);
 // Server request to get all Invited Events through user 
 app.get('/api/invitedEvents', c.readInvitedEvents);
 
+// Server request to get an event through eventId
+app.get('/api/event/:eventId', c.readEvent);
+
+// Server request to get an event through eventId
+app.get('/api/requestedItems/:eventId', c.readRequestedItems);
 
 
 app.get('*', (req, res)=>{

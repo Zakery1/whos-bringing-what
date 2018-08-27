@@ -157,6 +157,9 @@ body {
 .Feed_eventPhoto {
   max-width: 100%; }
 
+.SpecificEvent_eventPhoto {
+  max-width: 200px; }
+
 .big {
   display: none; }
 
