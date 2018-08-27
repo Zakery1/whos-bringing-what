@@ -12,12 +12,24 @@ module.exports = {
         .then(users => {
             dbInstance.read_created_events([users[0].id])
             .then(events => {
-                console.log('events', events)
                 res.status(200).json(events)
             })
         }).catch(error => {
             console.log('---- error with readEvents', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
-    }
+    },
+    readInvitedEvents: (req, res) => {
+        const dbInstance = req.app.get('db')
+        dbInstance.read_user([req.session.user.id])
+        .then(users => {
+            dbInstance.read_invited_events([users[0].id])
+            .then(events => {
+                res.status(200).json(events)
+            })
+        }).catch(error => {
+            console.log('---- error with readEvents', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
 } 

@@ -57,6 +57,9 @@ app.post('/api/auth/logout', uC.logout);
 // Server request to get all Created Events through user 
 app.get('/api/createdEvents', c.readCreatedEvents);
 
+// Server request to get all Invited Events through user 
+app.get('/api/invitedEvents', c.readInvitedEvents);
+
 
 
 app.get('*', (req, res)=>{

@@ -14,7 +14,20 @@ class Feed extends Component {
           console.log('data',data)
           return ( 
             <div>
-            <h1>Events</h1>
+            <h1>Created Events</h1>
+            {data.map((event,i) => <Link to='/event'><div key={i}>
+            <img className='Feed_eventPhoto'src={event.cover_photo} alt="Displaying event portrait"></img>
+            <h1>{event.event_name}</h1>
+            <p>{event.description}</p>
+            </div></Link>)}
+            </div>
+          )
+        }}/>
+        <Fetcher url='/api/invitedEvents' render={(data) => {
+          console.log('data',data)
+          return ( 
+            <div>
+            <h1>Invited Events</h1>
             {data.map((event,i) => <Link to='/event'><div key={i}>
             <img className='Feed_eventPhoto'src={event.cover_photo} alt="Displaying event portrait"></img>
             <h1>{event.event_name}</h1>
