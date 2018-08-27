@@ -49,7 +49,9 @@ INSERT INTO events
 (event_id, event_name, cover_photo, description, place, start_time, user_id)
 VALUES 
 ('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3)
-('10', 'Disneyland', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/640/360/75/dam/wdpro-assets/dlr/gallery/destinations/disneyland-park/disneyland-gallery00.jpg?1504908934350', 'Fun times with the family', 'Anaheim, CA', 6, 1);
+('10', 'Disneyland', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
+('10', 'Disneyland2', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
+('10', 'Disneyland3', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 4);
 
 INSERT INTO requesteditems 
 (name, event_id, user_id, spokenfor)
@@ -62,7 +64,10 @@ INSERT INTO invitations
 VALUES
 (1,1)
 , (1,2)
-, (2,3);
+, (2,3)
+, (3,3)
+, (4,4)
+, (1,4);
 
 -- Select ALL
 SELECT * FROM users;

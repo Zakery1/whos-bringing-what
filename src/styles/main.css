@@ -143,6 +143,9 @@ body {
 .Feed_eventPhoto {
   max-width: 200px; }
 
+.SpecificEvent_eventPhoto {
+  max-width: 200px; }
+
 .big {
   display: none; }
 
