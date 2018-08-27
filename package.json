@@ -22,6 +22,7 @@
     "react-apollo": "^2.1.11",
     "react-chartjs2": "^1.2.1",
     "react-dom": "^16.4.2",
+    "react-google-maps": "^9.4.5",
     "react-icons-kit": "^1.1.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
