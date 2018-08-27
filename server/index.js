@@ -22,7 +22,7 @@ app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }))
-app.use(express.static( `${__dirname}/../build`));
+// app.use(express.static( `${__dirname}/../build`));
 
 
 massive(process.env.CONNECTION_STRING).then(database => {
@@ -53,9 +53,9 @@ function checkLoggedIn(req, res, next) {
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-  })
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+//   })
 
 PORT = process.env.PORT;
 app.listen(PORT, () => console.log('Server is sailing on port ' + PORT + ' ⛵'))
