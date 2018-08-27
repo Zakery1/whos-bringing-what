@@ -105,14 +105,6 @@ body {
   align-items: stretch;
   align-content: stretch; }
 
-.App_navContainer {
-  align-self: stretch;
-  widows: 20vw;
-  order: 0;
-  flex: 0 0 0px;
-  flex-grow: 0;
-  flex-shrink: 0; }
-
 .App_routesContainer {
   align-self: stretch;
   order: 0;
@@ -142,11 +134,19 @@ body {
   height: 50vh;
   width: 70vw; }
 
-.Nav_big {
+.Nav_parent {
+  background: firebrick; }
+
+.Nav_container {
+  background: blue; }
+
+.big {
   display: none; }
 
 @media (min-width: 380px) {
-  .Nav_small {
+  .small {
     display: none; }
-  .Nav_big {
-    display: initial; } }
+  .big {
+    display: initial; }
+  .Nav_container {
+    background: red; } }

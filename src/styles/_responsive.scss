@@ -1,14 +1,17 @@
-.Nav_big {
-        display: none;
+.big {
+    display: none;
 }
 
-
 @media (min-width: 380px) {
-    .Nav_small {
+    .small {
         display: none;
     }
 
-    .Nav_big {
+    .big {
         display: initial;
+    }
+
+    .Nav_container {
+        background: red;
     }
 }

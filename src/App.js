@@ -6,12 +6,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <div className="App_navContainer">
+
+          <div className="App_navContainer big">
             <Nav/>
           </div>
+
           <div className="App_routesContainer">
             {routes}
           </div>
+
+          <div className="App_navContainer small">
+            <Nav/>
+          </div>
+
       </div>
     );
   }
