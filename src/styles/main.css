@@ -139,7 +139,8 @@ body {
   background: gold; }
 
 .Header_image {
-  height: 50px; }
+  height: 50vh;
+  width: 70vw; }
 
 .Nav_big {
   display: none; }
