@@ -1,0 +1,12 @@
+@import './variables';
+
+ body {
+    font-family: $primary-font-family;
+    // color: $text-color;
+    p {
+      font-size: $primary-font-size-paragraph-small;
+    }
+    h1 {
+      font-size: $primary-font-size-header-small;
+    }
+  }

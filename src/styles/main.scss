@@ -1,0 +1,19 @@
+@import 'reset';
+@import 'globals';
+
+// ===== VARIABLES ===== // 
+@import 'variables';
+
+// ===== MIXINS ===== // 
+@import 'mixins';
+
+// ===== COMPONENTS ===== //
+@import './components/App';
+@import './components/Home';
+@import './components/About';
+@import './components/Header';
+@import './components/Nav';
+
+
+// ===== Responsive ===== // 
+@import 'responsive';

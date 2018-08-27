@@ -1,0 +1,17 @@
+.big {
+    display: none;
+}
+
+@media (min-width: 380px) {
+    .small {
+        display: none;
+    }
+
+    .big {
+        display: initial;
+    }
+
+    .Nav_container {
+        background: red;
+    }
+}
