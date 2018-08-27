@@ -14,7 +14,9 @@ class Feed extends Component {
             <div>
             <h1>Events</h1>
             {data.map((event,i) => <div key={i}>
+            <img className='Feed_eventPhoto'src={event.cover_photo} alt="Displaying event portrait"></img>
             <p>{event.event_name}</p>
+            <p>{event.description}</p>
             </div>)}
             </div>
           )

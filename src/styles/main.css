@@ -140,6 +140,9 @@ body {
 .Nav_container {
   background: blue; }
 
+.Feed_eventPhoto {
+  max-width: 200px; }
+
 .big {
   display: none; }
 
