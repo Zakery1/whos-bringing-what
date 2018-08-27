@@ -132,11 +132,14 @@ body {
 .About_headshot {
   width: 200px; }
 
-h4 {
+.About_creatorName {
   background: green; }
 
-p {
+.About_creatorDetails {
   background: gold; }
+
+.Header_image {
+  height: 50px; }
 
 .Nav_big {
   display: none; }
