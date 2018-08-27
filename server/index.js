@@ -53,6 +53,9 @@ function checkLoggedIn(req, res, next) {
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
 
+// Server request to get all events through user 
+app.get('/api/events', c.readEvents);
+
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
   })
