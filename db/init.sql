@@ -47,7 +47,7 @@ VALUES
 INSERT INTO events 
 (event_id, event_name, cover_photo, description, place, start_time, user_id)
 VALUES 
-('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 1);
+('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3);
 
 INSERT INTO requesteditems 
 (name, event_id, user_id, spokenfor)

@@ -56,6 +56,12 @@ app.post('/api/auth/logout', uC.logout);
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
 //   })
+// Server request to get all events through user 
+app.get('/api/events', c.readEvents);
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  })
 
 PORT = process.env.PORT;
 app.listen(PORT, () => console.log('Server is sailing on port ' + PORT + ' ⛵'))
