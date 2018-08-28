@@ -13,7 +13,9 @@ export default class CreatorSpecificEvent extends Component {
             requestedItems: [],
             loading: false,
             name: '',
-            editing: false
+            editing: false,
+            selectedId: '',
+            selectedName: ''
         }
     }
     componentDidMount() {
@@ -76,15 +78,36 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
 
-    // Creator can edit items from requestedItems table 
-    
+    // Set user to be able to edit item
+    editItem = (id) => {
+        const index = this.state.requestedItems.findIndex(e => e.id === id)
+        this.setState({
+            selectedId: id,
+            selectedName: this.state.requestedItems[index].name,
+            editing: !this.state.editing
+        })
+    }
+
+     // Creator can edit items from requestedItems table
+    saveItem = (id) => {
+        const eventId = this.props.match.params.id
+        axios.patch(`/api/patch_requestedItem/${id}/${eventId}`, {name: this.state.selectedName})
+        .then(response => {
+            this.setState({
+                selectedId: '',
+                selectedName: '',
+                editing: !this.state.editing,
+                requestedItems: response.data
+            })
+        })
+    }
     render() {
-        const { event, requestedItems, loading, name } = this.state
+        const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
                 <div key={i}>
-                    <p>{item.name}</p>
-                    <button>Edit</button>
+                    {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                    {editing ? selectedId == item.id ? <button onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
                     <button onClick={() => this.deleteItem(item.id)}>Delete</button>
                 </div>
             )

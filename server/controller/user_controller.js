@@ -87,5 +87,20 @@ module.exports = {
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },
+    updateRequestedItem: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { name } = req.body
+        const { itemId, eventId } = req.params
+        dbInstance.update_item({name, itemId})
+        .then(() => {
+            dbInstance.read_items([eventId])
+            .then(items => {
+                res.status(200).json(items)
+            })
+        }).catch(error => {
+            console.log('---- error with updateRequestedItem', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
 
 }
