@@ -1,21 +1,18 @@
 .App {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    // align-items: stretch;
     align-content: stretch;
+    min-height: 100vh;
 }
 
-
-
 .App_routesContainer {
-    align-self: stretch;
-    order: 0;
-    width: 80vw;
+
 }
 
 .App_navContainer .big {
     margin-right: 0;
     padding-right: 0;
 }
+

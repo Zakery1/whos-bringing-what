@@ -4,16 +4,15 @@
 
 .Nav_container  {
     width: 100%;
-    height: 100%;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     text-align: center;
     bottom: 0;
-    // position: fixed;
-    z-index: 5;
-    bottom: 0;
+    background: $facebook-blue;
+    position: fixed;
 }
 
 .Nav_mobileIcons {

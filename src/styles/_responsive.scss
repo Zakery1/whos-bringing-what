@@ -22,4 +22,12 @@
         text-decoration: none;
     }
 
+    .Footer_parent .big {
+        width: 50vw;
+        text-align: justify;
+        font-size: $primary-font-size-paragraph-large;
+        color: $facebook-blue;
+        margin: 20px 0 0px 0;
+        padding: 20px 20px 60px 20px;
+    }
 }
