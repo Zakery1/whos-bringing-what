@@ -119,13 +119,29 @@ body {
   color: blue; }
 
 .About_peopleContainer {
-  background: hotpink; }
+  background: hotpink;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  width: 100vw; }
+
+.About_person {
+  align-self: center;
+  order: 0;
+  flex: 0 0 0px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 90px; }
 
 .About_headshot {
-  width: 200px; }
+  width: 340px; }
 
 .About_creatorName {
-  background: green; }
+  background: green;
+  font-size: 30px; }
 
 .About_creatorDetails {
   background: gold; }
@@ -139,11 +155,13 @@ body {
 
 .Nav_container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  text-align: center; }
+  text-align: center;
+  bottom: 0; }
 
 .Nav_mobileIcons {
   margin: 3px 20px 15px 20px;
@@ -158,7 +176,10 @@ body {
   margin: 70px 50px 75px 50px;
   color: white;
   text-decoration: none;
-  background: none; }
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-family: "Patua One", cursive; }
 
 .Feed_eventPhoto {
   max-width: 100%; }
