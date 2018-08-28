@@ -131,8 +131,8 @@ body {
   background: gold; }
 
 .Header_image {
-  height: 50vh;
-  width: 70vw; }
+  height: 50%;
+  width: 50%; }
 
 .Nav_parent {
   background: #395CA9; }
@@ -167,8 +167,8 @@ body {
   max-width: 200px; }
 
 .event-map {
-  height: 50vh;
-  width: 70vw; }
+  height: 40vh;
+  width: 55vw; }
 
 .big {
   display: none; }
