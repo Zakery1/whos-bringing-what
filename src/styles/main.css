@@ -118,6 +118,12 @@ body {
 .Home_header {
   color: blue; }
 
+.About_developers {
+  background-color: purple;
+  font-size: 40px;
+  text-align: center;
+  width: 100vw; }
+
 .About_peopleContainer {
   background: hotpink;
   display: flex;
@@ -129,6 +135,7 @@ body {
   width: 100vw; }
 
 .About_person {
+  align-items: center;
   align-self: center;
   order: 0;
   flex: 0 0 0px;
@@ -145,6 +152,12 @@ body {
 
 .About_creatorDetails {
   background: gold; }
+
+.About_profile_pic {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding: 20px; }
 
 .Header_image {
   height: 50%;
