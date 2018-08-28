@@ -1,10 +1,12 @@
 import React from 'react';
-import foodPlatter from '../../styles/assets/food-platter.jpg';
+import friendsMobile from '../../styles/assets/friendsMobile.jpg';
+import friendsDesktop from '../../styles/assets/friendsDesktop.jpg';
 
 function Header() {
     return (
       <div className="Header_parent">
-        <img className="Header_image" src={foodPlatter} alt="food platter"/>
+        <img className="Header_imageDesktop big" src={friendsDesktop} alt="friends"/>
+        <img className="Header_imageMobile small" src={friendsMobile} alt="friends"/>
       </div>
     );
   }

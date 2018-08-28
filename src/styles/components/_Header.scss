@@ -1,5 +1,13 @@
-.Header_image {
-height: 50%;
-width: 50%;
+
+
+.Header_imageMobile {
+height: 50vh;
+width: 90vw;
+margin: 20px;
+border: $facebook-blue 2px solid;
+}
+
+.Header_imageDesktop {
+    width: 600px;
 }
 
