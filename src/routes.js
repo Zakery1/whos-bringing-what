@@ -13,5 +13,7 @@ export default (
             <Route path="/feed" component={Feed}/>
             <Route path="/specificEvent/:id" component={SpecificEvent}/>
             <Route path="/creatorSpecificEvent/:id" component={CreatorSpecificEvent}/>
+            <Route path="/Danielle" component={() => window.location='https://www.linkedin.com/in/danielle-cucinotta-38b79527'}/>
+        
         </Switch>
 )
