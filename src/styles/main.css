@@ -166,6 +166,10 @@ body {
 .SpecificEvent_eventPhoto {
   max-width: 200px; }
 
+.event-map {
+  height: 50vh;
+  width: 70vw; }
+
 .big {
   display: none; }
 

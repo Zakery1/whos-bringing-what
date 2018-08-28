@@ -12,7 +12,7 @@ render(){
             mapTypeId='satellite'
             center={ { lat: 40.5928, lng: 50.3055  } }
             >
-            <EventMarker isMarkerShown={false} location={this.props.location} />
+            <EventMarker />
         </GoogleMap>
     )
   }

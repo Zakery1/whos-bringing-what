@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import EventMapContainer from '../GoogleMaps/EventMapContainer';
+import EventMapContainer from '../GoogleMaps/EventMapContainer';
 // import EventMap from '../GoogleMaps/EventMap';
 
 // const API_KEY = 'AIzaSyC7lvoQRtO4bDubVUmRQoMNl7wjQuZm-IU';
@@ -51,6 +51,7 @@ export default class SpecificEvent extends Component {
         return (
             <div>
             Event
+            <EventMapContainer/>
             {event.length 
             ? 
             <div>
