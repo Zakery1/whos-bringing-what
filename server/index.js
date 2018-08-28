@@ -69,6 +69,9 @@ app.get('/api/requestedItems/:eventId', c.readRequestedItems);
 // Server request to POST requestedItems by Creator of Event
 app.post('/api/post_requestedItem/:eventId', uC.createRequestedItem);
 
+// Server request to DELETE requestedItems by Creator of Event
+app.delete('/api/delete_requestedItem/:itemId/:eventId', uC.deleteRequestedItem);
+
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));

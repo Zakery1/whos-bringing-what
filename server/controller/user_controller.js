@@ -60,7 +60,6 @@ module.exports = {
         const dbInstance = req.app.get('db')
         const { eventId } = req.params 
         const { name } = req.body
-        console.log('req.body',req.body)
         dbInstance.create_item({
             name,
             eventId,
@@ -71,6 +70,20 @@ module.exports = {
             res.status(200).json(items)
         }).catch(error => {
             console.log('---- error with createRequestedItem', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
+    deleteRequestedItem: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { itemId, eventId } = req.params
+        dbInstance.delete_item([itemId])
+        .then(() => {
+            dbInstance.read_items([eventId])
+            .then(items => {
+                res.status(200).json(items)
+            })
+        }).catch(error => {
+            console.log('---- error with deleteRequestedItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },

@@ -12,7 +12,8 @@ export default class CreatorSpecificEvent extends Component {
             event: [],
             requestedItems: [],
             loading: false,
-            name: ''
+            name: '',
+            editing: false
         }
     }
     componentDidMount() {
@@ -61,15 +62,30 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
 
+    // Creator can delete items from requestedItems table 
+    deleteItem = (id) => {
+        const eventId = this.props.match.params.id
+        axios.delete(`/api/delete_requestedItem/${id}/${eventId}`)
+        .then(response => {
+            console.log('response',response)
+            this.setState({
+                requestedItems: response.data
+            })
+        }).catch(error => {
+            console.log('Axios error DELETE deleteItem', error)
+        })
+    }
+
+    // Creator can edit items from requestedItems table 
+    
     render() {
         const { event, requestedItems, loading, name } = this.state
-        console.log(this.state.requestedItems)
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
                 <div key={i}>
                     <p>{item.name}</p>
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => this.deleteItem(item.id)}>Delete</button>
                 </div>
             )
         })
