@@ -62,7 +62,7 @@ class Nav extends Component {
                <Link to="/" className="Nav_desktopLink">Home</Link>
                <Link to="/feed" className="Nav_desktopLink">Feed</Link>
                <Link to="/about" className="Nav_desktopLink">About</Link>
-              {username ? <Link to='/'><button class="Nav_desktopLink" onClick={()=>this.logout()}> Logout</button></Link> : <button class="Nav_desktopLink" onClick={() => {this.login()}}>Login</button>}
+              {username ? <Link to='/'><button className="Nav_desktopLink" onClick={()=>this.logout()}> Logout</button></Link> : <button className="Nav_desktopLink" onClick={() => {this.login()}}>Login</button>}
           </div>
 
         </div>

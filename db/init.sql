@@ -57,7 +57,10 @@ INSERT INTO requesteditems
 (name, event_id, user_id, spokenfor)
 VALUES
 ('jellyfish', 1, 1, false)
-, ('pizza', 1, 2, true);
+, ('pizza', 1, 2, true)
+, ('fireworks', 2, 1, false)
+, ('cheese sticks', 3, 1, false)
+, ('cups', 4, 4, false);
 
 INSERT INTO invitations 
 (event_id, user_id)

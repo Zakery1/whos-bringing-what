@@ -66,6 +66,9 @@ app.get('/api/event/:eventId', c.readEvent);
 // Server request to get an event through eventId
 app.get('/api/requestedItems/:eventId', c.readRequestedItems);
 
+// Server request to POST requestedItems by Creator of Event
+app.post('/api/post_requestedItem/:eventId', uC.createRequestedItem);
+
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));

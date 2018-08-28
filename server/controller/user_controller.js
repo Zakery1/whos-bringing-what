@@ -56,5 +56,23 @@ module.exports = {
         req.session.destroy();
         res.status(200).redirect('/');
     },
+    createRequestedItem: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { eventId } = req.params 
+        const { name } = req.body
+        console.log('req.body',req.body)
+        dbInstance.create_item({
+            name,
+            eventId,
+            userId: req.session.user.id,
+            spokenfor: false
+        })
+        .then(items => {
+            res.status(200).json(items)
+        }).catch(error => {
+            console.log('---- error with createRequestedItem', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
 
 }
