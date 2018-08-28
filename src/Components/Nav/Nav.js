@@ -58,11 +58,11 @@ class Nav extends Component {
           </div>
 
           <div className="Nav_container big">
-              <p>{username ? "Welcome: " + username : "No user is logged in"}</p>
-               <Link to="/" className="Nav_homeLink">Home</Link>
-               <Link to="/feed" className="Nav_feedLink">Feed</Link>
-               <Link to="/about" className="Nav_aboutLink">About</Link>
-              {username ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
+              <p className="Nav_desktopLink" >{username ? username : "No user"}</p>
+               <Link to="/" className="Nav_desktopLink">Home</Link>
+               <Link to="/feed" className="Nav_desktopLink">Feed</Link>
+               <Link to="/about" className="Nav_desktopLink">About</Link>
+              {username ? <Link to='/'><button class="Nav_desktopLink" onClick={()=>this.logout()}> Logout</button></Link> : <button class="Nav_desktopLink" onClick={() => {this.login()}}>Login</button>}
           </div>
 
         </div>

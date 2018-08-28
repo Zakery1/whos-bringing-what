@@ -141,18 +141,23 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-content: center; }
+  justify-content: space-around;
+  align-items: center; }
 
 .Nav_mobileIcons {
-  margin: 3px 16px 15px 16px;
+  margin: 3px 20px 15px 20px;
   text-align: center;
   white-space: nowrap; }
 
 .Nav_linkMobile {
   margin: 0 16px 15px 16px;
   text-decoration: none; }
+
+.Nav_desktopLink {
+  margin: 70px 50px 75px 50px;
+  color: white;
+  text-decoration: none;
+  background: none; }
 
 .Feed_eventPhoto {
   max-width: 100%; }
@@ -168,5 +173,12 @@ body {
     display: none; }
   .big {
     display: initial; }
-  .Nav_container {
-    height: 100vh; } }
+  .App_navContainer .big {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: space-evenly;
+    color: white;
+    text-decoration: none; } }
