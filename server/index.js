@@ -22,7 +22,7 @@ app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }))
-// app.use(express.static( `${__dirname}/../build`));
+app.use(express.static( `${__dirname}/../build`));
 
 
 massive(process.env.CONNECTION_STRING).then(database => {

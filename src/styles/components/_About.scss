@@ -4,15 +4,33 @@
 
 .About_peopleContainer {
     background: hotpink;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+}
+
+.About_person {
+    align-self: center;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px;
 }
 
 .About_headshot {
-    width: 200px;
-
+    width: 340px;
+    // margin-left: 18px;
 }
 
 .About_creatorName {
     background: green;
+    font-size: $creator-name-font-size;
+
 }
 
 .About_creatorDetails {

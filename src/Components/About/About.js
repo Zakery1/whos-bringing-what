@@ -11,7 +11,7 @@ function About() {
         <div className="About_peopleContainer">
 
           <div className="About_person">
-            <img className="About_headshot" src={Danielle} alt="Danielle Headshot" />
+            <img className="About_headshot" src={Danielle} alt="Danielle Headshot" /> 
             <h4 className="About_creatorName" >Danielle Lyn</h4>
             <p className="About_creatorDetails">Danielle comes from Seattle and loves using React to solve problems.</p>
           </div>
