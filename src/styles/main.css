@@ -91,7 +91,7 @@ button {
   outline: none; }
 
 body {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+  font-family: "Patua One", cursive; }
   body p {
     font-size: 15px; }
   body h1 {
@@ -131,14 +131,44 @@ body {
   background: gold; }
 
 .Header_image {
-  height: 50vh;
-  width: 70vw; }
+  height: 50%;
+  width: 50%; }
 
 .Nav_parent {
-  background: firebrick; }
+  background: #395CA9; }
 
 .Nav_container {
-  background: blue; }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center; }
+
+.Nav_mobileIcons {
+  margin: 3px 20px 15px 20px;
+  text-align: center;
+  white-space: nowrap; }
+
+.Nav_linkMobile {
+  margin: 0 16px 15px 16px;
+  text-decoration: none; }
+
+.Nav_desktopLink {
+  margin: 70px 50px 75px 50px;
+  color: white;
+  text-decoration: none;
+  background: none; }
+
+.Feed_eventPhoto {
+  max-width: 100%; }
+
+.SpecificEvent_eventPhoto {
+  max-width: 200px; }
+
+.event-map {
+  height: 40vh;
+  width: 55vw; }
 
 .big {
   display: none; }
@@ -148,5 +178,12 @@ body {
     display: none; }
   .big {
     display: initial; }
-  .Nav_container {
-    background: red; } }
+  .App_navContainer .big {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: space-evenly;
+    color: white;
+    text-decoration: none; } }

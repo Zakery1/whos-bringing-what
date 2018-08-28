@@ -44,22 +44,33 @@ VALUES
 ('123abc','gmail@andrew.com','andrew','http://www.readersdigest.ca/wp-content/uploads/2013/03/6-facts-to-know-before-owning-a-puppy.jpg')
 , ('123ade', 'gmail@zak.com', 'zak', 'https://snworksceo.imgix.net/dtc/10ec0a64-8f9d-46d9-acee-5ef9094d229d.sized-1000x1000.jpg');
 
+-- Have to insert users then log in for INSERT INTO events to work
 INSERT INTO events 
 (event_id, event_name, cover_photo, description, place, start_time, user_id)
 VALUES 
-('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 1);
+('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3)
+('10', 'Disneyland', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
+('10', 'Disneyland2', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
+('10', 'Disneyland3', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 4);
 
 INSERT INTO requesteditems 
 (name, event_id, user_id, spokenfor)
 VALUES
 ('jellyfish', 1, 1, false)
-, ('pizza', 1, 2, true);
+, ('pizza', 1, 2, true)
+, ('fireworks', 2, 1, false)
+, ('cheese sticks', 3, 1, false)
+, ('cups', 4, 4, false);
 
 INSERT INTO invitations 
 (event_id, user_id)
 VALUES
 (1,1)
-, (1,2);
+, (1,2)
+, (2,3)
+, (3,3)
+, (4,4)
+, (1,4);
 
 -- Select ALL
 SELECT * FROM users;

@@ -22,7 +22,7 @@ app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }))
-app.use(express.static( `${__dirname}/../build`));
+// app.use(express.static( `${__dirname}/../build`));
 
 
 massive(process.env.CONNECTION_STRING).then(database => {
@@ -52,6 +52,28 @@ function checkLoggedIn(req, res, next) {
 
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
+
+
+// Server request to get all Created Events through user 
+app.get('/api/createdEvents', c.readCreatedEvents);
+
+// Server request to get all Invited Events through user 
+app.get('/api/invitedEvents', c.readInvitedEvents);
+
+// Server request to get an event through eventId
+app.get('/api/event/:eventId', c.readEvent);
+
+// Server request to get an event through eventId
+app.get('/api/requestedItems/:eventId', c.readRequestedItems);
+
+// Server request to POST requestedItems by Creator of Event
+app.post('/api/post_requestedItem/:eventId', uC.createRequestedItem);
+
+// Server request to DELETE requestedItems by Creator of Event
+app.delete('/api/delete_requestedItem/:itemId/:eventId', uC.deleteRequestedItem);
+
+// Server request to UPDATE requestedItems by Creator of Event
+app.patch('/api/patch_requestedItem/:itemId/:eventId', uC.updateRequestedItem);
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
