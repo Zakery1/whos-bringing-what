@@ -4,14 +4,14 @@
 
 .Nav_container  {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     text-align: center;
     bottom: 0;
-    background: $facebook-blue;
-    position: fixed;
+    // position: fixed;
 }
 
 .Nav_mobileIcons {
@@ -27,7 +27,7 @@
 
 
 .Nav_desktopLink {
-    margin: 70px 0px 75px 50px;
+    margin: 70px 50px 75px 50px;
     color: white;
     text-decoration: none;
     background: none;
