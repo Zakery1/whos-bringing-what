@@ -2,12 +2,10 @@
     display: none;
 }
 
-@media (min-width: 380px) {
+@media (min-width: 500px) {
     .small {
         display: none;
     }
-
-    
 
     .big {
         display: initial;
@@ -17,7 +15,7 @@
         width: 200px;
     }
 
-
+    
 
     .App_navContainer .big {
         width: 20vw;
@@ -31,6 +29,8 @@
         text-decoration: none;
     }
 
+
+
     .Nav_container .big {
         width: 18vw;
         display: flex;
@@ -42,20 +42,39 @@
         background: $facebook-blue;
     }
 
+    .Nav_container {
+        height: 100vh;
+    }
+
     
 
     .Home_parent {
-
+        margin-left: 20%;
     }
 
     .Header_parent {
-
-        
+        margin: 3% 0 5% 10%;
     }
+
+    .Header_imageDesktop {
+        border: $facebook-blue 2px solid;
+        }
 
     .Footer_parent {
-
+        margin: 0% 0 0% 10%;
     }
     
+    .Footer_appName {
+        margin: 0 150px 20px 0;
+        // margin-right: 100px;
+    }
+
+    .Footer_aboutParagraphDesktop {
+        margin-right: 120px;
+    }
+
+    .Feed_parent {
+        margin-left: 15%;
+    }
     
 }

@@ -103,8 +103,7 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: stretch;
-  align-content: stretch;
-  min-height: 100vh; }
+  align-content: stretch; }
 
 .App_routesContainer {
   flex: 5; }
@@ -134,8 +133,7 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  align-content: center;
-  width: 100vw; }
+  align-content: center; }
 
 .About_person {
   align-items: center;
@@ -173,9 +171,6 @@ body {
 .About_footer {
   height: 70px; }
 
-.Header_parent {
-  width: 100vw; }
-
 .Header_imageMobile {
   height: 50vh;
   margin: 20px;
@@ -183,7 +178,7 @@ body {
 
 .Header_imageDesktop {
   width: 60vw;
-  margin-left: 50px; }
+  margin: 0 0 0 0; }
 
 .Footer_appName {
   text-align: center;
@@ -200,14 +195,15 @@ body {
   background: #395CA9; }
 
 .Nav_container {
-  width: 100%;
+  width: 101vw;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  bottom: 0; }
+  bottom: 0;
+  z-index: 5; }
 
 .Nav_mobileIcons {
   margin: 3px 20px 15px 20px;
@@ -240,7 +236,7 @@ body {
 .big {
   display: none; }
 
-@media (min-width: 380px) {
+@media (min-width: 500px) {
   .small {
     display: none; }
   .big {
@@ -265,4 +261,20 @@ body {
     align-items: center;
     text-align: center;
     bottom: 0;
-    background: #395CA9; } }
+    background: #395CA9; }
+  .Nav_container {
+    height: 100vh; }
+  .Home_parent {
+    margin-left: 20%; }
+  .Header_parent {
+    margin: 3% 0 5% 10%; }
+  .Header_imageDesktop {
+    border: #395CA9 2px solid; }
+  .Footer_parent {
+    margin: 0% 0 0% 10%; }
+  .Footer_appName {
+    margin: 0 150px 20px 0; }
+  .Footer_aboutParagraphDesktop {
+    margin-right: 120px; }
+  .Feed_parent {
+    margin-left: 15%; } }

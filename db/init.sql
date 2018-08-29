@@ -7,7 +7,7 @@ CREATE TABLE users (
 id SERIAL PRIMARY KEY
 , auth0_id TEXT
 , email VARCHAR(100) 
-, username VARCHAR(40) UNIQUE
+, username VARCHAR(40) 
 , profile_pic TEXT
 );
 
@@ -18,8 +18,15 @@ id SERIAL PRIMARY KEY
 , cover_photo TEXT
 , description TEXT
 , place TEXT
-, start_time INTEGER
-, user_id INTEGER REFERENCES users(id)
+, city TEXT
+, country TEXT
+, latitude DECIMAL
+, longitude DECIMAL
+, state TEXT 
+, street TEXT 
+, zip TEXT  
+, start_time TEXT
+, creator_id TEXT
 );
 
 CREATE TABLE requesteditems (
@@ -38,20 +45,13 @@ id SERIAL PRIMARY KEY
 
 -- Dummy Data
 
-INSERT INTO users 
-(auth0_id,email,username,profile_pic)
-VALUES
-('123abc','gmail@andrew.com','andrew','http://www.readersdigest.ca/wp-content/uploads/2013/03/6-facts-to-know-before-owning-a-puppy.jpg')
-, ('123ade', 'gmail@zak.com', 'zak', 'https://snworksceo.imgix.net/dtc/10ec0a64-8f9d-46d9-acee-5ef9094d229d.sized-1000x1000.jpg');
+
 
 -- Have to insert users then log in for INSERT INTO events to work
 INSERT INTO events 
 (event_id, event_name, cover_photo, description, place, start_time, user_id)
 VALUES 
-('5', 'BBQ', 'https://s3-media4.fl.yelpcdn.com/bphoto/ZMi0ykSsPismX_M-0cT6lw/o.jpg', 'Grilled Jellyfish for Abraham', 'at my place', 5, 3)
-('10', 'Disneyland', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
-('10', 'Disneyland2', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 1);
-('10', 'Disneyland3', 'https://secure.cdn1.wdpromedia.com/resize/mwImage/1/900/360/75/dam/wdpro-assets/dlr/parks-and-tickets/destinations/disneyland-park/disneyland-00-full.jpg?1533922156842', 'Fun times with the family', 'Anaheim, CA', 6, 4);
+
 
 INSERT INTO requesteditems 
 (name, event_id, user_id, spokenfor)

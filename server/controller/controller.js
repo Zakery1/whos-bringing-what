@@ -2,15 +2,15 @@ module.exports = {
     readUser: (req, res) => {
         res.status(200).json({
           username: req.session.user.username,
-          profilePicture: req.session.user.profile_pic,
-          userId: req.session.user.id
+          email: req.session.user.email,
+          profilePicture: req.session.user.profile_pic
         })
     },
     readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])
         .then(users => {
-            dbInstance.read_created_events([users[0].id])
+            dbInstance.read_created_events([users[0].auth0_id])
             .then(events => {
                 res.status(200).json(events)
             })
