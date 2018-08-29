@@ -10,6 +10,7 @@ import {ic_tag_faces} from 'react-icons-kit/md/ic_tag_faces';
 import {login} from 'react-icons-kit/iconic/login';
 import {logout} from 'react-icons-kit/iconic/logout';
 import {user_circle} from 'react-icons-kit/ikons/user_circle';
+import { withClientState } from 'apollo-link-state';
 
 
 class Nav extends Component {
@@ -58,11 +59,11 @@ class Nav extends Component {
           </div>
 
           <div className="Nav_container big">
-              <p className="Nav_desktopLink" >{username ? username : "No user"}</p>
+              <p className="Nav_desktop_link" >{username ? username : ""}</p>
                <Link to="/" className="Nav_desktopLink">Home</Link>
                <Link to="/feed" className="Nav_desktopLink">Feed</Link>
                <Link to="/about" className="Nav_desktopLink">About</Link>
-              {username ? <Link to='/'><button className="Nav_desktopLink" onClick={()=>this.logout()}> Logout</button></Link> : <button className="Nav_desktopLink" onClick={() => {this.login()}}>Login</button>}
+              {username ? <Link className="Nav_desktopLink" onClick={()=>this.logout()} to='/'>Logout</Link> : <button className="Nav_desktopLink" onClick={() => {this.login()}}>Login</button>}
           </div>
 
         </div>
