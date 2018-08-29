@@ -195,7 +195,7 @@ body {
   background: #395CA9; }
 
 .Nav_container {
-  width: 101vw;
+  width: 100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -225,6 +225,40 @@ body {
 
 .Feed_eventPhoto {
   max-width: 100%; }
+
+.Feed_title {
+  font-size: 50px; }
+
+.Feed_event {
+  font-size: 30px;
+  color: blue; }
+
+.Feed_group {
+  border: 3px solid blue; }
+
+.Feed_event_name {
+  background: red;
+  font-size: 50px;
+  color: black; }
+
+.Feed_event_description {
+  background: green;
+  font-size: 20px;
+  color: blue; }
+
+.Feed_event_date {
+  background: orange;
+  font-size: 20px; }
+
+.Feed_footer {
+  height: 90px; }
+
+.Feed_big {
+  margin-left: 190px;
+  padding: 0px 10px; }
+
+.Feed_blank {
+  height: 25px; }
 
 .SpecificEvent_eventPhoto {
   max-width: 200px; }

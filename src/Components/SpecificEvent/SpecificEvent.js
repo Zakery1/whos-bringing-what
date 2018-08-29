@@ -5,7 +5,6 @@ import Sugar from 'sugar';
 Sugar.Date.extend()
 
 // import EventMap from '../GoogleMaps/EventMap';
-
 // const API_KEY = 'AIzaSyC7lvoQRtO4bDubVUmRQoMNl7wjQuZm-IU';
 
 export default class SpecificEvent extends Component {
