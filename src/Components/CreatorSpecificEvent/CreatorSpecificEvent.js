@@ -55,13 +55,16 @@ export default class CreatorSpecificEvent extends Component {
     // Creator can add items to requestedItems table
     addItem = () => {
         const eventId = this.props.match.params.id
-        axios.post(`/api/post_requestedItem/${eventId}`, {name: this.state.name})
-        .then(items => {
-            console.log('items',items)
-            this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
-        }).catch(error => {
-            console.log('Axios error POST CreatorSpecificEvent', error)
-        })
+        if(this.state.name.length) {
+            axios.post(`/api/post_requestedItem/${eventId}`, {name: this.state.name})
+            .then(items => {
+                console.log('items',items)
+                this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
+            }).catch(error => {
+                console.log('Axios error POST CreatorSpecificEvent', error)
+            })
+
+        }
     }
 
     // Creator can delete items from requestedItems table 
