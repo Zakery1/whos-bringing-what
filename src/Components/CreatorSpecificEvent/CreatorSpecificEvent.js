@@ -124,7 +124,7 @@ export default class CreatorSpecificEvent extends Component {
                 <div key={i}>
                     {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
                     {editing ? selectedId == item.id ? <button onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
-                    {editing && selectedId == item.id ? <button onClick={() => this.cancel(item.id)}>cancel</button> : ''}                   
+                    {editing && selectedId == item.id ? <button onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
                     <button onClick={() => this.deleteItem(item.id)}>Delete</button>
                 </div>
             )

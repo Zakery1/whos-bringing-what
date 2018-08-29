@@ -194,8 +194,11 @@ body {
 .Nav_parent {
   background: #395CA9; }
 
+.button:hover {
+  cursor: pointer; }
+
 .Nav_container {
-  width: 101vw;
+  width: 100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -215,7 +218,7 @@ body {
   text-decoration: none; }
 
 .Nav_desktopLink {
-  margin: 70px 50px 75px 50px;
+  margin: 40px 50px 75px 50px;
   color: white;
   text-decoration: none;
   background: none;
@@ -223,8 +226,45 @@ body {
   font-size: 15px;
   font-family: "Patua One", cursive; }
 
+.Nav_desktopLink:hover {
+  cursor: pointer; }
+
 .Feed_eventPhoto {
   max-width: 100%; }
+
+.Feed_title {
+  font-size: 50px; }
+
+.Feed_event {
+  font-size: 30px;
+  color: blue; }
+
+.Feed_group {
+  border: 3px solid blue; }
+
+.Feed_event_name {
+  background: red;
+  font-size: 50px;
+  color: black; }
+
+.Feed_event_description {
+  background: green;
+  font-size: 20px;
+  color: blue; }
+
+.Feed_event_date {
+  background: orange;
+  font-size: 20px; }
+
+.Feed_footer {
+  height: 90px; }
+
+.Feed_big {
+  margin-left: 190px;
+  padding: 0px 10px; }
+
+.Feed_blank {
+  height: 25px; }
 
 .SpecificEvent_eventPhoto {
   max-width: 200px; }
@@ -277,4 +317,6 @@ body {
   .Footer_aboutParagraphDesktop {
     margin-right: 120px; }
   .Feed_parent {
-    margin-left: 220px; } }
+    margin-left: 220px; }
+  a .Nav_desktopLink {
+    color: blue; } }

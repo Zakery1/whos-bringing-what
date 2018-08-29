@@ -3,30 +3,14 @@ import { Marker } from "react-google-maps";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class JobMarker extends Component {
-  constructor(){
-    super();
-    this.state = {
-      event: {}
-    }
-  }
-
-  componentDidMount(){
-    axios.get('/api/event').then(response => {
-      // console.log(response.data)
-      this.setState({
-        jobs: response.data
-      })
-    }).catch(error => {
-      console.log('Axios error GET componentDidMount', error)
-    })
-  }
+class EventMarker extends Component {
 
   render(){
+    console.log(this.props.latitude)
     return(
       <div>
-      <Marker
-                position={ {  lat: -34.397, lng: 150.644  } }
+              <Marker
+                position={ {  lat: +this.props.latitude, lng: +this.props.longitude  } }
                 >
               </Marker>
       </div>
@@ -35,4 +19,4 @@ class JobMarker extends Component {
 }
 
 
-export default JobMarker;        
+export default EventMarker;        
