@@ -17,7 +17,7 @@
         width: 200px;
     }
 
-
+    
 
     .App_navContainer .big {
         width: 20vw;
@@ -31,6 +31,8 @@
         text-decoration: none;
     }
 
+
+
     .Nav_container .big {
         width: 18vw;
         display: flex;
@@ -42,10 +44,14 @@
         background: $facebook-blue;
     }
 
+    .Nav_container {
+        height: 100vh;
+    }
+
     
 
     .Home_parent {
-
+        margin-left: 30vw;
     }
 
     .Header_parent {

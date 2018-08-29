@@ -9,13 +9,12 @@
 }
 
 .App_routesContainer {
-    
     flex: 5;
 }
 
 .App_navContainer {
     flex: 1;
-    width: 100vw;
+    // width: 100vw;
     z-index: 5;
     bottom: 0;
     position: fixed;
