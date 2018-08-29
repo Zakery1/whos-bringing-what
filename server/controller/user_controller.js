@@ -11,7 +11,6 @@ module.exports = {
         };
 
         const dbInstance = req.app.get('db');
-
         function tradeCodeForAccessToken() {
             return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
         }
@@ -23,6 +22,7 @@ module.exports = {
 
         function fetchAuth0AccessToken(userInfoResponse){
             req.session.user = userInfoResponse.data;
+            console.log('req.session.user', req.session.user)
             const payload = {
                 grant_type: 'client_credentials',
                 client_id: process.env.NODE_APP_CLIENT_ID,
@@ -43,6 +43,8 @@ module.exports = {
         function storeUserInfoAndEventsInDataBase(response){
          axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${response.data.identities[0].access_token}`)
             .then(events => {
+                console.log('events.data',events.data)
+                console.log('response.data', response.data)
                 console.log('facebook events', events.data.events.data)
                 const auth0id = response.data.identities[0].user_id
                 dbInstance.read_user_by_auth0_id(auth0id).then(users => {
@@ -104,6 +106,13 @@ module.exports = {
                                     })
                                 })
                             }
+                        } else { 
+                            const index = events.findIndex(event => event.event_id === e.id)
+                            dbInstance.read_user([req.session.user.id]).then(users => {
+                                if(events[index].creator_id != users[0].auth0_id) {
+                                    dbInstance.create_invitation({eventId: events[index].id, userId: users[0].id})
+                                }
+                            })
                         }
                     })
                 }) 
