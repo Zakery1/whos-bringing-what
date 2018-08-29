@@ -21,11 +21,6 @@ module.exports = {
             return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`)
         }
 
-        function fetchAuth0AccessToken(userinfoResponse){
-            console.log(userinfoResponse);
-            return userinfoResponse
-        }
-
         function storeUserInfoInDataBase(response){
             const auth0id = response.data.sub
             return dbInstance.read_user_by_auth0_id(auth0id).then(users => {
@@ -48,19 +43,8 @@ module.exports = {
                 }
             })
         }
-
-        // function fetchFacebookAccessToken (){
-        //     const options = {
-        //         headers:{
-        //             authorization:
-        //          }
-        //     }
-        // }
-
-
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
-        .then(fetchAuth0AccessToken)
         .then(storeUserInfoInDataBase)
         .catch(error => {
             console.log('---- error with login', error)
