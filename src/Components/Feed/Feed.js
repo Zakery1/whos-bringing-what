@@ -18,6 +18,7 @@ class Feed extends Component {
             <img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/>
             <h1>{event.event_name}</h1>
             <p>{event.description}</p>
+            <p>{event.start_time}</p>
             </div></Link>)}
             </div>
           )
@@ -30,6 +31,7 @@ class Feed extends Component {
             <img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/>
             <h1>{event.event_name}</h1>
             <p>{event.description}</p>
+            <p>{event.start_time}</p>
             </div></Link>)}
             </div>
           )
