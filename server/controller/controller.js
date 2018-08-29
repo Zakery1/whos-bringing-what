@@ -6,6 +6,7 @@ module.exports = {
           profilePicture: req.session.user.profile_pic
         })
     },
+    // Checking to see if events.creator_id === users.auth0_id 
     readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])
@@ -19,6 +20,7 @@ module.exports = {
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },
+    // Get all events that users is invited to through the invitations table
     readInvitedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])
