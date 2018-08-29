@@ -55,15 +55,15 @@ export default class SpecificEvent extends Component {
             {event.length 
             ? 
             <div>
-                <h1>{event[0].event_name}</h1>
+                <h1> Name: {event[0].event_name}</h1>
                 <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <p>{event[0].description}</p>
-                <p>{event[0].place}</p>
-                <p>{event[0].city}</p>
-                <p>{event[0].state}</p>
-                <p>{event[0].zip}</p>
-                <p>{event[0].country}</p>
-                <p>{event[0].start_time}</p>
+                <p>Description: {event[0].description}</p>
+                <p>Place: {event[0].place}</p>
+                <p>City: {event[0].city}</p>
+                <p>State: {event[0].state}</p>
+                <p>Zip: {event[0].zip}</p>
+                <p>Country: {event[0].country}</p>
+                <p>Start Time: {event[0].start_time}</p>
             </div>
             :
             <p>Loading Event...</p>

@@ -86,19 +86,19 @@ module.exports = {
                             // Check to see if user is going, if user is unsure/interested, event will not be displayed
                             if(e.rsvp_status === "attending") {
                                 let event = { 
-                                    eventId: e.id ? e.id : 'none',
-                                    eventName: e.name ? e.name : 'none',
-                                    eventPhoto: e.cover ? e.cover.source ? e.cover.source : 'none' : 'none',
-                                    description: e.description ? e.description : 'none', 
-                                    place: e.place ? e.place.name ? e.place.name : 'none' : 'none',
-                                    city: e.place ? e.place.location ? e.place.location.city ? e.place.location.city : 'none' : 'none' : 'none',
-                                    country: e.place ? e.place.location ? e.place.location.country ? e.place.location.country : 'none' : 'none' : 'none',
+                                    eventId: e.id ? e.id : 'no description',
+                                    eventName: e.name ? e.name : 'no description',
+                                    eventPhoto: e.cover ? e.cover.source ? e.cover.source : 'no description' : 'no description',
+                                    description: e.description ? e.description : 'no description', 
+                                    place: e.place ? e.place.name ? e.place.name : 'no description' : 'no description',
+                                    city: e.place ? e.place.location ? e.place.location.city ? e.place.location.city : 'no description' : 'no description' : 'no description',
+                                    country: e.place ? e.place.location ? e.place.location.country ? e.place.location.country : 'no description' : 'no description' : 'no description',
                                     latitude: e.place ? e.place.location ? e.place.location.latitude ? e.place.location.latitude : null : null : null,
                                     longitude: e.place ? e.place.location ? e.place.location.longitude ? e.place.location.longitude : null : null : null,
-                                    state: e.place ? e.place.location ? e.place.location.state ? e.place.location.state : 'none' : 'none' : 'none',
-                                    street: e.place ? e.place.location ? e.place.location.street ? e.place.location.street : 'none' : 'none' : 'none',
-                                    zip: e.place ? e.place.location ? e.place.location.zip ? e.place.location.zip : 'none' : 'none' : 'none',
-                                    startTime: e.start_time ? e.start_time : 'none',
+                                    state: e.place ? e.place.location ? e.place.location.state ? e.place.location.state : 'no description' : 'no description' : 'no description',
+                                    street: e.place ? e.place.location ? e.place.location.street ? e.place.location.street : 'no description' : 'no description' : 'no description',
+                                    zip: e.place ? e.place.location ? e.place.location.zip ? e.place.location.zip : 'no description' : 'no description' : 'no description',
+                                    startTime: e.start_time ? e.start_time : 'no description',
                                     creatorId: e.admins ? e.admins.data ? e.admins.data[0].id ? e.admins.data[0].id : null : null : null
                                 }
                                 // Store created event in Database
