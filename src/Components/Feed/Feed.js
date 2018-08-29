@@ -22,7 +22,6 @@ class Feed extends Component {
             <h1>Name: {event.event_name}</h1>
             <p>Description: {event.description}</p>
             <p>Event starts in {new Date().daysUntil(event.start_time)} days</p>
-          
             </div></Link>)}
             </div>
           )

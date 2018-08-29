@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Sugar from 'sugar';
+Sugar.Date.extend()
+
 // import EventMapContainer from '../GoogleMaps/EventMapContainer';
 // import EventMap from '../GoogleMaps/EventMap';
 
@@ -135,12 +138,14 @@ export default class CreatorSpecificEvent extends Component {
                 <h1> Name: {event[0].event_name}</h1>
                 <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description}</p>
+                <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Place: {event[0].place}</p>
                 <p>City: {event[0].city}</p>
                 <p>State: {event[0].state}</p>
                 <p>Zip: {event[0].zip}</p>
                 <p>Country: {event[0].country}</p>
-                <p>Start Time: {event[0].start_time}</p>
+                
+
             </div>
             :
             <p>Loading Event...</p>
