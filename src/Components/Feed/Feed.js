@@ -16,9 +16,9 @@ class Feed extends Component {
             <h1>Created Events</h1>
             {data.map((event,i) => <Link to={`/creatorSpecificEvent/${event.id}`} key={i}><div>
             <img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/>
-            <h1>{event.event_name}</h1>
-            <p>{event.description}</p>
-            <p>{event.start_time}</p>
+            <h1>Name: {event.event_name}</h1>
+            <p>Description: {event.description}</p>
+            <p>Start Time: {event.start_time}</p>
             </div></Link>)}
             </div>
           )
@@ -29,9 +29,9 @@ class Feed extends Component {
             <h1>Invited Events</h1>
             {data.map((event,i) => <Link to={`/specificEvent/${event.id}`} key={i}><div>
             <img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/>
-            <h1>{event.event_name}</h1>
-            <p>{event.description}</p>
-            <p>{event.start_time}</p>
+            <h1>Name: {event.event_name}</h1>
+            <p>Description: {event.description}</p>
+            <p>Start Time: {event.start_time}</p>
             </div></Link>)}
             </div>
           )
