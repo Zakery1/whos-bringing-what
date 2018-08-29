@@ -100,25 +100,32 @@ body {
 .App {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
   align-content: stretch;
   min-height: 100vh; }
 
-.App_navContainer .big {
-  margin-right: 0;
-  padding-right: 0; }
+.App_routesContainer {
+  flex: 5; }
+
+.App_navContainer {
+  flex: 1;
+  z-index: 5;
+  bottom: 0;
+  position: fixed; }
 
 .Home_parent {
-  background: springgreen;
-  color: blue;
-  font-size: 30px;
-  width: 103vw;
-  margin: 0;
-  align-content: center;
-  align-items: center;
-  align-self: auto; }
+  color: #395CA9; }
 
 .Home_header {
-  color: blue; }
+  color: #395CA9; }
+
+.About_developers {
+  background-color: purple;
+  font-size: 40px;
+  text-align: center;
+  width: 100vw; }
 
 .About_peopleContainer {
   background: hotpink;
@@ -127,10 +134,10 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  align-content: center;
-  width: 100vw; }
+  align-content: center; }
 
 .About_person {
+  align-items: center;
   align-self: center;
   order: 0;
   flex: 0 0 0px;
@@ -148,41 +155,55 @@ body {
 .About_creatorDetails {
   background: gold; }
 
+.About_profile_pic {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding: 20px; }
+
+.About_linkedin {
+  background-color: orange;
+  font-size: 20px; }
+
+.About_github {
+  background-color: green;
+  font-size: 20px; }
+
+.About_footer {
+  height: 70px; }
+
 .Header_imageMobile {
   height: 50vh;
-  width: 90vw;
   margin: 20px;
   border: #395CA9 2px solid; }
 
 .Header_imageDesktop {
-  width: 60vw; }
+  width: 60vw;
+  margin-left: 0px; }
 
 .Footer_appName {
   text-align: center;
   margin: 50px;
+  margin-bottom: 0px;
   color: #395CA9; }
 
-.Footer_aboutParagraph {
-  width: 100vw;
-  text-align: justify;
-  font-size: 20px;
-  color: #395CA9;
-  margin: 20px 0 0px 0;
-  padding: 20px 20px 60px 20px; }
+.Footer_aboutParagraphMobile {
+  padding: 50px 20px 80px 20px;
+  text-align: center;
+  line-height: 1.5; }
 
 .Nav_parent {
   background: #395CA9; }
 
 .Nav_container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  bottom: 0;
-  background: #395CA9;
-  position: fixed; }
+  bottom: 0; }
 
 .Nav_mobileIcons {
   margin: 3px 20px 15px 20px;
@@ -194,7 +215,7 @@ body {
   text-decoration: none; }
 
 .Nav_desktopLink {
-  margin: 70px 0px 75px 50px;
+  margin: 70px 50px 75px 50px;
   color: white;
   text-decoration: none;
   background: none;
@@ -220,7 +241,10 @@ body {
     display: none; }
   .big {
     display: initial; }
+  .Nav_parent {
+    width: 200px; }
   .App_navContainer .big {
+    width: 20vw;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -229,7 +253,7 @@ body {
     align-content: space-evenly;
     color: black;
     text-decoration: none; }
-  .Nav_container {
+  .Nav_container .big {
     width: 18vw;
     display: flex;
     flex-direction: row;
@@ -237,12 +261,8 @@ body {
     align-items: center;
     text-align: center;
     bottom: 0;
-    background: #395CA9;
-    position: fixed; }
-  .Footer_parent .big {
-    width: 50vw;
-    text-align: justify;
-    font-size: 20px;
-    color: #395CA9;
-    margin: 20px 0 0px 0;
-    padding: 20px 20px 60px 20px; } }
+    background: #395CA9; }
+  .Nav_container {
+    height: 100vh; }
+  .Home_parent {
+    margin-left: 30vw; } }

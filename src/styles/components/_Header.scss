@@ -1,11 +1,18 @@
+.Header_parent {
+    // width: 100vw;
+    
+}
+
 .Header_imageMobile {
 height: 50vh;
-width: 90vw;
+// width: 90vw;
 margin: 20px;
 border: $facebook-blue 2px solid;
 }
 
 .Header_imageDesktop {
     width: 60vw;
+    margin-left: 0px;
 }
+
 

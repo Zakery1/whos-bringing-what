@@ -1,16 +1,16 @@
-
+.Footer_parent {
+    
+}
 
 .Footer_appName {
     text-align: center;
     margin: 50px;
+    margin-bottom: 0px;
     color: $facebook-blue;
 }
 
-.Footer_aboutParagraph  {
-    width: 100vw;
-    text-align: justify;
-    font-size: $primary-font-size-paragraph-large;
-    color: $facebook-blue;
-    margin: 20px 0 0px 0;
-    padding: 20px 20px 60px 20px;
+.Footer_aboutParagraphMobile {
+    padding: 50px 20px 80px 20px;
+    text-align: center;
+    line-height: 1.5
 }

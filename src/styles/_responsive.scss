@@ -7,11 +7,20 @@
         display: none;
     }
 
+    
+
     .big {
         display: initial;
     }
 
+    .Nav_parent {
+        width: 200px;
+    }
+
+    
+
     .App_navContainer .big {
+        width: 20vw;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -22,7 +31,9 @@
         text-decoration: none;
     }
 
-    .Nav_container {
+
+
+    .Nav_container .big {
         width: 18vw;
         display: flex;
         flex-direction: row;
@@ -31,15 +42,26 @@
         text-align: center;
         bottom: 0;
         background: $facebook-blue;
-        position: fixed;
     }
 
-    .Footer_parent .big {
-        width: 50vw;
-        text-align: justify;
-        font-size: $primary-font-size-paragraph-large;
-        color: $facebook-blue;
-        margin: 20px 0 0px 0;
-        padding: 20px 20px 60px 20px;
+    .Nav_container {
+        height: 100vh;
     }
+
+    
+
+    .Home_parent {
+        margin-left: 30vw;
+    }
+
+    .Header_parent {
+
+        
+    }
+
+    .Footer_parent {
+
+    }
+    
+    
 }
