@@ -96,7 +96,13 @@ module.exports = {
                                     creatorId: e.admins ? e.admins.data ? e.admins.data[0].id ? e.admins.data[0].id : null : null : null
                                 }
                                 console.log('event', event)
-                                dbInstance.create_event(event)
+                                dbInstance.create_event(event).then(events => {
+                                    dbInstance.read_user([req.session.user.id]).then(users => {
+                                        if(events[0].creator_id != users[0].auth0_id) {
+                                            dbInstance.create_invitation({eventId: events[0].id, userId: users[0].id})
+                                        }
+                                    })
+                                })
                             }
                         }
                     })
