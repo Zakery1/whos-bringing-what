@@ -2,15 +2,16 @@ module.exports = {
     readUser: (req, res) => {
         res.status(200).json({
           username: req.session.user.username,
-          profilePicture: req.session.user.profile_pic,
-          userId: req.session.user.id
+          email: req.session.user.email,
+          profilePicture: req.session.user.profile_pic
         })
     },
+    // Checking to see if events.creator_id === users.auth0_id 
     readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])
         .then(users => {
-            dbInstance.read_created_events([users[0].id])
+            dbInstance.read_created_events([users[0].auth0_id])
             .then(events => {
                 res.status(200).json(events)
             })
@@ -19,6 +20,7 @@ module.exports = {
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },
+    // Get all events that users is invited to through the invitations table
     readInvitedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
         dbInstance.read_user([req.session.user.id])

@@ -54,7 +54,7 @@ class Nav extends Component {
               <Link to="/" className="Nav_linkMobile"  style={{ color: 'white' }}><Icon size={32} icon={home} /> <p>Home</p> </Link>
               <Link to="/feed" className="Nav_linkMobile" style={{ color: 'white' }}><Icon size={32} icon={menu} /> <p>Feed</p> </Link>
               <Link to="/about" className="Nav_linkMobile" style={{ color: 'white' }}> <Icon size={32} icon={ic_tag_faces} /> <p>About</p> </Link>
-              {username ? <Link className="Nav_linkMobile" to='/' ><button style={{ color: 'white' }} onClick={()=>this.logout()}> <Icon size={28} icon={logout} /> <p>Logout</p> </button></Link> : <button className="Nav_linkMobile" style={{ color: 'white' }} onClick={() => {this.login()}}> <Icon size={28} icon={login} /> <p>Login</p>  </button>}
+              {username ? <Link className="Nav_linkMobile" to='/' ><button className="Nav_linkMobile" style={{ color: 'white' }} onClick={()=>this.logout()}> <Icon size={28} icon={logout} /> <p>Logout</p> </button></Link> : <button className="Nav_linkMobile" style={{ color: 'white' }} onClick={() => {this.login()}}> <Icon size={28} icon={login} /> <p>Login</p>  </button>}
           </div>
 
           <div className="Nav_container big">
