@@ -14,7 +14,6 @@ class App extends Component {
           <div className="App_routesContainer">
             {routes}
           </div>
-
           <div className="App_navContainer small">
             <Nav/>
           </div>
