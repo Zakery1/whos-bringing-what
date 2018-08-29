@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 class Feed extends Component {
   state = {}
+  // DaysUntil=new Date().daysUntil({event.start_time})
   render() {
     return (
       <div className="Feed_parent">
@@ -18,7 +19,7 @@ class Feed extends Component {
             <img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/>
             <h1>{event.event_name}</h1>
             <p>{event.description}</p>
-            <p>{event.start_time}</p>
+            <p>new Date().daysUntil({event.start_time})</p>
             </div></Link>)}
             </div>
           )
