@@ -9,6 +9,8 @@ class EventMapContainer extends Component {
     render() {
 
         return (
+            this.props.longitude ?
+            
             <EventMap
                 longitude={this.props.longitude}
                 latitude={this.props.latitude}
@@ -16,7 +18,7 @@ class EventMapContainer extends Component {
                 loadingElement={<div style={{ width: `90%` }} />}
                 containerElement={<div className="event-map" />}
                 mapElement={<div style={{ height: `100%` }} />}
-            />
+            />: " " 
         )
     }
 }
