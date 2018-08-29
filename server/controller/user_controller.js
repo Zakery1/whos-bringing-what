@@ -85,7 +85,7 @@ module.exports = {
                       if(events.findIndex(event => event.event_id === e.id) === -1) {
                             // Check to see if user is going, if user is unsure/interested, event will not be displayed
                             if(e.rsvp_status === "attending") {
-                                let event = { 
+                                let eventObj = { 
                                     eventId: e.id ? e.id : 'no description',
                                     eventName: e.name ? e.name : 'no description',
                                     eventPhoto: e.cover ? e.cover.source ? e.cover.source : 'no description' : 'no description',
@@ -102,29 +102,21 @@ module.exports = {
                                     creatorId: e.admins ? e.admins.data ? e.admins.data[0].id ? e.admins.data[0].id : null : null : null
                                 }
                                 // Store created event in Database
-                                dbInstance.create_event(event).then(events => {
+                                dbInstance.create_event(eventObj).then(events => {
                                     dbInstance.read_user([req.session.user.id]).then(users => {
-                                        // Checking to see if user that logged in is the creator of the event being currently stored
-                                        if(events[0].creator_id != users[0].auth0_id) {
-                                            // If user is not the creator, then create a invitations row to link user currently logged in with event currently being stored
                                             dbInstance.create_invitation({eventId: events[0].id, userId: users[0].id})
-                                        }
                                     })
                                 })
                             }
-                        // If the event is already in the database 
+                        // If the facebook event is already in the database 
                         } else { 
                             // Get the index where the event from the database, matches the event that is currently being checked on
                             const index = events.findIndex(event => event.event_id === e.id)
                             dbInstance.read_user([req.session.user.id]).then(users => {
-                                // if the event that is in the database is was not created by the user that is currently logged in 
-                                events[index].creator_id != users[0].auth0_id ? 
-                                // Checking to see if they are already invited through our invitations table
                                     dbInstance.read_invitations().then(invitations => {
                                         // If they have not been invited yet, linked the event and user through the invitations table
                                         if(invitations.findIndex(e => e.event_id === events[index].id && e.user_id === users[0].id) === -1) {dbInstance.create_invitation({eventId: events[index].id, userId: users[0].id})}
-                                    })
-                                : ''    
+                                    })  
                             })
                         }
                     })
