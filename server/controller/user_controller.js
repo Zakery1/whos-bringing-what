@@ -142,7 +142,6 @@ module.exports = {
             console.log('---- error with login', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
-
     },
     logout: (req, res) => {
         req.session.destroy();

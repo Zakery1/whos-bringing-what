@@ -28,7 +28,10 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "react-social-icons": "^3.0.0",
-    "redux": "^4.0.0"
+    "read-more-react": "^1.0.6",
+    "redux": "^4.0.0",
+    "sugar": "^2.0.4",
+    "sugar-js": "^1.4.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
