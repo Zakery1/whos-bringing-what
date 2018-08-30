@@ -224,14 +224,22 @@ body {
   font-family: "Patua One", cursive; }
 
 .Feed_eventPhoto {
-  max-width: 100%; }
+  max-width: 100%;
+  text-align: center; }
 
 .Feed_title {
-  font-size: 50px; }
+  font-size: 70px; }
 
 .Feed_event {
-  font-size: 30px;
-  color: blue; }
+  color: blue;
+  background: paleturquoise;
+  min-height: 90px;
+  font-size: 30px; }
+
+.Feed_event p {
+  font-size: 50px;
+  vertical-align: middle;
+  text-align: center; }
 
 .Feed_group {
   border: 3px solid blue; }
@@ -239,19 +247,24 @@ body {
 .Feed_event_name {
   background: red;
   font-size: 50px;
-  color: black; }
+  color: blue;
+  min-height: 80px;
+  text-align: center;
+  vertical-align: middle; }
 
 .Feed_event_description {
   background: green;
   font-size: 20px;
-  color: blue; }
+  color: blue;
+  text-align: center; }
 
 .Feed_event_date {
   background: orange;
-  font-size: 20px; }
+  font-size: 20px;
+  text-align: center; }
 
 .Feed_footer {
-  height: 90px; }
+  height: 85px; }
 
 .Feed_big {
   margin-left: 190px;
@@ -259,6 +272,19 @@ body {
 
 .Feed_blank {
   height: 25px; }
+
+.Feed_blank_small {
+  height: 15px; }
+
+.Feed_parent small {
+  overflow-x: hidden; }
+
+a {
+  text-decoration: none; }
+
+@media (min-width: 500px) {
+  .Feed_eventPhoto {
+    margin-left: 30%; } }
 
 .SpecificEvent_eventPhoto {
   max-width: 200px; }
