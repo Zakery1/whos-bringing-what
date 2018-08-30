@@ -9,17 +9,18 @@ describe('Visit Page', function(){
       cy.visit(`https://www.whosbringingwhat.org/`)
   })
 })
+
 describe('finds Feed button', function(){
     it('finds the Feed button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=Feed]')
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=Feed]')
         
     })
 })
 describe('clicks Feed button', function(){
     it('clicks the Feed button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=Feed]')
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=Feed]')
         .click()
     })
 })
@@ -32,8 +33,16 @@ describe('finds Login button', function(){
     })
 })
 
+// describe('clicks Login button', function(){
+//     it('finds and clicks the login button', function(){
+//         cy.visit(`https://www.whosbringingwhat.org/`)
+//         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=login1]')
+//         .click()
+//     })
+// })
+
 describe('finds About button', function(){
-    it('finds the login button', function(){
+    it('finds the about button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
         cy.get('[data-cy=About]')
         
@@ -43,18 +52,19 @@ describe('finds About button', function(){
 describe('goes to About page', function(){
     it('clicks About button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=About]')
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()
         
     })
 })
 
-describe('Finds Danielles Linkedin', function(){
+describe('Finds Danielles Linkedin button', function(){
     it('finds danielles button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=About]')
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()
-        cy.get('.small > .About_peopleContainer > :nth-child(1) > .About_linkedin > a')
+        cy.get('.big > .About_peopleContainer > :nth-child(1) > .About_linkedin > a')
+        
         
     })
 })
