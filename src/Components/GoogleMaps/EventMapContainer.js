@@ -9,6 +9,8 @@ class EventMapContainer extends Component {
     render() {
 
         return (
+
+            
             <EventMap
                 longitude={this.props.longitude}
                 latitude={this.props.latitude}

@@ -51,7 +51,7 @@ export default class SpecificEvent extends Component {
             )
         })
         return (
-            <div>
+            <div className="Specific_event_parent">
             Event
             {event.length 
             ? 
