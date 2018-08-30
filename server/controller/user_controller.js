@@ -1,4 +1,6 @@
 const axios = require('axios')
+const get = require('lodash/get');
+const difference = require('lodash/difference');
 
 module.exports = {
     login: (req, res) => {
@@ -40,12 +42,8 @@ module.exports = {
             return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${req.session.user.sub}`, options)
           }
 
-        function storeUserInfoAndEventsInDataBase(response){
-            // Request to get all events that user is linked to (attending, interested, created)
-         axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${response.data.identities[0].access_token}`)
-            .then(events => {
-                console.log('events',events.data.events.data)
-                const auth0id = response.data.identities[0].user_id
+        function storeUserInfoInDataBase(facebookAccessTokenResponse){
+                const auth0id = facebookAccessTokenResponse.data.identities[0].user_id
                 // Checking to see if user is in our Database
                 dbInstance.read_user_by_auth0_id(auth0id).then(users => {
                     if (users.length) {
@@ -61,9 +59,9 @@ module.exports = {
                     } else {
                         const createUserData = {
                             auth0id,
-                            email: response.data.email,
-                            username: response.data.name,
-                            profilePicture: response.data.picture_large
+                            email: facebookAccessTokenResponse.data.email,
+                            username: facebookAccessTokenResponse.data.name,
+                            profilePicture: facebookAccessTokenResponse.data.picture_large
                         }
                 dbInstance.create_user(createUserData).then(newUsers => {
                         const user = {
@@ -77,59 +75,64 @@ module.exports = {
                     })
                     }
                 })
-                // Checking through each event that Facebook gave back
-                events.data.events.data.forEach(e => {
-                    // Get all events that are in the Database
-                    dbInstance.read_events().then(events => {
-                        // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
-                      if(events.findIndex(event => event.event_id === e.id) === -1) {
-                            // Check to see if user is going, if user is unsure/interested, event will not be displayed
-                            if(e.rsvp_status === "attending") {
-                                let eventObj = { 
-                                    eventId: e.id ? e.id : 'no description',
-                                    eventName: e.name ? e.name : 'no description',
-                                    eventPhoto: e.cover ? e.cover.source ? e.cover.source : 'no description' : 'no description',
-                                    description: e.description ? e.description : 'no description', 
-                                    place: e.place ? e.place.name ? e.place.name : 'no description' : 'no description',
-                                    city: e.place ? e.place.location ? e.place.location.city ? e.place.location.city : 'no description' : 'no description' : 'no description',
-                                    country: e.place ? e.place.location ? e.place.location.country ? e.place.location.country : 'no description' : 'no description' : 'no description',
-                                    latitude: e.place ? e.place.location ? e.place.location.latitude ? e.place.location.latitude : null : null : null,
-                                    longitude: e.place ? e.place.location ? e.place.location.longitude ? e.place.location.longitude : null : null : null,
-                                    state: e.place ? e.place.location ? e.place.location.state ? e.place.location.state : 'no description' : 'no description' : 'no description',
-                                    street: e.place ? e.place.location ? e.place.location.street ? e.place.location.street : 'no description' : 'no description' : 'no description',
-                                    zip: e.place ? e.place.location ? e.place.location.zip ? e.place.location.zip : 'no description' : 'no description' : 'no description',
-                                    startTime: e.start_time ? e.start_time : 'no description',
-                                    creatorId: e.admins ? e.admins.data ? e.admins.data[0].id ? e.admins.data[0].id : null : null : null
-                                }
-                                // Store created event in Database
-                                dbInstance.create_event(eventObj).then(events => {
-                                    dbInstance.read_user([req.session.user.id]).then(users => {
-                                            dbInstance.create_invitation({eventId: events[0].id, userId: users[0].id})
-                                    })
-                                })
+                return facebookAccessTokenResponse;
+        }
+        function storeEventsInDatabase(facebookAccessTokenResponse){
+             // Request to get all events that user is linked to (attending, interested, created)
+         axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
+         .then(events => {
+             // Checking through each event that Facebook gave back
+             events.data.events.data.forEach(e => {
+                // Get all events that are in the Database
+                dbInstance.read_events().then(events => {
+                    // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
+                  if(events.findIndex(event => event.event_id === e.id) === -1) {
+                        // Check to see if user is going, if user is unsure/interested, event will not be displayed
+                        if(e.rsvp_status === "attending") {
+                            let eventObj = { 
+                                eventId: get(e, 'id', null),
+                                eventName: get(e, 'name', null),
+                                eventPhoto: get(e, 'cover.source', null),
+                                description: get(e, 'description', null), 
+                                place: get(e, 'place.name'),
+                                city: get(e, 'place.location.city', null),
+                                country: get(e, 'place.location.country', null),
+                                latitude: get(e,'place.location.latitude',null),
+                                longitude: get(e,'place.location.longitude',null),
+                                state: get(e,'place.location.state',null),
+                                street: get(e,'place.location.street',null),
+                                zip: get(e,'place.location.zip',null),
+                                startTime: get(e,'start_time',null),
+                                creatorId: get(e,'admins.data[0].id',null)
                             }
-                        // If the facebook event is already in the database 
-                        } else { 
-                            // Get the index where the event from the database, matches the event that is currently being checked on
-                            const index = events.findIndex(event => event.event_id === e.id)
-                            dbInstance.read_user([req.session.user.id]).then(users => {
-                                    dbInstance.read_invitations().then(invitations => {
-                                        // If they have not been invited yet, linked the event and user through the invitations table
-                                        if(invitations.findIndex(e => e.event_id === events[index].id && e.user_id === users[0].id) === -1) {dbInstance.create_invitation({eventId: events[index].id, userId: users[0].id})}
-                                    })  
+                            // Store created event in Database
+                            dbInstance.create_event(eventObj).then(events => {
+                                dbInstance.read_user([req.session.user.id]).then(users => {
+                                        dbInstance.create_invitation({eventId: events[0].id, userId: users[0].id})
+                                })
                             })
                         }
-                    })
-                }) 
-            }).catch(error => {
-                res.status(500).json({message: error})
-            })
+                    // If the facebook event is already in the database 
+                    } else { 
+                        // Get the index where the event from the database, matches the event that is currently being checked on
+                        const index = events.findIndex(event => event.event_id === e.id)
+                        dbInstance.read_user([req.session.user.id]).then(users => {
+                                dbInstance.read_invitations().then(invitations => {
+                                    // If they have not been invited yet, linked the event and user through the invitations table
+                                    if(invitations.findIndex(e => e.event_id === events[index].id && e.user_id === users[0].id) === -1) {dbInstance.create_invitation({eventId: events[index].id, userId: users[0].id})}
+                                })  
+                        })
+                    }
+                })
+            }) 
+         })
         }
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
         .then(fetchAuth0AccessToken)
         .then(fetchFacebookAccessToken)
-        .then(storeUserInfoAndEventsInDataBase)
+        .then(storeUserInfoInDataBase)
+        .then(storeEventsInDatabase)
         .catch(error => {
             console.log('---- error with login', error)
             res.status(500).json({message: 'Server error. See server terminal'})
