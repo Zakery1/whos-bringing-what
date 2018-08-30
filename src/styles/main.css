@@ -229,6 +229,9 @@ body {
 .Nav_desktopLink:hover {
   cursor: pointer; }
 
+.main {
+  background: #dfdfdf; }
+
 .Feed_eventPhoto {
   max-width: 100%;
   text-align: center; }
@@ -290,7 +293,10 @@ a {
 
 @media (min-width: 500px) {
   .Feed_eventPhoto {
-    margin-left: 30%; } }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; } }
 
 .Specific_event_parent {
   margin-left: 50px; }
