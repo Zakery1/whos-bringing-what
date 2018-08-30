@@ -24,7 +24,6 @@ module.exports = {
 
         function fetchAuth0AccessToken(userInfoResponse){
             req.session.user = userInfoResponse.data;
-            console.log('req.session.user', req.session.user)
             const payload = {
                 grant_type: 'client_credentials',
                 client_id: process.env.NODE_APP_CLIENT_ID,
@@ -78,36 +77,38 @@ module.exports = {
                 return facebookAccessTokenResponse;
         }
         function storeEventsInDatabase(facebookAccessTokenResponse){
+            let newAuth0Id = req.session.user.sub.split('|')[1]
+              // Get all events that are in the Database
+            dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
+                console.log('databaseEvents', databaseEvents)
              // Request to get all events that user is linked to (attending, interested, created)
-         axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
-         .then(events => {
+            axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
+            .then(facebookEvents => {
              // Checking through each event that Facebook gave back
-             events.data.events.data.forEach(e => {
-                // Get all events that are in the Database
-                dbInstance.read_events().then(events => {
+             facebookEvents.data.events.data.forEach(facebookEvent => {
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
-                  if(events.findIndex(event => event.event_id === e.id) === -1) {
+                  if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
                         // Check to see if user is going, if user is unsure/interested, event will not be displayed
-                        if(e.rsvp_status === "attending") {
+                        if(facebookEvent.rsvp_status === "attending") {
                             let eventObj = { 
-                                eventId: get(e, 'id', null),
-                                eventName: get(e, 'name', null),
-                                eventPhoto: get(e, 'cover.source', null),
-                                description: get(e, 'description', null), 
-                                place: get(e, 'place.name'),
-                                city: get(e, 'place.location.city', null),
-                                country: get(e, 'place.location.country', null),
-                                latitude: get(e,'place.location.latitude',null),
-                                longitude: get(e,'place.location.longitude',null),
-                                state: get(e,'place.location.state',null),
-                                street: get(e,'place.location.street',null),
-                                zip: get(e,'place.location.zip',null),
-                                startTime: get(e,'start_time',null),
-                                creatorId: get(e,'admins.data[0].id',null)
+                                eventId: get(facebookEvent, 'id', null),
+                                eventName: get(facebookEvent, 'name', null),
+                                eventPhoto: get(facebookEvent, 'cover.source', null),
+                                description: get(facebookEvent, 'description', null), 
+                                place: get(facebookEvent, 'place.name'),
+                                city: get(facebookEvent, 'place.location.city', null),
+                                country: get(facebookEvent, 'place.location.country', null),
+                                latitude: get(facebookEvent,'place.location.latitude',null),
+                                longitude: get(facebookEvent,'place.location.longitude',null),
+                                state: get(facebookEvent,'place.location.state',null),
+                                street: get(facebookEvent,'place.location.street',null),
+                                zip: get(facebookEvent,'place.location.zip',null),
+                                startTime: get(facebookEvent,'start_time',null),
+                                creatorId: get(facebookEvent,'admins.data[0].id',null)
                             }
                             // Store created event in Database
                             dbInstance.create_event(eventObj).then(events => {
-                                dbInstance.read_user([req.session.user.id]).then(users => {
+                                dbInstance.read_user_by_auth0_id(newAuth0Id).then(users => {
                                         dbInstance.create_invitation({eventId: events[0].id, userId: users[0].id})
                                 })
                             })
@@ -115,14 +116,16 @@ module.exports = {
                     // If the facebook event is already in the database 
                     } else { 
                         // Get the index where the event from the database, matches the event that is currently being checked on
-                        const index = events.findIndex(event => event.event_id === e.id)
-                        dbInstance.read_user([req.session.user.id]).then(users => {
-                                dbInstance.read_invitations().then(invitations => {
+                        const index = databaseEvents.findIndex(event => event.event_id === facebookEvent.id)
+                        dbInstance.read_user_by_auth0_id(newAuth0Id).then(users => {
+                                dbInstance.read_invitations(users[0].id).then(invitations => {
                                     // If they have not been invited yet, linked the event and user through the invitations table
-                                    if(invitations.findIndex(e => e.event_id === events[index].id && e.user_id === users[0].id) === -1) {dbInstance.create_invitation({eventId: events[index].id, userId: users[0].id})}
+                                    if(invitations.findIndex(invitation => invitation.event_id === databaseEvents[index].id && invitation.user_id === users[0].id) === -1) 
+                                    {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId: users[0].id})}
                                 })  
                         })
                     }
+                    // databaseEvents.forEach()
                 })
             }) 
          })
