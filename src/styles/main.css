@@ -194,6 +194,9 @@ body {
 .Nav_parent {
   background: #395CA9; }
 
+.button:hover {
+  cursor: pointer; }
+
 .Nav_container {
   width: 100px;
   height: 100%;
@@ -215,13 +218,16 @@ body {
   text-decoration: none; }
 
 .Nav_desktopLink {
-  margin: 70px 50px 75px 50px;
+  margin: 40px 50px 75px 50px;
   color: white;
   text-decoration: none;
   background: none;
   border: none;
   font-size: 15px;
   font-family: "Patua One", cursive; }
+
+.Nav_desktopLink:hover {
+  cursor: pointer; }
 
 .Feed_eventPhoto {
   max-width: 100%;
@@ -337,4 +343,6 @@ a {
   .Footer_aboutParagraphDesktop {
     margin-right: 120px; }
   .Feed_parent {
-    margin-left: 220px; } }
+    margin-left: 220px; }
+  a .Nav_desktopLink {
+    color: blue; } }

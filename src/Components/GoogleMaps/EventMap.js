@@ -4,15 +4,15 @@ import EventMarker from './EventMarker';
 
 class EventMap extends Component {
 
-render(){
-
+render(props){
     return(
         <GoogleMap
-            defaultZoom={2.7}
-            mapTypeId='satellite'
-            center={ { lat: 40.5928, lng: 50.3055  } }
+
+            defaultZoom={8}
+
+            center={ { lat: +this.props.latitude, lng: +this.props.longitude  } }
             >
-            <EventMarker />
+            <EventMarker longitude={this.props.longitude} latitude={this.props.latitude} />
         </GoogleMap>
     )
   }

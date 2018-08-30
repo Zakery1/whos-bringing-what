@@ -3,8 +3,8 @@
     background: $facebook-blue;
 }
 
-.button {
-    // margin-right: 20px;
+.button:hover {
+    cursor: pointer;
 }
 
 .Nav_container  {
@@ -34,7 +34,7 @@
 
 
 .Nav_desktopLink {
-    margin: 70px 50px 75px 50px;
+    margin: 40px 50px 75px 50px;
     color: white;
     text-decoration: none;
     background: none;
@@ -43,4 +43,7 @@
     font-family: $primary-font-family;
 }
 
+.Nav_desktopLink:hover {
+    cursor: pointer;
+}
 
