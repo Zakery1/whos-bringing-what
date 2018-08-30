@@ -1,6 +1,6 @@
 const axios = require('axios')
 const get = require('lodash/get');
-const difference = require('lodash/difference');
+
 
 module.exports = {
     login: (req, res) => {
@@ -114,7 +114,7 @@ module.exports = {
                             })
                         }
                     // If the facebook event is already in the database 
-                    } else { 
+                    } else if (databaseEvents.findIndex(event => event.event_id === facebookEvent.id) != -1) { 
                         // Get the index where the event from the database, matches the event that is currently being checked on
                         const index = databaseEvents.findIndex(event => event.event_id === facebookEvent.id)
                         dbInstance.read_user_by_auth0_id(newAuth0Id).then(users => {
@@ -125,7 +125,32 @@ module.exports = {
                                 })  
                         })
                     }
-                    // databaseEvents.forEach()
+                    // Check to see if events in database that user is linked to are events that the user is still going to
+                    databaseEvents.forEach(databaseEvent => {
+                         // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
+                    if(facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) === -1) {
+                        if(databaseEvent.creator_id === newAuth0Id.toString()){
+                            // Delete all invitations that event is connected to
+                            dbInstance.delete_all_invitations([databaseEvent.id])
+                            // Delete all requestedItems that event is connected to
+                            dbInstance.delete_all_items([databaseEvent.id])
+                            // Delete event that creator was hosting
+                            dbInstance.delete_event([databaseEvent.id])
+                        // Check event to see if current user is creator of event
+                        } else if(databaseEvent.creator_id != newAuth0Id.toString()) {
+                            dbInstance.read_user_by_auth0_id(newAuth0Id).then(users => { 
+                            // Update requesteditems table so that items current user assigned themselves to will be reassigned to creator
+                            dbInstance.update_items_to_creator([databaseEvent.id, users[0].id])
+                            // If user is only person going to event, then delete event
+                            dbInstance.count_invitations([databaseEvent.id]).then(counts => {
+                               if(counts[0].count < 2) {
+                                   dbInstance.delete_event([databaseEvent.id])
+                               }
+                            })
+                            // Delete invitation that connects user to event 
+                            dbInstance.delete_invitation([databaseEvent.id, users[0].id])
+                        })}
+                     }})
                 })
             }) 
          })
