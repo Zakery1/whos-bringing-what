@@ -4,9 +4,6 @@ import EventMapContainer from '../GoogleMaps/EventMapContainer';
 import Sugar from 'sugar';
 Sugar.Date.extend()
 
-// import EventMap from '../GoogleMaps/EventMap';
-// const API_KEY = 'AIzaSyC7lvoQRtO4bDubVUmRQoMNl7wjQuZm-IU';
-
 export default class SpecificEvent extends Component {
     state={
         event: [],
@@ -58,8 +55,6 @@ export default class SpecificEvent extends Component {
             <div>
                 <h1> Name: {event[0].event_name}</h1>
                 <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
-                <p> Longitude {event[0].longitude}</p>
-                <p> Latitude {event[0].latitude}</p>
                 <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Description: {event[0].description}</p>
@@ -74,13 +69,6 @@ export default class SpecificEvent extends Component {
             }
             Items 
             {loading ? 'Loading Items...' : displayRequestedItems}
-                {/* google<EventMapContainer/>maps
-                <EventMap
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-                loadingElement={<div style={{ height: `90%` }} />}
-                containerElement={<div />}
-                mapElement={<div style={{ height: `100%` }} />}
-            /> */}
             </div>
         );
     }

@@ -15,16 +15,18 @@ class Feed extends Component {
       <div className="main">
       <div>
       <div className="Feed_parent small">
-        <div className="Feed_title">Who's Bringing What? (small)</div>
+        <div className="Feed_title">Who's Bringing What? </div>
         <Fetcher url='/api/createdEvents' render={(data) => {
           return ( 
-            <div>
+            <div >
+              <div className="Feed_blank_small"></div>
               <div className="Feed_event">Events I'm hosting:</div>
               {data.map((event,i) => <Link to={`/creatorSpecificEvent/${event.id}`} key={i}><div>
+              <div className="Feed_blank_small"></div>
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
               </div>
               </div></Link>)}
@@ -34,15 +36,18 @@ class Feed extends Component {
         <Fetcher url='/api/invitedEvents' render={(data) => {
           return ( 
             <div>
+              <div className="Feed_blank_small"></div>
               <div className="Feed_event">Events I'm invited to:</div>
               {data.map((event,i) => <Link to={`/specificEvent/${event.id}`} key={i}><div>
+              <div className="Feed_blank_small"></div>
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">D{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">D{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!</div>
               </div>
               </div></Link>)}
+              <div className="Feed_footer"></div>
             </div>
         
           )
@@ -57,13 +62,14 @@ class Feed extends Component {
         <Fetcher url='/api/createdEvents' render={(data) => {
           return ( 
             <div>
-              <div className="Feed_event">Events I'm hosting:</div>
+              <div className="Feed_blank"></div>
+              <div className="Feed_event"><p>Events I'm hosting:</p></div>
               {data.map((event,i) => <Link to={`/creatorSpecificEvent/${event.id}`} key={i}><div>
               <div className="Feed_blank"></div>
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
               </div>
               </div></Link>)}
@@ -73,13 +79,14 @@ class Feed extends Component {
         <Fetcher url='/api/invitedEvents' render={(data) => {
           return ( 
             <div>
-              <div className="Feed_event">Events I'm invited to:</div>
+              <div className="Feed_blank"></div>
+              <div className="Feed_event"><p>Events I'm invited to:</p></div>
               {data.map((event,i) => <Link to={`/specificEvent/${event.id}`} key={i}><div>
               <div className="Feed_blank"></div>
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!</div>
               </div>
               </div></Link>)}

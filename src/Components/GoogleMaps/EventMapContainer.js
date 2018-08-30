@@ -9,7 +9,11 @@ class EventMapContainer extends Component {
     render() {
 
         return (
+<<<<<<< HEAD
 
+=======
+            this.props.longitude ?
+>>>>>>> d4558bac4cc37e51f768d463d1b4b55dfad01d4c
             
             <EventMap
                 longitude={this.props.longitude}
@@ -18,7 +22,7 @@ class EventMapContainer extends Component {
                 loadingElement={<div style={{ width: `90%` }} />}
                 containerElement={<div className="event-map" />}
                 mapElement={<div style={{ height: `100%` }} />}
-            />
+            />: " " 
         )
     }
 }
