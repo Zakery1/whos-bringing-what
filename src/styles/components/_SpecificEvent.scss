@@ -1,5 +1,9 @@
 
 
+.Specific_event_parent {
+    margin-left: 50px;
+}
+
 
 .SpecificEvent_eventPhoto {
     max-width: 200px;
@@ -8,4 +12,11 @@
 .event-map {
     height: 40vh;
     width: 55vw;
+}
+
+@media (min-width: 500px) {
+    .Specific_event_parent {
+        margin-left: 220px;
+    }
+
 }

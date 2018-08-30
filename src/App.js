@@ -3,6 +3,10 @@ import routes from './routes';
 import Nav from './Components/Nav/Nav';
 
 class App extends Component {
+  componentDidMount(){
+    document.title="Who's Bringing What?"
+  }
+  
   render() {
     return (
       <div className="App">

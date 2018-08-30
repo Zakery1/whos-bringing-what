@@ -4,7 +4,7 @@
 
 @media (min-width: 500px) {
     .small {
-        display: none;
+        // display: none;
     }
 
     .big {
@@ -40,6 +40,7 @@
         text-align: center;
         bottom: 0;
         background: $facebook-blue;
+      
     }
 
     .Nav_container {
@@ -73,6 +74,10 @@
 
     .Feed_parent {
         margin-left: 220px;
+    }
+
+    a .Nav_desktopLink {
+        color: blue;
     }
     
 }

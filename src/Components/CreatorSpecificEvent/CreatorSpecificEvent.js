@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Sugar from 'sugar';
+Sugar.Date.extend()
+
 // import EventMapContainer from '../GoogleMaps/EventMapContainer';
 // import EventMap from '../GoogleMaps/EventMap';
 
@@ -55,13 +58,16 @@ export default class CreatorSpecificEvent extends Component {
     // Creator can add items to requestedItems table
     addItem = () => {
         const eventId = this.props.match.params.id
-        axios.post(`/api/post_requestedItem/${eventId}`, {name: this.state.name})
-        .then(items => {
-            console.log('items',items)
-            this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
-        }).catch(error => {
-            console.log('Axios error POST CreatorSpecificEvent', error)
-        })
+        if(this.state.name.length) {
+            axios.post(`/api/post_requestedItem/${eventId}`, {name: this.state.name})
+            .then(items => {
+                console.log('items',items)
+                this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
+            }).catch(error => {
+                console.log('Axios error POST CreatorSpecificEvent', error)
+            })
+
+        }
     }
 
     // Creator can delete items from requestedItems table 
@@ -88,6 +94,16 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
 
+    cancel = (key) => {
+        this.setState((prevState)=> {
+            return {
+              editing: !prevState.editing,
+              selectedId: '',
+              [key]: !prevState[key]
+            }
+        })
+      }
+
      // Creator can edit items from requestedItems table
     saveItem = (id) => {
         const eventId = this.props.match.params.id
@@ -108,6 +124,7 @@ export default class CreatorSpecificEvent extends Component {
                 <div key={i}>
                     {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
                     {editing ? selectedId == item.id ? <button onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
+                    {editing && selectedId == item.id ? <button onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
                     <button onClick={() => this.deleteItem(item.id)}>Delete</button>
                 </div>
             )
@@ -118,15 +135,17 @@ export default class CreatorSpecificEvent extends Component {
             {event.length 
             ? 
             <div>
-                <h1>{event[0].event_name}</h1>
+                <h1> Name: {event[0].event_name}</h1>
                 <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <p>{event[0].description}</p>
-                <p>{event[0].place}</p>
-                <p>{event[0].city}</p>
-                <p>{event[0].state}</p>
-                <p>{event[0].zip}</p>
-                <p>{event[0].country}</p>
-                <p>{event[0].start_time}</p>
+                <p>Description: {event[0].description}</p>
+                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+                <p>Place: {event[0].place}</p>
+                <p>City: {event[0].city}</p>
+                <p>State: {event[0].state}</p>
+                <p>Zip: {event[0].zip}</p>
+                <p>Country: {event[0].country}</p>
+                
+
             </div>
             :
             <p>Loading Event...</p>

@@ -10,10 +10,13 @@ const uC = require('./controller/user_controller');
 const schema = require("./schema")
 require("dotenv").config();
 
+// var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 const app = express();
 
 app.use(bodyParser.json());
 app.use(session({
+    store: new RedisStore( {url: process.env.REDIS_URL} ),
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false, 
     resave: false
@@ -81,3 +84,5 @@ app.get('*', (req, res)=>{
 
 PORT = process.env.PORT;
 app.listen(PORT, () => console.log('Server is sailing on port ' + PORT + ' ⛵'))
+
+module.exports = app;

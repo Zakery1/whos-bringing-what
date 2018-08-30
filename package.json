@@ -8,13 +8,16 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chartjs": "^0.3.24",
+    "connect-redis": "^3.3.3",
     "cors": "^2.8.4",
+    "cypress": "^3.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "express-session": "^1.15.6",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
+    "lodash": "^4.17.10",
     "massive": "^5.2.0",
     "node-sass-chokidar": "^1.3.3",
     "npm-run-all": "^4.1.3",
@@ -28,7 +31,10 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "react-social-icons": "^3.0.0",
-    "redux": "^4.0.0"
+    "read-more-react": "^1.0.6",
+    "redux": "^4.0.0",
+    "sugar": "^2.0.4",
+    "sugar-js": "^1.4.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -36,7 +42,7 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "proxy": {
@@ -46,5 +52,9 @@
     "/api": {
       "target": "http://localhost:4000"
     }
+  },
+  "devDependencies": {
+    "jest": "^23.5.0",
+    "supertest": "^3.1.0"
   }
 }

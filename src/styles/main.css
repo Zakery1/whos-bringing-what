@@ -194,8 +194,11 @@ body {
 .Nav_parent {
   background: #395CA9; }
 
+.button:hover {
+  cursor: pointer; }
+
 .Nav_container {
-  width: 101vw;
+  width: 100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -215,7 +218,7 @@ body {
   text-decoration: none; }
 
 .Nav_desktopLink {
-  margin: 70px 50px 75px 50px;
+  margin: 40px 50px 75px 50px;
   color: white;
   text-decoration: none;
   background: none;
@@ -223,8 +226,80 @@ body {
   font-size: 15px;
   font-family: "Patua One", cursive; }
 
+.Nav_desktopLink:hover {
+  cursor: pointer; }
+
+.main {
+  background: #dfdfdf; }
+
 .Feed_eventPhoto {
-  max-width: 100%; }
+  max-width: 100%;
+  text-align: center; }
+
+.Feed_title {
+  font-size: 70px; }
+
+.Feed_event {
+  color: blue;
+  background: paleturquoise;
+  min-height: 90px;
+  font-size: 30px; }
+
+.Feed_event p {
+  font-size: 50px;
+  vertical-align: middle;
+  text-align: center; }
+
+.Feed_group {
+  border: 3px solid blue; }
+
+.Feed_event_name {
+  background: red;
+  font-size: 50px;
+  color: blue;
+  min-height: 80px;
+  text-align: center;
+  vertical-align: middle; }
+
+.Feed_event_description {
+  background: green;
+  font-size: 20px;
+  color: blue;
+  text-align: center; }
+
+.Feed_event_date {
+  background: orange;
+  font-size: 20px;
+  text-align: center; }
+
+.Feed_footer {
+  height: 85px; }
+
+.Feed_big {
+  margin-left: 190px;
+  padding: 0px 10px; }
+
+.Feed_blank {
+  height: 25px; }
+
+.Feed_blank_small {
+  height: 15px; }
+
+.Feed_parent small {
+  overflow-x: hidden; }
+
+a {
+  text-decoration: none; }
+
+@media (min-width: 500px) {
+  .Feed_eventPhoto {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; } }
+
+.Specific_event_parent {
+  margin-left: 50px; }
 
 .SpecificEvent_eventPhoto {
   max-width: 200px; }
@@ -233,12 +308,14 @@ body {
   height: 40vh;
   width: 55vw; }
 
+@media (min-width: 500px) {
+  .Specific_event_parent {
+    margin-left: 220px; } }
+
 .big {
   display: none; }
 
 @media (min-width: 500px) {
-  .small {
-    display: none; }
   .big {
     display: initial; }
   .Nav_parent {
@@ -277,4 +354,6 @@ body {
   .Footer_aboutParagraphDesktop {
     margin-right: 120px; }
   .Feed_parent {
-    margin-left: 220px; } }
+    margin-left: 220px; }
+  a .Nav_desktopLink {
+    color: blue; } }
