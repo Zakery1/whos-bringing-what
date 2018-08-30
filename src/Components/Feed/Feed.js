@@ -26,7 +26,7 @@ class Feed extends Component {
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
               </div>
               </div></Link>)}
@@ -43,7 +43,7 @@ class Feed extends Component {
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={100} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!</div>
               </div>
               </div></Link>)}
@@ -69,7 +69,7 @@ class Feed extends Component {
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={200} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={200} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
               </div>
               </div></Link>)}
@@ -86,7 +86,7 @@ class Feed extends Component {
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
               <div className="Feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
-              <div className="Feed_event_description">{<ReadMoreReact text={event.description} max={200} />}</div>
+              <div className="Feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={200} />}</div>
               <div className="Feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!</div>
               </div>
               </div></Link>)}

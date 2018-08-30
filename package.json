@@ -43,7 +43,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "jest"
   },
   "proxy": {
     "/auth/callback": {
@@ -52,5 +53,8 @@
     "/api": {
       "target": "http://localhost:4000"
     }
+  },
+  "devDependencies": {
+    "jest": "^23.5.0"
   }
 }
