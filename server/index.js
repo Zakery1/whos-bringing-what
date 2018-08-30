@@ -84,3 +84,5 @@ app.get('*', (req, res)=>{
 
 PORT = process.env.PORT;
 app.listen(PORT, () => console.log('Server is sailing on port ' + PORT + ' ⛵'))
+
+module.exports = app;
