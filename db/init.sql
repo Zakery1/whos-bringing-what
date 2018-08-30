@@ -51,9 +51,25 @@ id SERIAL PRIMARY KEY
 );
 
 
-
 -- Select ALL
 SELECT * FROM users;
 SELECT * FROM events;
 SELECT * FROM requesteditems;
 SELECT * FROM invitations;
+
+
+-- Insert into Tests / Syntax 
+INSERT INTO events
+(event_id, event_name, cover_photo, description, place, city, country, latitude, longitude, state, zip, start_time, creator_id)
+VALUES
+();
+
+INSERT INTO requesteditems 
+(name, event_id, user_id, spokenfor)
+VALUES
+();
+
+INSERT INTO invitations 
+(event_id, user_id)
+VALUES
+();

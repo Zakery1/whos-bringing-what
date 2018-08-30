@@ -316,6 +316,8 @@ a {
   display: none; }
 
 @media (min-width: 500px) {
+  .small {
+    display: none; }
   .big {
     display: initial; }
   .Nav_parent {

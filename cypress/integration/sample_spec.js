@@ -9,48 +9,62 @@ describe('Visit Page', function(){
       cy.visit(`https://www.whosbringingwhat.org/`)
   })
 })
-
-// describe('finds Login button', function(){
-//     it('finds the login button', function(){
-//         cy.visit(`https://www.whosbringingwhat.org/`)
-//         cy.get('.App_navContainer.big > .Nav_parent > .big > [href="/about"]')
+describe('finds Feed button', function(){
+    it('finds the Feed button', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=Feed]')
         
-//     })
-// })
+    })
+})
+describe('clicks Feed button', function(){
+    it('clicks the Feed button', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=Feed]')
+        .click()
+    })
+})
 
-// describe('clicks Login button', function(){
-//     it('clicks the login button', function(){
-//         cy.visit(`https://www.whosbringingwhat.org/`)
-//         cy.get('.App_navContainer.big > .Nav_parent > .big > button.Nav_desktopLink')
-    
-//     })
-// })
-
-
-
-
-
+describe('finds Login button', function(){
+    it('finds the login button', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=login1]')
+        
+    })
+})
 
 describe('finds About button', function(){
-    it('finds the About button', function(){
+    it('finds the login button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.big > .Nav_parent > .big > [href="/about"]')
-       
+        cy.get('[data-cy=About]')
+        
     })
 })
 
-describe('click Login button', function(){
-    it('clicks the login button', function(){
+describe('goes to About page', function(){
+    it('clicks About button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('body')
-        cy.contains('Login').click()
+        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=About]')
+        .click()
+        
+    })
+})
+
+describe('Finds Danielles Linkedin', function(){
+    it('finds danielles button', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=About]')
+        .click()
+        cy.get('.small > .About_peopleContainer > :nth-child(1) > .About_linkedin > a')
+        
     })
 })
 
 
-// describe('visits About page', function(){
-//     it('visits About page', function (){
-//         cy.visit(`https://www.whosbringingwhat.org/about`)
-//     })
-// })
+
+
+
+
+
+
+
 
