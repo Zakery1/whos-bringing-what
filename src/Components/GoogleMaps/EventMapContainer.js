@@ -9,11 +9,7 @@ class EventMapContainer extends Component {
     render() {
 
         return (
-<<<<<<< HEAD
-
-=======
             this.props.longitude ?
->>>>>>> d4558bac4cc37e51f768d463d1b4b55dfad01d4c
             
             <EventMap
                 longitude={this.props.longitude}
