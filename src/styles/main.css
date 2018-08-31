@@ -232,6 +232,9 @@ body {
 .main {
   background: #dfdfdf; }
 
+.hideEvent {
+  display: none; }
+
 .Feed_eventPhoto {
   max-width: 100%;
   text-align: center; }
