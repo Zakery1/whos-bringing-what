@@ -70,7 +70,7 @@ describe('LinkedIns', function() {
         cy.visit(`https://www.whosbringingwhat.org/about`)
         cy.get('.big > .About_peopleContainer > :nth-child(3) > .About_linkedin > a')
     })
-    it('finds danielles button', function(){
+    it('finds danielles LinkedIn', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()
@@ -78,9 +78,6 @@ describe('LinkedIns', function() {
     })
 
 })
-
-
-
 
 
 describe ('find Githubs', function() {

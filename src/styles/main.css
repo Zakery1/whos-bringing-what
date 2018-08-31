@@ -232,6 +232,9 @@ body {
 .main {
   background: #dfdfdf; }
 
+.hideEvent {
+  display: none; }
+
 .Feed_eventPhoto {
   max-width: 100%;
   text-align: center; }
@@ -312,7 +315,28 @@ a {
 @media (min-width: 500px) {
   .Specific_event_parent {
     margin-left: 210px;
-    border: 3px solid blue; } }
+    border: 3px solid blue; }
+  .Requested_items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch; }
+  .Needed_items {
+    align-self: stretch;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px; }
+  .Will_bring {
+    align-self: stretch;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px; } }
 
 .Creator_event_parent {
   margin-left: 50px;

@@ -65,7 +65,7 @@ function About() {
           <div className="About_person">
            <div className="About_profile_pic"> <img className="About_headshot" src={Zak} alt="Zachary Headshot" /> </div>
            <div className="About_name"> <h4 className="About_creatorName">Zachary Graham</h4> </div>
-           <div className="About_description"> <p className="About_creatorDetails">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div>
+           {/* <div className="About_description"> <p className="About_creatorDetails">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div> */}
            <div className="About_linkedin"><Link to='/Zak'>Linkedin </Link></div>
            <div className="About_github"><Link to='/Zak1'> Github</Link></div> 
            <div className="About_footer"></div>

@@ -8,9 +8,20 @@ export default class SpecificEvent extends Component {
     state={
         event: [],
         requestedItems: [],
-        loading: false
+        willBringItems: [],
+        loading: false,
+        username: ''
     }
     componentDidMount() {
+        axios.get('/api/user-data').then(response => {
+            this.setState({
+              username: response.data.username,
+            })
+            this.props.updateUser(response.data)
+          }).catch(error => {
+            console.log('Axios error GET with componentDidMount on Nav.js', error)
+          })
+
         const eventId = this.props.match.params.id
 
         this.setState({
@@ -24,6 +35,8 @@ export default class SpecificEvent extends Component {
         function fetchRequestedItems() {
             return axios.get(`/api/requestedItems/${eventId}`);
         }
+
+
 
         axios.all([fetchEvent(), fetchRequestedItems()])
         .then(axios.spread((event,requestedItems)=>{
@@ -39,14 +52,30 @@ export default class SpecificEvent extends Component {
         })
     }
     render() {
-        const { event, requestedItems, loading } = this.state
+
+        const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
                 <div key={i}>
                     <p>{item.name}</p>
+                    <p>{item.user_id}</p>
+                    <button>Click to bring</button>
                 </div>
             )
         })
+
+        // const displayWillBringItems = displayRequestedItems.filter(item => item.user_id === this.props.id )
+
+        const displayWillBringItems = requestedItems.map((item,i) => {
+            return(
+                <div key={i}>
+                    <p>{item.name}</p>
+                    <p>{item.user_id}</p>
+                    <button>Click to bring</button>
+                </div>
+            )
+        })
+
         return (
             <div className="Specific_event_parent">
             Event
@@ -67,8 +96,20 @@ export default class SpecificEvent extends Component {
             :
             <p>Loading Event...</p>
             }
-            Items 
-            {loading ? 'Loading Items...' : displayRequestedItems}
+            
+            <div className="Requested_items">
+                <div className="Needed_items">
+                    Items 
+                    {loading ? 'Loading Items...' : displayRequestedItems}
+                </div>
+                <div className="Will_bring">
+                    {username} is bringing
+
+                    {loading ? 'Loading my Items' : displayWillBringItems}
+                </div>
+            
+
+            </div>
             </div>
         );
     }
