@@ -130,7 +130,8 @@ export default class CreatorSpecificEvent extends Component {
             )
         })
         return (
-            <div>
+            
+            <div className="Creator_event_parent">
             Event
             {event.length 
             ? 
@@ -162,6 +163,7 @@ export default class CreatorSpecificEvent extends Component {
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
             <button onClick={() => this.addItem()}>Add Item</button>
             </div>
+           
         );
     }
 } 

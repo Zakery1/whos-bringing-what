@@ -33,13 +33,13 @@ describe('finds Login button', function(){
     })
 })
 
-// describe('clicks Login button', function(){
-//     it('finds and clicks the login button', function(){
-//         cy.visit(`https://www.whosbringingwhat.org/`)
-//         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=login1]')
-//         .click()
-//     })
-// })
+describe('clicks Login button', function(){
+    it('finds and clicks the login button', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=login1]')
+        .click()
+    })
+})
 
 describe('finds About button', function(){
     it('finds the about button', function(){
