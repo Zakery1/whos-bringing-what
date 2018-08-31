@@ -48,34 +48,51 @@ describe('goes to About page', function(){
     })
 })
 
-describe('Finds Danielles Linkedin', function(){
+
+
+describe('LinkedIns', function() {
+    it('finds Andrews Linkedin link', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
+        .click()
+        cy.get('.big > .About_peopleContainer > :nth-child(2) > .About_linkedin > a')
+    })
+    it('finds Zaks LinkedIn link', function(){
+        cy.visit(`https://www.whosbringingwhat.org/about`)
+        cy.get('.big > .About_peopleContainer > :nth-child(3) > .About_linkedin > a')
+    })
     it('finds danielles button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()
         cy.get('.big > .About_peopleContainer > :nth-child(1) > .About_linkedin > a')
-        
     })
+
 })
 
-describe('Finds Andrews Linkedin', function() {
-    it('finds Andrews Linkedin link', function(){
-        cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
-        .click()
-        cy.get('.big > .About_peopleContainer > :nth-child(2) > .About_linkedin > a')  
-    })
-})
 
-describe('Finds Andrews Github', function() {
+
+
+
+describe ('find Githubs', function() {
+    it('find Danielles github', function() {
+        cy.visit(`https://www.whosbringingwhat.org/about`)
+        cy.get('.big > .About_peopleContainer > :nth-child(1) > .About_github > a')
+        cy.request('https://github.com/DanielleLyn')
+    })
     it('finds Andrews Github link', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()
         cy.get('.big > .About_peopleContainer > :nth-child(2) > .About_github > a')  
+        cy.request('https://github.com/Clayakn')
+    })
+    it('finds Zaks Github link', function(){
+        cy.visit(`https://www.whosbringingwhat.org/about`)
+        cy.get('.big > .About_peopleContainer > :nth-child(3) > .About_github > a')
+        cy.request('https://github.com/Zakery1')
     })
 })
-
 
 
 

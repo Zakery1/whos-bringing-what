@@ -19,7 +19,7 @@ describe('user check', () => {
 describe('event check ', () => {
     test('check event', function(){
         request(app).get('/api/createdEvents').then((response) => {
-            expect(response.statusCode).not.toBeUndefined()
+            expect(response.statusCode).toBe(200)
         });
     })
 }) 
