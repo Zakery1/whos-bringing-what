@@ -1,6 +1,7 @@
 module.exports = {
     readUser: (req, res) => {
         res.status(200).json({
+          id: req.session.user.id,
           username: req.session.user.username,
           email: req.session.user.email,
           profilePicture: req.session.user.profile_pic

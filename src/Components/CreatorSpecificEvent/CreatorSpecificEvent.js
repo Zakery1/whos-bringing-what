@@ -145,8 +145,6 @@ export default class CreatorSpecificEvent extends Component {
                 <p>State: {event[0].state}</p>
                 <p>Zip: {event[0].zip}</p>
                 <p>Country: {event[0].country}</p>
-                
-
             </div>
             :
             <p>Loading Event...</p>
