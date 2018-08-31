@@ -1,60 +1,75 @@
 {
-	"info": {
-		"_postman_id": "50080c5c-400f-4199-82ce-22c960d9e00c",
-		"name": "group-project-whosbringingwhat",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"id": "1328425c-8b02-4834-8477-e3744de0cdff",
+	"name": "group-project-whosbringingwhat",
+	"description": null,
+	"order": [
+		"6a361234-504b-4b60-a4e9-1a93bae3c741"
+	],
+	"folders": [
 		{
+			"owner": "4694256",
+			"lastUpdatedBy": "4694256",
+			"lastRevision": 4777483569,
+			"folder": null,
+			"id": "b5db8095-3a6a-4ddf-9431-afcff6ed5f32",
 			"name": "Items",
-			"item": [
+			"description": null,
+			"variables": null,
+			"auth": null,
+			"events": null,
+			"order": [
+				"6f9f7ad9-e5bb-4c62-af5e-6961e5e321e4",
+				"da150acc-5129-1004-8b6b-a2be02c736b0",
+				"5deade12-610e-4b37-930a-0fcccde6384b"
+			],
+			"folders_order": []
+		}
+	],
+	"folders_order": [
+		"b5db8095-3a6a-4ddf-9431-afcff6ed5f32"
+	],
+	"timestamp": 0,
+	"owner": "4694256",
+	"public": false,
+	"requests": [
+		{
+			"id": "5deade12-610e-4b37-930a-0fcccde6384b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
 				{
-					"name": "GET Items",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d92d0d41-ebfb-48c0-963f-5e6d8e08e04d",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"",
-									"tests[\"Response time is less than 400ms\"] = responseTime < 400;",
-									"",
-									"var data = JSON.parse(responseBody);",
-									"const isArray = Array.isArray( data );",
-									"tests[\" responseBody returns an Array \" ] = isArray;"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "https://whosbringingwhat.org/api/requestedItems/2",
-							"protocol": "https",
-							"host": [
-								"whosbringingwhat",
-								"org"
-							],
-							"path": [
-								"api",
-								"requestedItems",
-								"2"
-							]
-						}
-					},
-					"response": []
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
 				}
-			]
+			],
+			"url": "https://whosbringingwhat.org/api/post_requestedItem/1",
+			"folder": "b5db8095-3a6a-4ddf-9431-afcff6ed5f32",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");\n\ntests[\"Response time is less than 400ms\"] = responseTime < 400;\n\nvar data = JSON.parse(responseBody);\nconst isObject = Object.isObject( data[0] );\ntests[\" responseBody[0] returns an Object \" ] = isObject;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535691615349,
+			"name": "Post item",
+			"description": null,
+			"collectionId": "1328425c-8b02-4834-8477-e3744de0cdff",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"jellyfishes\",\n  \"event_id\": 1,\n  \"user_id\": 2,\n  \"spokenfor\": false\n}"
 		},
 		{
+			"folder": null,
+			"id": "6a361234-504b-4b60-a4e9-1a93bae3c741",
 			"name": "Logout User",
-			"event": [
+			"dataMode": null,
+			"data": [],
+			"auth": null,
+			"events": [
 				{
 					"listen": "test",
 					"script": {
@@ -70,25 +85,98 @@
 					}
 				}
 			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "https://whosbringingwhat.org/api/auth/logout",
-					"protocol": "https",
-					"host": [
-						"whosbringingwhat",
-						"org"
-					],
-					"path": [
-						"api",
-						"auth",
-						"logout"
-					]
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "https://whosbringingwhat.org/api/auth/logout",
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");\n\ntests[\"Response time is less than 400ms\"] = responseTime < 400;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [],
+			"pathVariableData": [],
+			"responses": [],
+			"collectionId": "1328425c-8b02-4834-8477-e3744de0cdff"
+		},
+		{
+			"folder": "b5db8095-3a6a-4ddf-9431-afcff6ed5f32",
+			"id": "6f9f7ad9-e5bb-4c62-af5e-6961e5e321e4",
+			"name": "GET Items",
+			"dataMode": null,
+			"data": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d92d0d41-ebfb-48c0-963f-5e6d8e08e04d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Response time is less than 400ms\"] = responseTime < 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"const isArray = Array.isArray( data );",
+							"tests[\" responseBody returns an Array \" ] = isArray;"
+						]
+					}
 				}
-			},
-			"response": []
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "https://whosbringingwhat.org/api/requestedItems/2",
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");\n\ntests[\"Response time is less than 400ms\"] = responseTime < 400;\n\nvar data = JSON.parse(responseBody);\nconst isArray = Array.isArray( data );\ntests[\" responseBody returns an Array \" ] = isArray;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [],
+			"pathVariableData": [],
+			"responses": [],
+			"collectionId": "1328425c-8b02-4834-8477-e3744de0cdff"
+		},
+		{
+			"id": "da150acc-5129-1004-8b6b-a2be02c736b0",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://whosbringingwhat.org/api/patch_requestedItem/4/1",
+			"folder": "b5db8095-3a6a-4ddf-9431-afcff6ed5f32",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");\n\ntests[\"Response time is less than 400ms\"] = responseTime < 400;\n\nconst newName = { \"name\": \"squidd\" }\n\nvar data = JSON.parse(responseBody);\nvar newData = data[data.length-1].name\ntests[\" responseBody returns new item time \" ] = newName.name === newData;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535692915588,
+			"name": "PATCH item",
+			"description": null,
+			"collectionId": "1328425c-8b02-4834-8477-e3744de0cdff",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"squidd\"\n}"
 		}
 	]
 }

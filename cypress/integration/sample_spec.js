@@ -28,8 +28,7 @@ describe('clicks Feed button', function(){
 describe('finds Login button', function(){
     it('finds the login button', function(){
         cy.visit(`https://www.whosbringingwhat.org/`)
-        cy.get('.App_navContainer.small > .Nav_parent > .big > [data-cy=login1]')
-        
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=login1]')  
     })
 })
 
@@ -65,9 +64,31 @@ describe('Finds Danielles Linkedin button', function(){
         .click()
         cy.get('.big > .About_peopleContainer > :nth-child(1) > .About_linkedin > a')
         
-        
     })
 })
+
+describe('Finds Andrews Linkedin', function() {
+    it('finds Andrews Linkedin link', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
+        .click()
+        cy.get('.big > .About_peopleContainer > :nth-child(2) > .About_linkedin > a')  
+    })
+})
+
+describe('Finds Andrews Github', function() {
+    it('finds Andrews Github link', function(){
+        cy.visit(`https://www.whosbringingwhat.org/`)
+        cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
+        .click()
+        cy.get('.big > .About_peopleContainer > :nth-child(2) > .About_github > a')  
+    })
+})
+
+
+
+
+
 
 
 

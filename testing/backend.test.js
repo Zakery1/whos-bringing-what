@@ -1,27 +1,11 @@
-const CreatorSpecificEvent = require('./CreatorSpecificEvent/CreatorSpecificEvent');
-
-
 const testRead = require('');
-const request = require('supertest');
-
-
-const newItem = {
-    name: 'soda'
-}
-
-const url = 'http://localhost:4000/api/post_requestedItem';
-
-describe('Car tests', () => {
-    test('test post', () => {
-        
-    })
-})
-
-
+const request = require('supertest')
 
 const app = require('../server/index');
 
 const { readUser } = require('../server/index');
+
+const { readCreatedEvents } = require('../server/index');
 
 
 describe('user check', () => {
@@ -31,3 +15,24 @@ describe('user check', () => {
         })
     })
 })
+
+describe('event check ', () => {
+    test('check event', function(){
+        request(app).get('/api/createdEvents').then((response) => {
+            expect(response.statusCode).not.toBeUndefined()
+        });
+    })
+}) 
+
+
+
+    
+
+
+
+
+
+
+
+
+
