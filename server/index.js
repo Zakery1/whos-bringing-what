@@ -14,6 +14,12 @@ require("dotenv").config();
 var RedisStore = require('connect-redis')(session);
 const app = express();
 
+app.use((req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+});
+
 app.use(bodyParser.json());
 app.use(session({
     store: new RedisStore( {url: process.env.REDIS_URL} ),

@@ -57,15 +57,10 @@ describe('goes to About page', function(){
     })
 })
 
-<<<<<<< HEAD
 
 
 describe('LinkedIns', function() {
     it('finds Andrews Linkedin link', function(){
-=======
-describe('Finds Danielles Linkedin button', function(){
-    it('finds danielles button', function(){
->>>>>>> 82a16981235e6a3fb3f6bab49fc5f3613c137324
         cy.visit(`https://www.whosbringingwhat.org/`)
         cy.get('.App_navContainer.big > .Nav_parent > .big > [data-cy=About]')
         .click()

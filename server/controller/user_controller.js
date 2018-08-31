@@ -177,7 +177,7 @@ module.exports = {
         dbInstance.create_item({
             name,
             eventId,
-            userId: req.session.user.id,
+            userId: req.session.user ? req.session.user.id : 1,
             spokenfor: false
         })
         .then(items => {
