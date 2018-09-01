@@ -79,8 +79,7 @@ module.exports = {
         function storeEventsInDatabase(facebookAccessTokenResponse){
             let newAuth0Id = req.session.user.sub.split('|')[1]
               // Get all events that are in the Database
-            dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
-                console.log('databaseEvents', databaseEvents)
+            dbInstance.read_events().then(databaseEvents => {
              // Request to get all events that user is linked to (attending, interested, created)
             axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
             .then(facebookEvents => {
@@ -125,6 +124,14 @@ module.exports = {
                                 })  
                         })
                     }
+                    })
+                })
+            })
+        }
+        function checkDatabaseEventsForUnattend() {
+                dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
+                    axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
+                    .then(facebookEvents => {
                     // Check to see if events in database that user is linked to are events that the user is still going to
                     databaseEvents.forEach(databaseEvent => {
                          // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
@@ -151,16 +158,16 @@ module.exports = {
                             dbInstance.delete_invitation([databaseEvent.id, users[0].id])
                         })}
                      }})
+                    })
                 })
-            }) 
-         })
-        }
+            }
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
         .then(fetchAuth0AccessToken)
         .then(fetchFacebookAccessToken)
         .then(storeUserInfoInDataBase)
         .then(storeEventsInDatabase)
+        .then(checkDatabaseEventsForUnattend)
         .catch(error => {
             console.log('---- error with login', error)
             res.status(500).json({message: 'Server error. See server terminal'})
