@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Sugar from 'sugar';
-import { get } from 'lodash/get';
 Sugar.Date.extend()
-
-// import EventMapContainer from '../GoogleMaps/EventMapContainer';
-// import EventMap from '../GoogleMaps/EventMap';
-
-// const API_KEY = 'AIzaSyC7lvoQRtO4bDubVUmRQoMNl7wjQuZm-IU';
 
 export default class CreatorSpecificEvent extends Component {
     constructor() {
@@ -139,26 +133,21 @@ export default class CreatorSpecificEvent extends Component {
             <div>
                 <h1> Name: {event[0].event_name}</h1>
                 <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <p>Description: {get(event, '[0].description', 'No description written')}</p>
+                <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
-                <p>City: {get(event, '[0].city', 'No city given')}</p>
-                <p>State: {event[0].state}</p>
-                <p>Zip: {event[0].zip}</p>
-                <p>Country: {event[0].country}</p>
+                <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
+                <p>State: {event[0].state ? event[0].state : 'No state given'}</p>
+                <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
+                <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
+                
+
             </div>
             :
             <p>Loading Event...</p>
             }
             <h1>Items</h1>
             {loading ? 'Loading Items...' : displayRequestedItems}
-                {/* google<EventMapContainer/>maps
-                <EventMap
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-                loadingElement={<div style={{ height: `90%` }} />}
-                containerElement={<div />}
-                mapElement={<div style={{ height: `100%` }} />}
-            /> */}
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
             <button onClick={() => this.addItem()}>Add Item</button>
             </div>
