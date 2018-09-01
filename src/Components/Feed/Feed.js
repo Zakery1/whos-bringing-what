@@ -88,12 +88,13 @@ class Feed extends Component {
           )
         }}/>
         <Fetcher url='/api/invitedEvents' render={(data) => {
+          console.log(data)
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
             <div>
               <div className="Feed_blank"></div>
               <div className="Feed_event"><p>Events I'm invited to:</p></div>
-              {result.map((event,i) => <Link to={`/specificEvent/${event.id}`} key={i}><div>
+              {result.map((event,i) =>  <Link to={`/specificEvent/${event.id}`} key={i}><div>
               <div className="Feed_blank"></div>
               <div className="Feed_group">
               <div className="Feed_event_name">{event.event_name}</div>
