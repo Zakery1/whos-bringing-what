@@ -125,6 +125,19 @@ module.exports = {
                                 })  
                         })
                     }
+<<<<<<< HEAD
+=======
+                    })
+                })
+            })
+            return facebookAccessTokenResponse;
+        }
+        function checkDatabaseEventsForUnattend(facebookAccessTokenResponse) {
+            let newAuth0Id = req.session.user.sub.split('|')[1]
+                dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
+                    axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
+                    .then(facebookEvents => {
+>>>>>>> 5aa2dadba6427b5f55dec2a135b206ca0e3fd89b
                     // Check to see if events in database that user is linked to are events that the user is still going to
                     databaseEvents.forEach(databaseEvent => {
                          // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
