@@ -4,6 +4,7 @@ import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Feed from './Components/Feed/Feed';
 import SpecificEvent from './Components/SpecificEvent/SpecificEvent';
+import HostSpecificEvent from './Components/HostSpecificEvent/HostSpecificEvent';
 import CreatorSpecificEvent from './Components/CreatorSpecificEvent/CreatorSpecificEvent';
 
 export default (
@@ -12,6 +13,7 @@ export default (
             <Route path="/about" component={About}/>
             <Route path="/feed" component={Feed}/>
             <Route path="/specificEvent/:id" component={SpecificEvent}/>
+            <Route path="/hostSpecificEvent/:id" component={HostSpecificEvent}/>
             <Route path="/creatorSpecificEvent/:id" component={CreatorSpecificEvent}/>
             <Route path="/Danielle" component={() => window.location='https://www.linkedin.com/in/danielle-cucinotta-38b79527'}/>
             <Route path="/Danielle1" component={() => window.location='https://github.com/DanielleLyn'}/>

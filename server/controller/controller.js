@@ -7,6 +7,16 @@ module.exports = {
           profilePicture: req.session.user.profile_pic
         })
     },
+    readUserWithAuth0Id: (req, res) => {
+        const dbInstance = req.app.get('db')
+        dbInstance.read_user([req.session.user.id])
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            res.status(500).json({message: error})
+        })
+    },
     // Checking to see if events.creator_id === users.auth0_id 
     readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
@@ -52,8 +62,21 @@ module.exports = {
         dbInstance.read_items([eventId])
         .then(items => {
             res.status(200).json(items)
-        }).catch(error => {
+        })
+        .catch(error => {
             console.log('---- error with  readRequestedItems', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
+    readUsersInvitedEvent: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { eventId } = req.params
+        dbInstance.read_users_invited_event({eventId})
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            console.log('---- error with readUsersInvitedEvent', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },

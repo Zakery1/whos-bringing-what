@@ -64,7 +64,7 @@ class Nav extends Component {
           </div>
 
           <div className="Nav_container big">
-              <p className="Nav_desktop_link" >Welcome <p>{username ? username : ""}</p></p>
+              <span className="Nav_desktop_link" >Welcome <p>{username ? username : ""}</p></span>
                <Link to="/" className="Nav_desktop_link" data-cy="Home">Home</Link>
                <Link to="/feed" className="Nav_desktop_link" data-cy="Feed">Feed</Link>
                <Link to="/about" className="Nav_desktop_link" data-cy="About">About</Link>

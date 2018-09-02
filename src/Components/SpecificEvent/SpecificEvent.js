@@ -19,9 +19,8 @@ export default class SpecificEvent extends Component {
               username: response.data.username,
               userId: response.data.id
             })
-            this.props.updateUser(response.data)
           }).catch(error => {
-            console.log('Axios error GET with componentDidMount on Nav.js', error)
+            console.log('Axios error GET with componentDidMount on SpecificEvent.js', error)
           })
 
         const eventId = this.props.match.params.id
@@ -103,7 +102,6 @@ export default class SpecificEvent extends Component {
 
         return (
             <div className="Specific_event_parent">
-            Event
             {event.length 
             ? 
             <div>

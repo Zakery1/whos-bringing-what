@@ -46,6 +46,9 @@ app.get('/auth/callback', uC.login);
 // Server request to get user data to display on Navbar
 app.get('/api/user-data', checkLoggedIn, c.readUser);
 
+// Server request to get user data for auth0_id 
+app.get('/api/user', checkLoggedIn, c.readUserWithAuth0Id)
+
 // Middleware to check if user is logged in
 function checkLoggedIn(req, res, next) {
     if (req.session.user) {
@@ -61,6 +64,9 @@ function checkLoggedIn(req, res, next) {
 
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
+
+// Server request to get all users that are invited to a certain event
+app.get('/api/users_invitedEvent/:eventId', c.readUsersInvitedEvent)
 
 
 // Server request to get all Created Events through user 
