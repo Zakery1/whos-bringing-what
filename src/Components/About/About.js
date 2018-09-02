@@ -3,6 +3,7 @@ import Andrew from '../../styles/assets/andrew-headshot.png';
 import Zak from '../../styles/assets/zachary-headshot.png';
 import Danielle from '../../styles/assets/Danielle-profile-pic.jpg';
 import {Link} from 'react-router-dom';
+import Grid from '../Grid/Grid';
 
 function About() {
     return (
@@ -68,7 +69,10 @@ function About() {
            {/* <div className="About_description"> <p className="About_creatorDetails">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div> */}
            <div className="About_linkedin"><Link to='/Zak'>Linkedin </Link></div>
            <div className="About_github"><Link to='/Zak1'> Github</Link></div> 
-           <div className="About_footer"></div>
+                  <Grid />
+           <div className="About_footer">
+            
+           </div>
           </div>
         </div>
         </div>

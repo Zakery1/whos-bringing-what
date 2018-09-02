@@ -8,6 +8,9 @@ const path = require('path');
 const c = require('./controller/controller');
 const uC = require('./controller/user_controller');
 const schema = require("./schema")
+const sgMail = require('@sendgrid/mail'); //sendgrid library to send emails 
+
+
 require("dotenv").config();
 
 // var session = require('express-session');
@@ -39,6 +42,34 @@ massive(process.env.CONNECTION_STRING).then(database => {
 }).catch(error => {
     console.log('Error with Massive', error)
 })
+
+sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+
+app.use(cors()); //utilize Cors so the browser doesn't restrict data, without it Sendgrid  not send!
+// Welcome page of the express server: 
+app.get('/', (req, res) => {
+    res.send("Welcome to the Sendgrid Emailing Server"); 
+});
+
+//SendGrid Emailer
+app.get('/send-email', (req,res) => {
+    
+    //Get Variables from query string in the search bar
+    const { recipient, sender, topic, text } = req.query; 
+
+    //Sendgrid Data Requirements
+    const msg = {
+        to: 'whosbringingwhat@yahoo.com',  //recipient
+        from: sender,
+        subject: topic,
+        text: text,
+       
+    }
+
+    //Send Email
+    sgMail.send(msg)
+    .then((msg) => console.log(text));
+});
 
 // Server request to login
 app.get('/auth/callback', uC.login);
