@@ -84,6 +84,10 @@ app.delete('/api/delete_requestedItem/:itemId/:eventId', uC.deleteRequestedItem)
 // Server request to UPDATE requestedItems by Creator of Event
 app.patch('/api/patch_requestedItem/:itemId/:eventId', uC.updateRequestedItem);
 
+app.patch('/api/patch_spokenForItem/:eventId/:userId/:itemId', uC.updateSpokenForItem)
+
+app.patch('/api/patch_assignedItem/:eventId/:itemId', uC.unassignItem)
+
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
   })

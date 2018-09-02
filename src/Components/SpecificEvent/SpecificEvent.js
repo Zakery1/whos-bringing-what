@@ -10,12 +10,14 @@ export default class SpecificEvent extends Component {
         requestedItems: [],
         willBringItems: [],
         loading: false,
-        username: ''
+        username: '',
+        userId: ''
     }
     componentDidMount() {
         axios.get('/api/user-data').then(response => {
             this.setState({
               username: response.data.username,
+              userId: response.data.id
             })
             this.props.updateUser(response.data)
           }).catch(error => {
@@ -51,27 +53,50 @@ export default class SpecificEvent extends Component {
             console.log('Axios error ALL on SpecificEvent', error)
         })
     }
+
+    spokenFor = (id) => {
+        const { userId } = this.state 
+        const eventId = this.props.match.params.id
+        axios.patch(`/api/patch_spokenForItem/${eventId}/${userId}/${id}`)
+        .then( response => {
+            this.setState({
+                requestedItems: response.data
+            })
+        })
+    }
+
+    unassignItem = (id) => {
+        const eventId = this.props.match.params.id
+        axios.patch(`/api/patch_assignedItem/${eventId}/${id}`)
+        .then( response => {
+            this.setState({
+                requestedItems: response.data
+            })
+        })
+    }
+
     render() {
 
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
-                <div key={i}>
+                <div style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
+             
                     <p>{item.name}</p>
                     <p>{item.user_id}</p>
-                    <button>Click to bring</button>
+                    <button onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
                 </div>
             )
         })
 
-        // const displayWillBringItems = displayRequestedItems.filter(item => item.user_id === this.props.id )
+        const willBringItems = requestedItems.filter(item => item.user_id === this.state.userId )
 
-        const displayWillBringItems = requestedItems.map((item,i) => {
+        const displayWillBringItems = willBringItems.map((item,i) => {
             return(
                 <div key={i}>
                     <p>{item.name}</p>
                     <p>{item.user_id}</p>
-                    <button>Click to bring</button>
+                    <button onClick={() => this.unassignItem(item.id)}>Unassign item</button>
                 </div>
             )
         })

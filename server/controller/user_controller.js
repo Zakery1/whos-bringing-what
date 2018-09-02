@@ -1,7 +1,5 @@
 const axios = require('axios')
 const get = require('lodash/get');
-
-
 module.exports = {
     login: (req, res) => {
         const payload = {
@@ -11,17 +9,14 @@ module.exports = {
             grant_type: 'authorization_code',
             redirect_uri: `https://${req.headers.host}/auth/callback`
         };
-
         const dbInstance = req.app.get('db');
         function tradeCodeForAccessToken() {
             return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
         }
-
         function tradeAccessTokenForUserInfo(response) {
             const accessToken = response.data.access_token
             return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`)
         }
-
         function fetchAuth0AccessToken(userInfoResponse){
             req.session.user = userInfoResponse.data;
             const payload = {
@@ -40,7 +35,6 @@ module.exports = {
             }
             return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${req.session.user.sub}`, options)
           }
-
         function storeUserInfoInDataBase(facebookAccessTokenResponse){
                 const auth0id = facebookAccessTokenResponse.data.identities[0].user_id
                 // Checking to see if user is in our Database
@@ -78,9 +72,9 @@ module.exports = {
         }
         function storeEventsInDatabase(facebookAccessTokenResponse){
             let newAuth0Id = req.session.user.sub.split('|')[1]
+
               // Get all events that are in the Database
-            dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
-                console.log('databaseEvents', databaseEvents)
+            dbInstance.read_events().then(databaseEvents => {
              // Request to get all events that user is linked to (attending, interested, created)
             axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
             .then(facebookEvents => {
@@ -125,8 +119,6 @@ module.exports = {
                                 })  
                         })
                     }
-<<<<<<< HEAD
-=======
                     })
                 })
             })
@@ -137,7 +129,6 @@ module.exports = {
                 dbInstance.read_events_link_to_user([newAuth0Id.toString()]).then(databaseEvents => {
                     axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
                     .then(facebookEvents => {
->>>>>>> 5aa2dadba6427b5f55dec2a135b206ca0e3fd89b
                     // Check to see if events in database that user is linked to are events that the user is still going to
                     databaseEvents.forEach(databaseEvent => {
                          // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
@@ -164,16 +155,16 @@ module.exports = {
                             dbInstance.delete_invitation([databaseEvent.id, users[0].id])
                         })}
                      }})
+                    })
                 })
-            }) 
-         })
-        }
+            }
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
         .then(fetchAuth0AccessToken)
         .then(fetchFacebookAccessToken)
         .then(storeUserInfoInDataBase)
         .then(storeEventsInDatabase)
+        .then(checkDatabaseEventsForUnattend)
         .catch(error => {
             console.log('---- error with login', error)
             res.status(500).json({message: 'Server error. See server terminal'})
@@ -229,5 +220,32 @@ module.exports = {
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },
-
+    updateSpokenForItem: ( req, res ) => {
+        const dbInstance = req.app.get('db')
+        const { itemId, userId, eventId } = req.params
+        dbInstance.update_spoken_for({userId, itemId})
+        .then(() => {
+            dbInstance.read_items([eventId])
+            .then(items => {
+                res.status(200).json(items)
+            })
+        }).catch(error => {
+            console.log('---- error with updateSpokenFor', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    },
+    unassignItem: ( req, res ) => {
+        const dbInstance = req.app.get('db')
+        const {eventId, itemId} = req.params
+        dbInstance.unassign_item({eventId, itemId})
+        .then(() => {
+            dbInstance.read_items([eventId])
+            .then(items => {
+                res.status(200).json(items)
+            })
+        }).catch(error => {
+            console.log('---- error with unnasignItem', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    }
 }
