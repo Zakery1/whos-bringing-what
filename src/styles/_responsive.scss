@@ -11,13 +11,13 @@
         display: initial;
     }
 
-    .Nav_parent {
+    .nav_parent {
         width: 200px;
     }
 
     
 
-    .App_navContainer .big {
+    .app_nav_container .big {
         width: 20vw;
         display: flex;
         flex-direction: column;
@@ -31,7 +31,7 @@
 
 
 
-    .Nav_container .big {
+    .nav_container .big {
         width: 18vw;
         display: flex;
         flex-direction: row;
@@ -43,40 +43,40 @@
       
     }
 
-    .Nav_container {
+    .nav_container {
         height: 100vh;
     }
 
-    .Home_parent {
+    .home_parent {
         margin-left: 20%;
     }
 
-    .Header_parent {
+    .header_parent {
         margin: 3% 0 5% 10%;
     }
 
-    .Header_imageDesktop {
+    .header_image_desktop {
         border: $facebook-blue 2px solid;
         }
 
-    .Footer_parent {
+    .footer_parent {
         margin: 0% 0 0% 10%;
     }
     
-    .Footer_appName {
+    .footer_app_name {
         margin: 0 150px 20px 0;
         // margin-right: 100px;
     }
 
-    .Footer_aboutParagraphDesktop {
+    .footer_about_paragraph_desktop {
         margin-right: 120px;
     }
 
-    .Feed_parent {
+    .feed_parent {
         margin-left: 220px;
     }
 
-    a .Nav_desktopLink {
+    a .nav_desktop_link {
         color: blue;
     }
     

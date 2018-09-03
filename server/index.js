@@ -8,11 +8,21 @@ const path = require('path');
 const c = require('./controller/controller');
 const uC = require('./controller/user_controller');
 const schema = require("./schema")
+const sgMail = require('@sendgrid/mail'); //sendgrid library to send emails 
+
+
 require("dotenv").config();
 
 // var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 const app = express();
+
+// Comment out when deploying site live
+// app.use((req, res, next) => {
+//       res.header("Access-Control-Allow-Origin", "*");
+//       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//       next();
+// });
 
 app.use(bodyParser.json());
 app.use(session({
@@ -34,11 +44,42 @@ massive(process.env.CONNECTION_STRING).then(database => {
     console.log('Error with Massive', error)
 })
 
+sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+
+app.use(cors()); //utilize Cors so the browser doesn't restrict data, without it Sendgrid  not send!
+// Welcome page of the express server: 
+app.get('/', (req, res) => {
+    res.send("Welcome to the Sendgrid Emailing Server"); 
+});
+
+//SendGrid Emailer
+app.get('/send-email', (req,res) => {
+    
+    //Get Variables from query string in the search bar
+    const { recipient, sender, topic, text } = req.query; 
+
+    //Sendgrid Data Requirements
+    const msg = {
+        to: 'whosbringingwhat@yahoo.com',  //recipient
+        from: sender,
+        subject: topic,
+        text: text,
+       
+    }
+
+    //Send Email
+    sgMail.send(msg)
+    .then((msg) => console.log(text));
+});
+
 // Server request to login
 app.get('/auth/callback', uC.login);
 
 // Server request to get user data to display on Navbar
 app.get('/api/user-data', checkLoggedIn, c.readUser);
+
+// Server request to get user data for auth0_id 
+app.get('/api/user', checkLoggedIn, c.readUserWithAuth0Id)
 
 // Middleware to check if user is logged in
 function checkLoggedIn(req, res, next) {
@@ -56,27 +97,34 @@ function checkLoggedIn(req, res, next) {
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
 
+// Server request to get all users that are invited to a certain event
+app.get('/api/users_invited_event/:eventId', c.readUsersInvitedEvent)
+
 
 // Server request to get all Created Events through user 
-app.get('/api/createdEvents', c.readCreatedEvents);
+app.get('/api/created_events', c.readCreatedEvents);
 
 // Server request to get all Invited Events through user 
-app.get('/api/invitedEvents', c.readInvitedEvents);
+app.get('/api/invited_events', c.readInvitedEvents);
 
 // Server request to get an event through eventId
 app.get('/api/event/:eventId', c.readEvent);
 
 // Server request to get an event through eventId
-app.get('/api/requestedItems/:eventId', c.readRequestedItems);
+app.get('/api/requested_items/:eventId', c.readRequestedItems);
 
 // Server request to POST requestedItems by Creator of Event
-app.post('/api/post_requestedItem/:eventId', uC.createRequestedItem);
+app.post('/api/post_requested_item/:eventId', uC.createRequestedItem);
 
 // Server request to DELETE requestedItems by Creator of Event
-app.delete('/api/delete_requestedItem/:itemId/:eventId', uC.deleteRequestedItem);
+app.delete('/api/delete_requested_item/:itemId/:eventId', uC.deleteRequestedItem);
 
 // Server request to UPDATE requestedItems by Creator of Event
-app.patch('/api/patch_requestedItem/:itemId/:eventId', uC.updateRequestedItem);
+app.patch('/api/patch_requested_item/:itemId/:eventId', uC.updateRequestedItem);
+
+app.patch('/api/patch_spoken_for_item/:eventId/:userId/:itemId', uC.updateSpokenForItem)
+
+app.patch('/api/patch_assigned_item/:eventId/:itemId', uC.unassignItem)
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));

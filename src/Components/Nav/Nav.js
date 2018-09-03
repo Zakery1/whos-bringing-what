@@ -48,24 +48,28 @@ class Nav extends Component {
     render() {
       const { username } = this.state
       return (
-        <div className="Nav_parent">
+        <div className="nav_parent">
 
-          <div className="Nav_container small">
-              <div className="Nav_mobileIcons" style={{ color: 'white' }}> <Icon size={32} icon={user_circle} /> <p >{username ? `${username}` : "No User"}</p></div>
-              <Link to="/" className="Nav_linkMobile" data-cy="home" style={{ color: 'white' }}><Icon size={32} icon={home} /> <p>Home</p> </Link>
-              <Link to="/feed" className="Nav_linkMobile" data-cy="feed" style={{ color: 'white' }}><Icon size={32} icon={menu} /> <p>Feed</p> </Link>
-              <Link to="/about" className="Nav_linkMobile" data-cy="about" style={{ color: 'white' }}> <Icon size={32} icon={ic_tag_faces} /> <p>About</p> </Link>
-              {username ? <Link className="Nav_linkMobile" data-cy='login' to='/' ><button className="Nav_linkMobile" style={{ color: 'white' }} onClick={()=>this.logout()}> <Icon size={28} icon={logout} /> <p>Logout</p> </button></Link> 
-              : <button className="Nav_linkMobile" data-cy='logout' style={{ color: 'white' }} onClick={() => {this.login()}}> <Icon size={28} icon={login} /> <p>Login</p>  </button>}
+          <div className="nav_container small">
+              <div className="nav_icon_container">
+                  <div className="nav_link_mobile"> <Icon size={32} icon={user_circle} /> <p>{username ? `${username}` : "No User"}</p></div>
+                  <Link to="/" className="nav_link_mobile" data-cy="home"><Icon size={32} icon={home} /> <p>Home</p> </Link>
+                  <Link to="/feed" className="nav_link_mobile" data-cy="feed"><Icon size={32} icon={menu} /> <p>Feed</p> </Link>
+                  <Link to="/about" className="nav_link_mobile" data-cy="about"> <Icon size={32} icon={ic_tag_faces} /> <p>About</p> </Link>
+                  {username 
+                  ? 
+                  <Link className="nav_link_mobile" data-cy='login' to='/'> <Icon onClick={()=>this.logout()} size={32} icon={logout} /> <p>Logout</p></Link> 
+                  : <span className="nav_link_mobile" data-cy='logout' onClick={() => {this.login()}}> <Icon size={32} icon={login} /> <p>Login</p>  </span>}
+              </div>
           </div>
 
-          <div className="Nav_container big">
-              <p className="Nav_desktop_link" >{username ? username : ""}</p>
-               <Link to="/" className="Nav_desktopLink" data-cy="Home">Home</Link>
-               <Link to="/feed" className="Nav_desktopLink" data-cy="Feed">Feed</Link>
-               <Link to="/about" className="Nav_desktopLink" data-cy="About">About</Link>
-              {username ? <Link className="Nav_desktopLink" data-cy="Logout" onClick={()=>this.logout()} to='/'>Logout</Link> 
-              : <button className="Nav_desktopLink_login" data-cy="login1" onClick={() => {this.login()}}>Login</button>}
+          <div className="nav_container big">
+              <span className="nav_desktop_link" >Welcome <p>{username ? username : ""}</p></span>
+               <Link to="/" className="nav_desktop_link" data-cy="Home">Home</Link>
+               <Link to="/feed" className="nav_desktop_link" data-cy="Feed">Feed</Link>
+               <Link to="/about" className="nav_desktop_link" data-cy="About">About</Link>
+              {username ? <Link className="nav_desktop_link" data-cy="Logout" onClick={()=>this.logout()} to='/'>Logout</Link> 
+              : <span className="nav_desktop_link" data-cy="login1" onClick={() => {this.login()}}>Login</span>}
           </div>
 
         </div>

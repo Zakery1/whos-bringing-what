@@ -11,14 +11,14 @@ class App extends Component {
     return (
       <div className="App">
 
-          <div className="App_navContainer big">
+          <div className="app_nav_container big">
             <Nav/>
           </div>
 
-          <div className="App_routesContainer">
+          <div className="app_routes_container">
             {routes}
           </div>
-          <div className="App_navContainer small">
+          <div className="app_nav_container small">
             <Nav/>
           </div>
 

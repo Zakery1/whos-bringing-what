@@ -1,3 +1,3 @@
 DELETE FROM requesteditems 
-WHERE id = $1
+WHERE id = ${itemId}
 RETURNING *;

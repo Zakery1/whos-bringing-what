@@ -1,2 +1,2 @@
 SELECT * FROM events 
-WHERE creator_id = $1;
+WHERE creator_id = ${auth0Id};

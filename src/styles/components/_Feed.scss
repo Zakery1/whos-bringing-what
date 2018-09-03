@@ -2,33 +2,41 @@
     background:  #dfdfdf;
 }
 
-.Feed_eventPhoto {
+.hide_event{
+    display:none;
+}
+
+.show_event{
+    
+}
+
+.feed_event_photo {
     max-width: 100%;
     text-align:center;
 }
 
-.Feed_title{
+.feed_title{
     font-size: 70px;
 }
 
-.Feed_event{
+.feed_event{
     color: blue; 
     background:paleturquoise;
     min-height: 90px;
     font-size: 30px;
 }
 
-.Feed_event p{
+.feed_event p{
     font-size: 50px; 
     vertical-align: middle;
     text-align: center;
 }
 
-.Feed_group{
+.feed_group{
     border: 3px solid blue;
 }
 
-.Feed_event_name{
+.feed_event_name{
     background:red;
     font-size: 50px;
     color: blue;
@@ -39,7 +47,7 @@
     
 }
 
-.Feed_event_description{
+.feed_event_description{
     background:green;
     font-size: 20px;
     color: blue;
@@ -47,31 +55,31 @@
     
 }
 
-.Feed_event_date{
+.feed_event_date{
     background:orange;
     font-size: 20px;
     text-align:center;
     
 }
 
-.Feed_footer{
+.feed_footer{
     height:85px;
 }
 
-.Feed_big{
+.feed_big{
     margin-left: 190px;
     padding: 0px 10px;
 }
 
-.Feed_blank{
+.feed_blank{
     height: 25px;
 }
 
-.Feed_blank_small{
+.feed_blank_small{
     height:15px;
 }
 
-.Feed_parent small{
+.feed_parent small{
     overflow-x: hidden;
 }
 
@@ -80,7 +88,7 @@ a{
 }
 
 @media (min-width: 500px){
-    .Feed_eventPhoto {
+    .feed_event_photo {
         display: block;
         margin-left: auto;
         margin-right: auto;

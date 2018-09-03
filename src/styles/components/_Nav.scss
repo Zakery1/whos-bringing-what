@@ -1,39 +1,47 @@
+@import '../variables';
 
-.Nav_parent {
+.nav_parent {
     background: $facebook-blue;
+    border: 2px solid white;
 }
 
 .button:hover {
     cursor: pointer;
 }
 
-.Nav_container  {
-    width: 100px;
+.nav_container  {
+    width: 100vw;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    bottom: 0;
-    z-index: 5;
+    // bottom: 0;
+    // z-index: 5;
     // position: fixed;
   
 }
 
-.Nav_mobileIcons {
-    margin: 3px 20px 15px 20px;
+.nav_icon_container {
+    // border: 2px solid white;
+    // padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     text-align: center;
-    white-space: nowrap;
-}
+} 
 
-.Nav_linkMobile {
-    margin: 0 16px 15px 16px;
+
+// .Nav_mobileIcons {
+//     margin: 3px 20px 15px 20px;
+//     text-align: center;
+//     white-space: nowrap;
+// }
+
+.nav_link_mobile{
+    color: white;
+    margin: 5px 16px 15px 16px;
     text-decoration: none;
 }
 
 
-.Nav_desktopLink {
+.nav_desktop_link {
     margin: 40px 50px 75px 50px;
     color: white;
     text-decoration: none;
@@ -43,7 +51,8 @@
     font-family: $primary-font-family;
 }
 
-.Nav_desktopLink:hover {
+.nav_desktop_link:hover {
     cursor: pointer;
+    background: $highlight-nav;
 }
 

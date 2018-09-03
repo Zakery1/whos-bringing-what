@@ -4,30 +4,20 @@ import EventMapContainer from '../GoogleMaps/EventMapContainer';
 import Sugar from 'sugar';
 Sugar.Date.extend()
 
-export default class SpecificEvent extends Component {
+export default class HostSpecificEvent extends Component {
     state={
         event: [],
         requestedItems: [],
         willBringItems: [],
         loading: false,
-        username: '',
-        userId: ''
+        users: []
     }
     componentDidMount() {
-        axios.get('/api/user-data').then(response => {
-            this.setState({
-              username: response.data.username,
-              userId: response.data.id
-            })
-          }).catch(error => {
-            console.log('Axios error GET with componentDidMount on SpecificEvent.js', error)
-          })
-
-        const eventId = this.props.match.params.id
 
         this.setState({
             loading: true
         })
+        const eventId = this.props.match.params.id
 
         function fetchEvent() {
             return axios.get(`/api/event/${eventId}`);
@@ -37,75 +27,47 @@ export default class SpecificEvent extends Component {
             return axios.get(`/api/requested_items/${eventId}`);
         }
 
+        function fetchUsers() {
+            return axios.get(`/api/users_invited_event/${eventId}`)
+        }
 
-
-        axios.all([fetchEvent(), fetchRequestedItems()])
-        .then(axios.spread((event,requestedItems)=>{
-            console.log('event', event.data)
-            console.log('requestedItems', requestedItems.data)
+        axios.all([fetchEvent(), fetchRequestedItems(), fetchUsers()])
+        .then(axios.spread((event,requestedItems, users)=>{
             this.setState({
                 event: event.data,
                 requestedItems: requestedItems.data,
-                loading: false
+                loading: false,
+                users: users.data
             })
         })).catch(error => {
             console.log('Axios error ALL on SpecificEvent', error)
         })
     }
 
-    spokenFor = (id) => {
-        const { userId } = this.state 
-        const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_spoken_for_item/${eventId}/${userId}/${id}`)
-        .then( response => {
-            this.setState({
-                requestedItems: response.data
-            })
-        })
-    }
+ 
 
-    unassignItem = (id) => {
-        const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_assigned_item/${eventId}/${id}`)
-        .then( response => {
-            this.setState({
-                requestedItems: response.data
-            })
-        })
-    }
+   
 
     render() {
 
-        const { username, event, requestedItems, loading } = this.state
+        const { users, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
-            return(
-                <div style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
-             
-                    <p>{item.name}</p>
-                    <p>{item.user_id}</p>
-                    <button onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
-                </div>
-            )
-        })
-
-        const willBringItems = requestedItems.filter(item => item.user_id === this.state.userId )
-
-        const displayWillBringItems = willBringItems.map((item,i) => {
+            const index = users.findIndex(e => e.id === item.user_id)
             return(
                 <div key={i}>
-                    <p>{item.name}</p>
-                    <p>{item.user_id}</p>
-                    <button onClick={() => this.unassignItem(item.id)}>Unassign item</button>
+                    <h2 style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } >{item.name}</h2>
+                    <p>Assigned to: {users[index].username}</p>
                 </div>
             )
         })
+       
 
         return (
             <div className="specific_event_parent">
             {event.length 
             ? 
             <div>
-                <h1> Name: {event[0].event_name}</h1>
+                <h1> Name: {event[0].event_name} *You are hosting*</h1>
                 <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
@@ -123,13 +85,8 @@ export default class SpecificEvent extends Component {
             
             <div className="requested_items">
                 <div className="needed_items">
-                    Items 
+                    <h1>Items</h1> 
                     {loading ? 'Loading Items...' : displayRequestedItems}
-                </div>
-                <div className="will_bring">
-                    {username} is bringing
-
-                    {loading ? 'Loading my Items' : displayWillBringItems}
                 </div>
             
 

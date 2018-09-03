@@ -1,11 +1,12 @@
 
 
-.Specific_event_parent {
+.specific_event_parent {
     margin-left: 50px;
+    border: 3px solid blue;
 }
 
 
-.SpecificEvent_eventPhoto {
+.specific_event_event_photo {
     max-width: 200px;
 }
 
@@ -15,8 +16,36 @@
 }
 
 @media (min-width: 500px) {
-    .Specific_event_parent {
-        margin-left: 220px;
+    .specific_event_parent {
+        margin-left: 210px;
+        border: 3px solid blue;
+    }
+
+    .requested_items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: stretch;
+    }
+
+    .needed_items {
+        align-self: stretch;
+        order: 0;
+        flex: 0 0 0px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 90px;
+    }
+
+    .will_bring {
+        align-self: stretch;
+        order: 0;
+        flex: 0 0 0px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 90px;
     }
 
 }
