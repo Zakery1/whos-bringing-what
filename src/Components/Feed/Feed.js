@@ -35,15 +35,9 @@ class Feed extends Component {
       ? 
       <div className="main">
       <div>
-<<<<<<< HEAD
       <div className="feed_parent small">
         <div className="feed_title">Who's Bringing What? </div>
         <Fetcher url='/api/createdEvents' render={(data) => {
-=======
-      <div className="Feed_parent small">
-        <div className="Feed_title">Who's Bringing What? </div>
-        <Fetcher url='/api/created_events' render={(data) => {
->>>>>>> 56f888108893a3233d876c28ac2a50740ba3dc52
         const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
         return ( 
           <div>
@@ -99,17 +93,10 @@ class Feed extends Component {
         </div>
        
 
-<<<<<<< HEAD
  <div className="feed_big">
       <div className="feed_parent big">
         <div className="feed_title">Who's Bringing What?</div>
         <Fetcher url='/api/createdEvents' render={(data) => {
-=======
- <div className="Feed_big">
-      <div className="Feed_parent big">
-        <div className="Feed_title">Who's Bringing What?</div>
-        <Fetcher url='/api/created_events' render={(data) => {
->>>>>>> 56f888108893a3233d876c28ac2a50740ba3dc52
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
             <div>
