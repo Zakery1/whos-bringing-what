@@ -118,9 +118,9 @@ export default class CreatorSpecificEvent extends Component {
             return(
                 <div key={i}>
                     {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                    {editing ? selectedId == item.id ? <button onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
-                    {editing && selectedId == item.id ? <button onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                    <button onClick={() => this.deleteItem(item.id)}>Delete</button>
+                    {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
+                    {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
+                    <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
                 </div>
             )
         })
@@ -150,7 +150,7 @@ export default class CreatorSpecificEvent extends Component {
             <h1>Items</h1>
             {loading ? 'Loading Items...' : displayRequestedItems}
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
-            <button onClick={() => this.addItem()}>Add Item</button>
+            <button className='myButton' onClick={() => this.addItem()}>Add Item</button>
             </div>
            
         );

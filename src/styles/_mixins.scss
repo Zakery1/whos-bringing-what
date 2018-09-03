@@ -1,0 +1,33 @@
+
+@mixin button{
+    border-top: 1px solid #0b293b;
+      background: #395ca9;
+      background: -webkit-gradient(linear, left top, left bottom, from(#122d66), to(#395ca9));
+      background: -webkit-linear-gradient(top, #122d66, #395ca9);
+      background: -moz-linear-gradient(top, #122d66, #395ca9);
+      background: -ms-linear-gradient(top, #122d66, #395ca9);
+      background: -o-linear-gradient(top, #122d66, #395ca9);
+      padding: 5px 10px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      border-radius: 8px;
+      -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      box-shadow: rgba(0,0,0,1) 0 1px 0;
+      text-shadow: rgba(0,0,0,.4) 0 1px 0;
+      color: white;
+      font-size: 14px;
+      font-family: Georgia, serif;
+      text-decoration: none;
+      vertical-align: middle;
+     &:hover {
+      border-top-color: #111138;
+      background: #111138;
+      color: #ccc;
+     }
+     &:active {
+      border-top-color: #08084d;
+      background: #08084d;
+     } 
+   }
+   
