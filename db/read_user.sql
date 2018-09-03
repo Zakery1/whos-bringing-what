@@ -1,3 +1,3 @@
 SELECT * FROM users
-WHERE id = $1 
+WHERE id = ${userId}
 LIMIT 1;

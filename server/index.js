@@ -17,6 +17,7 @@ require("dotenv").config();
 var RedisStore = require('connect-redis')(session);
 const app = express();
 
+// Comment out when deploying site live
 app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -97,33 +98,33 @@ function checkLoggedIn(req, res, next) {
 app.post('/api/auth/logout', uC.logout);
 
 // Server request to get all users that are invited to a certain event
-app.get('/api/users_invitedEvent/:eventId', c.readUsersInvitedEvent)
+app.get('/api/users_invited_event/:eventId', c.readUsersInvitedEvent)
 
 
 // Server request to get all Created Events through user 
-app.get('/api/createdEvents', c.readCreatedEvents);
+app.get('/api/created_events', c.readCreatedEvents);
 
 // Server request to get all Invited Events through user 
-app.get('/api/invitedEvents', c.readInvitedEvents);
+app.get('/api/invited_events', c.readInvitedEvents);
 
 // Server request to get an event through eventId
 app.get('/api/event/:eventId', c.readEvent);
 
 // Server request to get an event through eventId
-app.get('/api/requestedItems/:eventId', c.readRequestedItems);
+app.get('/api/requested_items/:eventId', c.readRequestedItems);
 
 // Server request to POST requestedItems by Creator of Event
-app.post('/api/post_requestedItem/:eventId', uC.createRequestedItem);
+app.post('/api/post_requested_item/:eventId', uC.createRequestedItem);
 
 // Server request to DELETE requestedItems by Creator of Event
-app.delete('/api/delete_requestedItem/:itemId/:eventId', uC.deleteRequestedItem);
+app.delete('/api/delete_requested_item/:itemId/:eventId', uC.deleteRequestedItem);
 
 // Server request to UPDATE requestedItems by Creator of Event
-app.patch('/api/patch_requestedItem/:itemId/:eventId', uC.updateRequestedItem);
+app.patch('/api/patch_requested_item/:itemId/:eventId', uC.updateRequestedItem);
 
-app.patch('/api/patch_spokenForItem/:eventId/:userId/:itemId', uC.updateSpokenForItem)
+app.patch('/api/patch_spoken_for_item/:eventId/:userId/:itemId', uC.updateSpokenForItem)
 
-app.patch('/api/patch_assignedItem/:eventId/:itemId', uC.unassignItem)
+app.patch('/api/patch_assigned_item/:eventId/:itemId', uC.unassignItem)
 
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));

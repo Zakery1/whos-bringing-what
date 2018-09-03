@@ -24,11 +24,11 @@ export default class HostSpecificEvent extends Component {
         }
         
         function fetchRequestedItems() {
-            return axios.get(`/api/requestedItems/${eventId}`);
+            return axios.get(`/api/requested_items/${eventId}`);
         }
 
         function fetchUsers() {
-            return axios.get(`/api/users_invitedEvent/${eventId}`)
+            return axios.get(`/api/users_invited_event/${eventId}`)
         }
 
         axios.all([fetchEvent(), fetchRequestedItems(), fetchUsers()])

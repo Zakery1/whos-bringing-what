@@ -1,2 +1,2 @@
 SELECT * FROM invitations
-WHERE user_id = $1;
+WHERE user_id = ${userId};
