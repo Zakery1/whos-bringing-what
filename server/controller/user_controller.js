@@ -78,6 +78,7 @@ module.exports = {
              // Request to get all events that user is linked to (attending, interested, created)
             axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
             .then(facebookEvents => {
+                console.log(facebookEvents.data.events.data)
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
