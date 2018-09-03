@@ -83,7 +83,7 @@ module.exports = {
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
-                console.log("location ---------------", facebookEvent.place)
+                 console.log('facebook place',facebookEvent.place)
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
                         // Check to see if user is going, if user is unsure/interested, event will not be displayed

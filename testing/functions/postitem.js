@@ -7,5 +7,7 @@ module.exports = {
             return res.data
         })
         .catch(err => err)
-    } 
+    },
+
+    
 }

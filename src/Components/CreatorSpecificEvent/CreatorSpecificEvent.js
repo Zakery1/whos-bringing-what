@@ -136,6 +136,7 @@ export default class CreatorSpecificEvent extends Component {
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
+                <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                 <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
                 <p>State: {event[0].state ? event[0].state : 'No state given'}</p>
                 <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
