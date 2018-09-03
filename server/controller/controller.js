@@ -9,7 +9,8 @@ module.exports = {
     },
     readUserWithAuth0Id: (req, res) => {
         const dbInstance = req.app.get('db')
-        dbInstance.read_user([req.session.user.id])
+        const userId = req.session.user.id
+        dbInstance.read_user({userId})
         .then(users => {
             res.status(200).json(users)
         })
@@ -20,9 +21,11 @@ module.exports = {
     // Checking to see if events.creator_id === users.auth0_id 
     readCreatedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
-        dbInstance.read_user([req.session.user.id])
+        const userId = req.session.user.id
+        dbInstance.read_user({userId})
         .then(users => {
-            dbInstance.read_created_events([users[0].auth0_id])
+            const auth0Id = users[0].auth0_id
+            dbInstance.read_created_events({auth0Id})
             .then(events => {
                 res.status(200).json(events)
             })
@@ -34,9 +37,11 @@ module.exports = {
     // Get all events that users is invited to through the invitations table
     readInvitedEvents: (req, res) => {
         const dbInstance = req.app.get('db')
-        dbInstance.read_user([req.session.user.id])
+        const userId = req.session.user.id
+        dbInstance.read_user({userId})
         .then(users => {
-            dbInstance.read_invited_events([users[0].id])
+            const userId = users[0].id
+            dbInstance.read_invited_events({userId})
             .then(events => {
                 res.status(200).json(events)
             })
@@ -48,7 +53,7 @@ module.exports = {
     readEvent: (req, res) => {
         const dbInstance = req.app.get('db')
         const { eventId } = req.params
-        dbInstance.read_event([eventId])
+        dbInstance.read_event({eventId})
         .then(events => {
             res.status(200).json(events)
         }).catch(error => {
@@ -59,7 +64,7 @@ module.exports = {
     readRequestedItems: (req, res) => {
         const dbInstance = req.app.get('db')
         const { eventId } = req.params
-        dbInstance.read_items([eventId])
+        dbInstance.read_items({eventId})
         .then(items => {
             res.status(200).json(items)
         })

@@ -28,7 +28,7 @@ export default class CreatorSpecificEvent extends Component {
         }
         
         function fetchRequestedItems() {
-            return axios.get(`/api/requestedItems/${eventId}`);
+            return axios.get(`/api/requested_items/${eventId}`);
         }
 
         axios.all([fetchEvent(), fetchRequestedItems()])
@@ -54,7 +54,7 @@ export default class CreatorSpecificEvent extends Component {
     addItem = () => {
         const eventId = this.props.match.params.id
         if(this.state.name.length) {
-            axios.post(`/api/post_requestedItem/${eventId}`, {name: this.state.name})
+            axios.post(`/api/post_requested_item/${eventId}`, {name: this.state.name})
             .then(items => {
                 console.log('items',items)
                 this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
@@ -68,7 +68,7 @@ export default class CreatorSpecificEvent extends Component {
     // Creator can delete items from requestedItems table 
     deleteItem = (id) => {
         const eventId = this.props.match.params.id
-        axios.delete(`/api/delete_requestedItem/${id}/${eventId}`)
+        axios.delete(`/api/delete_requested_item/${id}/${eventId}`)
         .then(response => {
             console.log('response',response)
             this.setState({
@@ -102,7 +102,7 @@ export default class CreatorSpecificEvent extends Component {
      // Creator can edit items from requestedItems table
     saveItem = (id) => {
         const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_requestedItem/${id}/${eventId}`, {name: this.state.selectedName})
+        axios.patch(`/api/patch_requested_item/${id}/${eventId}`, {name: this.state.selectedName})
         .then(response => {
             this.setState({
                 selectedId: '',

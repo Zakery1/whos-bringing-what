@@ -1,3 +1,3 @@
 SELECT * FROM events 
-WHERE id = $1 
+WHERE id = ${eventId}
 LIMIT 1;

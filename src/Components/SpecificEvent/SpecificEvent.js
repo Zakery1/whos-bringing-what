@@ -34,7 +34,7 @@ export default class SpecificEvent extends Component {
         }
         
         function fetchRequestedItems() {
-            return axios.get(`/api/requestedItems/${eventId}`);
+            return axios.get(`/api/requested_items/${eventId}`);
         }
 
 
@@ -56,7 +56,7 @@ export default class SpecificEvent extends Component {
     spokenFor = (id) => {
         const { userId } = this.state 
         const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_spokenForItem/${eventId}/${userId}/${id}`)
+        axios.patch(`/api/patch_spoken_for_item/${eventId}/${userId}/${id}`)
         .then( response => {
             this.setState({
                 requestedItems: response.data
@@ -66,7 +66,7 @@ export default class SpecificEvent extends Component {
 
     unassignItem = (id) => {
         const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_assignedItem/${eventId}/${id}`)
+        axios.patch(`/api/patch_assigned_item/${eventId}/${id}`)
         .then( response => {
             this.setState({
                 requestedItems: response.data
