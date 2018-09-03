@@ -1,6 +1,6 @@
 @import '../variables';
 
-.Nav_parent {
+.nav_parent {
     background: $facebook-blue;
     border: 2px solid white;
 }
@@ -9,7 +9,7 @@
     cursor: pointer;
 }
 
-.Nav_container  {
+.nav_container  {
     width: 100vw;
     height: 100%;
     // bottom: 0;
@@ -18,7 +18,7 @@
   
 }
 
-.Nav_icon_container {
+.nav_icon_container {
     // border: 2px solid white;
     // padding-top: 5px;
     display: flex;
@@ -34,14 +34,14 @@
 //     white-space: nowrap;
 // }
 
-.Nav_link_mobile{
+.nav_link_mobile{
     color: white;
     margin: 5px 16px 15px 16px;
     text-decoration: none;
 }
 
 
-.Nav_desktop_link {
+.nav_desktop_link {
     margin: 40px 50px 75px 50px;
     color: white;
     text-decoration: none;
@@ -51,7 +51,7 @@
     font-family: $primary-font-family;
 }
 
-.Nav_desktop_link:hover {
+.nav_desktop_link:hover {
     cursor: pointer;
     background: $highlight-nav;
 }

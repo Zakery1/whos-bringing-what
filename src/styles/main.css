@@ -105,28 +105,28 @@ body {
   align-items: stretch;
   align-content: stretch; }
 
-.App_routesContainer {
+.app_routes_container {
   flex: 5; }
 
-.App_navContainer {
+.app_nav_container {
   flex: 1;
   z-index: 5;
   bottom: 0;
   position: fixed; }
 
-.Home_parent {
+.home_parent {
   color: #395CA9; }
 
-.Home_header {
+.home_header {
   color: #395CA9; }
 
-.About_developers {
+.about_developers {
   background-color: purple;
   font-size: 40px;
   text-align: center;
   width: 100vw; }
 
-.About_peopleContainer {
+.about_people_container {
   background: hotpink;
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@ body {
   align-items: center;
   align-content: center; }
 
-.About_person {
+.about_person {
   align-items: center;
   align-self: center;
   order: 0;
@@ -144,76 +144,76 @@ body {
   flex-shrink: 0;
   flex-basis: 90px; }
 
-.About_headshot {
+.about_headshot {
   width: 340px; }
 
-.About_creatorName {
+.about_creator_name {
   background: green;
   font-size: 30px; }
 
-.About_creatorDetails {
+.about_creator_details {
   background: gold; }
 
-.About_profile_pic {
+.about_profile_pic {
   display: flex;
   align-items: center;
   padding-top: 20px;
   padding: 20px; }
 
-.About_linkedin {
+.about_linkedin {
   background-color: orange;
   font-size: 20px; }
 
-.About_github {
+.about_github {
   background-color: green;
   font-size: 20px; }
 
-.About_footer {
+.about_footer {
   height: 70px; }
 
-.Header_imageMobile {
+.header_image_mobile {
   height: 50vh;
   margin: 20px;
   border: #395CA9 2px solid; }
 
-.Header_imageDesktop {
+.header_image_desktop {
   width: 60vw;
   margin: 0 0 0 0; }
 
-.Footer_appName {
+.footer_app_name {
   text-align: center;
   margin: 50px;
   margin-bottom: 0px;
   color: #395CA9; }
 
-.Footer_aboutParagraphMobile {
+.footer_about_paragraph_mobile {
   padding: 50px 20px 80px 20px;
   text-align: center;
   line-height: 1.5; }
 
-.Nav_parent {
+.nav_parent {
   background: #395CA9;
   border: 2px solid white; }
 
 .button:hover {
   cursor: pointer; }
 
-.Nav_container {
+.nav_container {
   width: 100vw;
   height: 100%; }
 
-.Nav_icon_container {
+.nav_icon_container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: center; }
 
-.Nav_link_mobile {
+.nav_link_mobile {
   color: white;
   margin: 5px 16px 15px 16px;
   text-decoration: none; }
 
-.Nav_desktop_link {
+.nav_desktop_link {
   margin: 40px 50px 75px 50px;
   color: white;
   text-decoration: none;
@@ -222,38 +222,38 @@ body {
   font-size: 15px;
   font-family: "Patua One", cursive; }
 
-.Nav_desktop_link:hover {
+.nav_desktop_link:hover {
   cursor: pointer;
   background: royalblue; }
 
 .main {
   background: #dfdfdf; }
 
-.hideEvent {
+.hide_event {
   display: none; }
 
-.Feed_eventPhoto {
+.feed_event_photo {
   max-width: 100%;
   text-align: center; }
 
-.Feed_title {
+.feed_title {
   font-size: 70px; }
 
-.Feed_event {
+.feed_event {
   color: blue;
   background: paleturquoise;
   min-height: 90px;
   font-size: 30px; }
 
-.Feed_event p {
+.feed_event p {
   font-size: 50px;
   vertical-align: middle;
   text-align: center; }
 
-.Feed_group {
+.feed_group {
   border: 3px solid blue; }
 
-.Feed_event_name {
+.feed_event_name {
   background: red;
   font-size: 50px;
   color: blue;
@@ -261,48 +261,48 @@ body {
   text-align: center;
   vertical-align: middle; }
 
-.Feed_event_description {
+.feed_event_description {
   background: green;
   font-size: 20px;
   color: blue;
   text-align: center; }
 
-.Feed_event_date {
+.feed_event_date {
   background: orange;
   font-size: 20px;
   text-align: center; }
 
-.Feed_footer {
+.feed_footer {
   height: 85px; }
 
-.Feed_big {
+.feed_big {
   margin-left: 190px;
   padding: 0px 10px; }
 
-.Feed_blank {
+.feed_blank {
   height: 25px; }
 
-.Feed_blank_small {
+.feed_blank_small {
   height: 15px; }
 
-.Feed_parent small {
+.feed_parent small {
   overflow-x: hidden; }
 
 a {
   text-decoration: none; }
 
 @media (min-width: 500px) {
-  .Feed_eventPhoto {
+  .feed_event_photo {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%; } }
 
-.Specific_event_parent {
+.specific_event_parent {
   margin-left: 50px;
   border: 3px solid blue; }
 
-.SpecificEvent_eventPhoto {
+.specific_event_event_photo {
   max-width: 200px; }
 
 .event-map {
@@ -310,24 +310,24 @@ a {
   width: 55vw; }
 
 @media (min-width: 500px) {
-  .Specific_event_parent {
+  .specific_event_parent {
     margin-left: 210px;
     border: 3px solid blue; }
-  .Requested_items {
+  .requested_items {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: center;
     align-content: stretch; }
-  .Needed_items {
+  .needed_items {
     align-self: stretch;
     order: 0;
     flex: 0 0 0px;
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 90px; }
-  .Will_bring {
+  .will_bring {
     align-self: stretch;
     order: 0;
     flex: 0 0 0px;
@@ -335,17 +335,17 @@ a {
     flex-shrink: 0;
     flex-basis: 90px; } }
 
-.Creator_event_parent {
+.creator_event_parent {
   margin-left: 50px;
   border: 3px solid blue; }
 
 @media (min-width: 500px) {
-  .Creator_event_parent {
+  .creator_event_parent {
     margin-left: 210px;
     background-color: orange;
     border: 3px solid blue; } }
 
-.SpecificEvent_eventPhoto {
+.specific_event_event_photo {
   max-width: 200px; }
 
 .big {
@@ -356,9 +356,9 @@ a {
     display: none; }
   .big {
     display: initial; }
-  .Nav_parent {
+  .nav_parent {
     width: 200px; }
-  .App_navContainer .big {
+  .app_nav_container .big {
     width: 20vw;
     display: flex;
     flex-direction: column;
@@ -368,7 +368,7 @@ a {
     align-content: space-evenly;
     color: black;
     text-decoration: none; }
-  .Nav_container .big {
+  .nav_container .big {
     width: 18vw;
     display: flex;
     flex-direction: row;
@@ -377,21 +377,21 @@ a {
     text-align: center;
     bottom: 0;
     background: #395CA9; }
-  .Nav_container {
+  .nav_container {
     height: 100vh; }
-  .Home_parent {
+  .home_parent {
     margin-left: 20%; }
-  .Header_parent {
+  .header_parent {
     margin: 3% 0 5% 10%; }
-  .Header_imageDesktop {
+  .header_image_desktop {
     border: #395CA9 2px solid; }
-  .Footer_parent {
+  .footer_parent {
     margin: 0% 0 0% 10%; }
-  .Footer_appName {
+  .footer_app_name {
     margin: 0 150px 20px 0; }
-  .Footer_aboutParagraphDesktop {
+  .footer_about_paragraph_desktop {
     margin-right: 120px; }
-  .Feed_parent {
+  .feed_parent {
     margin-left: 220px; }
-  a .Nav_desktopLink {
+  a .nav_desktop_link {
     color: blue; } }

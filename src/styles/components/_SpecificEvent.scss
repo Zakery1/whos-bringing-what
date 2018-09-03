@@ -1,12 +1,12 @@
 
 
-.Specific_event_parent {
+.specific_event_parent {
     margin-left: 50px;
     border: 3px solid blue;
 }
 
 
-.SpecificEvent_eventPhoto {
+.specific_event_event_photo {
     max-width: 200px;
 }
 
@@ -16,12 +16,12 @@
 }
 
 @media (min-width: 500px) {
-    .Specific_event_parent {
+    .specific_event_parent {
         margin-left: 210px;
         border: 3px solid blue;
     }
 
-    .Requested_items {
+    .requested_items {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -30,7 +30,7 @@
         align-content: stretch;
     }
 
-    .Needed_items {
+    .needed_items {
         align-self: stretch;
         order: 0;
         flex: 0 0 0px;
@@ -39,7 +39,7 @@
         flex-basis: 90px;
     }
 
-    .Will_bring {
+    .will_bring {
         align-self: stretch;
         order: 0;
         flex: 0 0 0px;

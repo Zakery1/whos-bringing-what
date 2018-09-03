@@ -1,16 +1,16 @@
-.About_parent {
+.about_parent {
 
 
 }
 
-.About_developers{
+.about_developers{
     background-color: purple;
     font-size: 40px;
     text-align: center;
     width: 100vw;
 }
 
-.About_peopleContainer {
+.about_people_container {
     background: hotpink;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
     // width: 100vw;
 }
 
-.About_person {
+.about_person {
     align-items:center;
     align-self: center;
     order: 0;
@@ -31,39 +31,39 @@
     flex-basis: 90px;
 }
 
-.About_headshot {
+.about_headshot {
     width: 340px;
   
     // margin-left: 18px;
 }
 
-.About_creatorName {
+.about_creator_name {
     background: green;
     font-size: $creator-name-font-size;
 }
 
-.About_creatorDetails {
+.about_creator_details {
     background: gold;
 }
 
-.About_profile_pic{
+.about_profile_pic{
    display:flex;
    align-items: center;
    padding-top: 20px;
    padding: 20px;
 
 }
-.About_linkedin{
+.about_linkedin{
     background-color: orange;
     font-size: 20px;
 }
-.About_github{
+.about_github{
     background-color:green;
     font-size:20px;
     
 }
 
-.About_footer{
+.about_footer{
     height:70px;
 }
 

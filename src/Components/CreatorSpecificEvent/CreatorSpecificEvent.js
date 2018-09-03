@@ -126,13 +126,13 @@ export default class CreatorSpecificEvent extends Component {
         })
         return (
             
-            <div className="Creator_event_parent">
+            <div className="creator_event_parent">
             Event
             {event.length 
             ? 
             <div>
                 <h1> Name: {event[0].event_name}</h1>
-                <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
+                <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>

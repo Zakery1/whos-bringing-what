@@ -4,9 +4,9 @@ import friendsDesktop from '../../styles/assets/friendsDesktop.jpg';
 
 function Header() {
     return (
-      <div className="Header_parent">
-        <img className="Header_imageDesktop big" src={friendsDesktop} alt="friends"/>
-        <img className="Header_imageMobile small" src={friendsMobile} alt="friends"/>
+      <div className="header_parent">
+        <img className="header_image_desktop big" src={friendsDesktop} alt="friends"/>
+        <img className="header_image_mobile small" src={friendsMobile} alt="friends"/>
       </div>
     );
   }

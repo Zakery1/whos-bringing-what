@@ -101,13 +101,13 @@ export default class SpecificEvent extends Component {
         })
 
         return (
-            <div className="Specific_event_parent">
+            <div className="specific_event_parent">
             {event.length 
             ? 
             <div>
                 <h1> Name: {event[0].event_name}</h1>
                 <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
-                <img className='SpecificEvent_eventPhoto' src={event[0].cover_photo} alt="Displaying event portrait"/>
+                <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Description: {event[0].description}</p>
                 <p>Place: {event[0].place}</p>
@@ -120,12 +120,12 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             
-            <div className="Requested_items">
-                <div className="Needed_items">
+            <div className="requested_items">
+                <div className="needed_items">
                     Items 
                     {loading ? 'Loading Items...' : displayRequestedItems}
                 </div>
-                <div className="Will_bring">
+                <div className="will_bring">
                     {username} is bringing
 
                     {loading ? 'Loading my Items' : displayWillBringItems}
