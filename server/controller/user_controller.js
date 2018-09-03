@@ -51,7 +51,7 @@ module.exports = {
                     // If user is not in database then create user and store in Database
                     } else {
                         const createUserData = {
-                            auth0id,
+                            auth0Id,
                             email: facebookAccessTokenResponse.data.email,
                             username: facebookAccessTokenResponse.data.name,
                             profilePicture: facebookAccessTokenResponse.data.picture_large
@@ -119,7 +119,7 @@ module.exports = {
                                     {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
                                 })  
                         })
-                    }
+                    } 
                     })
                 })
             })
