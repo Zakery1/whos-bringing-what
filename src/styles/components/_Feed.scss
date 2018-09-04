@@ -6,40 +6,49 @@
     display:none;
 }
 
-.show_event{
+// .show_event{
     
-}
+// }
 
 .feed_event_photo {
     max-width: 100%;
     text-align:center;
 }
-
+.logo{
+    width: 100%
+}
 .feed_title{
-    font-size: 70px;
+   
 }
 
 .feed_event{
-    color: blue; 
-    background:paleturquoise;
-    min-height: 90px;
+    color: #3c599b;
+    // background:paleturquoise;
+    min-height: 65px;
     font-size: 30px;
+    margin-left: 20px;
+}
+
+.feed_event{
+    margin-top: 20px;
+    
 }
 
 .feed_event p{
     font-size: 50px; 
     vertical-align: middle;
     text-align: center;
+   
 }
 
 .feed_group{
-    border: 3px solid blue;
+    border: 3px solid #3c599b;
 }
 
 .feed_event_name{
-    background:red;
+    // background:red;
     font-size: 50px;
-    color: blue;
+    color:#3c599b;
     min-height: 80px;
     text-align:center;
     vertical-align:middle;
@@ -50,7 +59,7 @@
 .feed_event_description{
     background:green;
     font-size: 20px;
-    color: blue;
+    color:#3c599b;
     text-align: center;
     
 }
@@ -59,6 +68,7 @@
     background:orange;
     font-size: 20px;
     text-align:center;
+    color: #3c599b;
     
 }
 
@@ -71,13 +81,6 @@
     padding: 0px 10px;
 }
 
-.feed_blank{
-    height: 25px;
-}
-
-.feed_blank_small{
-    height:15px;
-}
 
 .feed_parent small{
     overflow-x: hidden;
