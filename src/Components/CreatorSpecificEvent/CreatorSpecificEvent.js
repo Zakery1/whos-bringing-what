@@ -120,7 +120,9 @@ export default class CreatorSpecificEvent extends Component {
                         <thead>
                              <tr>
                              <th>
-                                {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                             <div className='requested_items_grid'>
+                             {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                             </div>
                              </th>
                              </tr>
                          </thead>
@@ -135,8 +137,6 @@ export default class CreatorSpecificEvent extends Component {
                              </tr>
                             </tbody>
                          </table>
-
-
 
 
                     {/* {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>} */}

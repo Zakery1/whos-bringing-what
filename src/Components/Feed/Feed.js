@@ -3,6 +3,7 @@ import Fetcher from '../Fetcher/Fetcher';
 import { Link } from 'react-router-dom';
 import ReadMoreReact from 'read-more-react';
 import axios from 'axios';
+import Logo from '../../styles/assets/logo.png';
 import Sugar from 'sugar';
 Sugar.Date.extend()
 
@@ -36,17 +37,16 @@ class Feed extends Component {
       <div className="main">
       <div>
       <div className="feed_parent small">
-        <div className="feed_title">Who's Bringing What? </div>
+        <div className="feed_title"><img className='logo' src={Logo} alt='logo' /></div>
         <Fetcher url='/api/created_events' render={(data) => {
         const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
         return ( 
           <div>
-                <div className="feed_blank_small"></div>
+              
                 <div className="feed_event">Events I'm hosting:</div>
             {result.map((event,i) => {
                   return(
-                    <Link to={`/creator_specific_event/${event.id}`} key={i}>
-                      <div className="feed_blank_small"></div>
+                    <Link to={`/creator_specific_event/${event.id}`} key={i}>                     
                       <div className="feed_group">
                       <div className="feed_event_name">{event.event_name}</div>
                       <div><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
@@ -60,13 +60,11 @@ class Feed extends Component {
         <Fetcher url='/api/invited_events' render={(data) => {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
-            <div>
-              <div className="feed_blank_small"></div>
+            <div>             
               <div className="feed_event">Events I'm invited to:</div>
               {result.map((event,i) => user[0].auth0_id === event.creator_id 
               ?  
               <Link to={`/hostSpecificEvent/${event.id}`} key={i}><div>
-              <div className="feed_blank"></div>
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
               <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
@@ -76,7 +74,6 @@ class Feed extends Component {
               </div></Link>
               :
               <Link to={`/specificEvent/${event.id}`} key={i}><div>
-              <div className="feed_blank"></div>
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
               <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
@@ -95,15 +92,13 @@ class Feed extends Component {
 
  <div className="feed_big">
       <div className="feed_parent big">
-        <div className="feed_title">Who's Bringing What?</div>
+      <div className="feed_title"><img className='logo' src={Logo} alt='logo' /></div>
         <Fetcher url='/api/created_events' render={(data) => {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
             <div>
-              <div className="feed_blank"></div>
               <div className="feed_event"><p>Events I'm hosting:</p></div>
               {result.map((event,i) => <Link to={`/creatorSpecificEvent/${event.id}`} key={i}><div>
-              <div className="feed_blank"></div>
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
               <div className="feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
@@ -117,13 +112,11 @@ class Feed extends Component {
         <Fetcher url='/api/invited_events' render={(data) => {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
-            <div>
-              <div className="feed_blank"></div>
+            <div>             
               <div className="feed_event"><p>Events I'm invited to:</p></div>
               {result.map((event,i) => user[0].auth0_id === event.creator_id 
               ?  
-              <Link to={`/hostSpecificEvent/${event.id}`} key={i}><div>
-              <div className="feed_blank"></div>
+              <Link to={`/hostSpecificEvent/${event.id}`} key={i}><div>         
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
               <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
@@ -132,8 +125,7 @@ class Feed extends Component {
               </div>
               </div></Link>
               :
-              <Link to={`/specificEvent/${event.id}`} key={i}><div>
-              <div className="feed_blank"></div>
+              <Link to={`/specificEvent/${event.id}`} key={i}><div>   
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
               <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>

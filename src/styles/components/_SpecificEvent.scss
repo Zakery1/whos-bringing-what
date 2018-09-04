@@ -22,18 +22,11 @@
     }
 
     .requested_items {
-        // display: flex;
-        // flex-direction: row;
-        // flex-wrap: wrap;
         justify-content: space-between;
-        // // align-items: center;
-        // align-content: stretch;
         background-color: purple;
         padding: 10px;
          display:flex;
          flex-wrap: wrap;
-               
-        
     }
 
     .needed_items {
