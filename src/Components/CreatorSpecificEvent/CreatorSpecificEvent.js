@@ -116,22 +116,45 @@ export default class CreatorSpecificEvent extends Component {
         const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
-                <div key={i}>
-                    {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                    {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
+                <div className='requested_items' key={i}>
+                    <table id="t">
+                        <thead>
+                             <tr>
+                             <th>
+                                {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                             </th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                             <td>
+                             {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
+                             {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
+                             <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
+                             </td>
+                                
+                             </tr>
+                            </tbody>
+                         </table>
+
+
+
+
+                    {/* {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>} */}
+                    {/* {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
                     {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                    <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
+                    <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button> */}
                 </div>
             )
         })
         return (
             
             <div className="creator_event_parent">
-            Event
+        
             {event.length 
             ? 
-            <div>
-                <h1> Name: {event[0].event_name}</h1>
+            <div className='specific_event'>
+                <h1> Event name: {event[0].event_name}</h1>
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
@@ -147,10 +170,14 @@ export default class CreatorSpecificEvent extends Component {
             :
             <p>Loading Event...</p>
             }
-            <h1>Items</h1>
+            <div className='specific_event_table'>
+            <h1>Requested Items:</h1>
+            <div className='specific_event_item'>
             {loading ? 'Loading Items...' : displayRequestedItems}
+            </div>
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
             <button className='myButton' onClick={() => this.addItem()}>Add Item</button>
+            </div>
             </div>
            
         );
