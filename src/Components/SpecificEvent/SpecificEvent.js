@@ -83,7 +83,7 @@ export default class SpecificEvent extends Component {
              
                     <p>{item.name}</p>
                     <p>{item.user_id}</p>
-                    <button onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
+                    <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
                 </div>
             )
         })
@@ -95,7 +95,7 @@ export default class SpecificEvent extends Component {
                 <div key={i}>
                     <p>{item.name}</p>
                     <p>{item.user_id}</p>
-                    <button onClick={() => this.unassignItem(item.id)}>Unassign item</button>
+                    <button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button>
                 </div>
             )
         })

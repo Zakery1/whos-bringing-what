@@ -40,7 +40,7 @@ class Grid extends Component {
         <div style={{ marginTop: 10 }} >
           <h4> Send Email </h4>
           {/* <label> Recipient </label> */}
-          <button onClick={()=>this.showEmailForm()}>Cancel</button>
+          <button className='myButton' onClick={()=>this.showEmailForm()}>Cancel</button>
       
           {/* <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} /> */}
@@ -60,8 +60,8 @@ class Grid extends Component {
           <textarea rows={3} value={email.text} style={textArea}
             onChange={e => this.setState({ email: { ...email, text: e.target.value } })} />
           <div style={spacer} />
-          <button onClick={this.sendEmail}> Send Email </button>
-        </div>  : <button onClick={() => this.showEmailForm()}>Send Us An Email</button> }
+          <button className='myButton' onClick={this.sendEmail}> Send Email </button>
+        </div>  : <button className='myButton' onClick={() => this.showEmailForm()}>Send Us An Email</button> }
 
       </div>
     );

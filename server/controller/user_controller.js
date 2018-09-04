@@ -2,8 +2,9 @@ const axios = require('axios')
 require("dotenv").config();
 const get = require('lodash/get');
 const SS_KEY = process.env.SMART_STREETS_API
+const isEqual = require('lodash/isequal')
 
- module.exports = {
+module.exports = {
     login: (req, res) => {
         const payload = {
             client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -73,6 +74,7 @@ const SS_KEY = process.env.SMART_STREETS_API
                 })
                 return facebookAccessTokenResponse;
         }
+
         function storeEventsInDatabase(facebookAccessTokenResponse){
             let auth0Id = req.session.user.sub.split('|')[1]
 
@@ -104,54 +106,10 @@ const SS_KEY = process.env.SMART_STREETS_API
                         street: res.data[0].delivery_line_1,
                         zip: res.data[0].components.zipcode,
                      };
-                     console.log('whole facebook event', facebookEvent)
-                    }) 
-                    
-                 :''
+                    //  console.log('whole facebook event', facebookEvent)
 
-                 // res.data------------- [ { 
-//     input_index: 0,
-//     candidate_index: 0,
-//     delivery_line_1: '560 S 100 W',
-//     last_line: 'Provo UT 84601-4569',
-//     delivery_point_barcode: '846014569999',
-//     components:
-//      { primary_number: '560',
-//        street_predirection: 'S',
-//        street_name: '100',
-//        street_postdirection: 'W',
-//        city_name: 'Provo',
-//        state_abbreviation: 'UT',
-//        zipcode: '84601',
-//        plus4_code: '4569',
-//        delivery_point: '99',
-//        delivery_point_check_digit: '9' },
-//     metadata:
-//      { record_type: 'H',
-//        zip_type: 'Standard',
-//        county_fips: '49049',
-//        county_name: 'Utah',
-//        carrier_route: 'C013',
-//        congressional_district: '03',
-//        building_default_indicator: 'Y',
-//        rdi: 'Residential',
-//        elot_sequence: '0132',
-//        elot_sort: 'A',
-//        latitude: 40.22702,
-//        longitude: -111.6606,
-//        precision: 'Zip9',
-//        time_zone: 'Mountain',
-//        utc_offset: -7,
-//        dst: true },
-//     analysis:
-//      { dpv_match_code: 'D',
-//        dpv_footnotes: 'AAN1',
-//        dpv_cmra: 'N',
-//        dpv_vacant: 'N',
-//        active: 'N',
-//        footnotes: 'H#' } } ]
 
-                    
+        
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
                         // Check to see if user is going, if user is unsure/interested, event will not be displayed
@@ -161,7 +119,7 @@ const SS_KEY = process.env.SMART_STREETS_API
                                 eventName: get(facebookEvent, 'name', null),
                                 eventPhoto: get(facebookEvent, 'cover.source', null),
                                 description: get(facebookEvent, 'description', null), 
-                                place: get(facebookEvent, 'place.name'),
+                                place: get(facebookEvent, 'place.name', null),
                                 city: get(facebookEvent, 'place.location.city', null),
                                 country: get(facebookEvent, 'place.location.country', null),
                                 latitude: get(facebookEvent,'place.location.latitude',null),
@@ -189,9 +147,15 @@ const SS_KEY = process.env.SMART_STREETS_API
                                     // If they have not been invited yet, linked the event and user through the invitations table
                                     if(invitations.findIndex(invitation => invitation.event_id === databaseEvents[index].id && invitation.user_id === users[0].id) === -1) 
                                     {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
+                                    
                                 })  
+                                
                         })
+                        
                     } 
+                }) 
+                    
+                :''
                     })
                 })
             })
@@ -205,7 +169,7 @@ const SS_KEY = process.env.SMART_STREETS_API
                     // Check to see if events in database that user is linked to are events that the user is still going to
                     databaseEvents.forEach(databaseEvent => {
                         const eventId = databaseEvent.id
-                         // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
+                         // Check event id in the Database with the id of the facebook events coming in, if the user is no longer attending the event(on Facebook) then clear the event accordingly
                     if(facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) === -1) {
                         if(databaseEvent.creator_id === auth0Id.toString()){
                             // Delete all invitations that event is connected to
@@ -229,9 +193,60 @@ const SS_KEY = process.env.SMART_STREETS_API
                             // Delete invitation that connects user to event 
                             dbInstance.delete_invitation({eventId, userId})
                         })}
-                     }})
+                        // If facebook event has new information that is different from database event
+                     } else if (facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) !== -1 ) {
+                         const index = facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id)
+                         const facebookEvent = facebookEvents.data.events.data[index]
+                                          
+                            facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                            ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
+                            .then((res) => {
+                    //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
+                     facebookEvent.place.location = {
+                        city: res.data[0].components.city_name,
+                        country: "United States",
+                        latitude: res.data[0].metadata.latitude,
+                        longitude: res.data[0].metadata.longitude,
+                        state: res.data[0].components.state_abbreviation,
+                        street: res.data[0].delivery_line_1,
+                        zip: res.data[0].components.zipcode,
+                     };
+                     console.log('whole facebook event', facebookEvent)
+
+                         let facebookObj = { 
+                            event_id: get(facebookEvent, 'id', null),
+                            event_name: get(facebookEvent, 'name', null),
+                            cover_photo: get(facebookEvent, 'cover.source', null),
+                            description: get(facebookEvent, 'description', null), 
+                            place: get(facebookEvent, 'place.name', null),
+                            city: get(facebookEvent, 'place.location.city', null),
+                            country: get(facebookEvent, 'place.location.country', null),
+                            latitude: get(facebookEvent,'place.location.latitude',null),
+                            longitude: get(facebookEvent,'place.location.longitude',null),
+                            state: get(facebookEvent,'place.location.state',null),
+                            street: get(facebookEvent,'place.location.street',null),
+                            zip: get(facebookEvent,'place.location.zip',null),
+                            start_time: get(facebookEvent,'start_time',null),
+                            creator_id: get(facebookEvent,'admins.data[0].id',null)
+                        }
+                        delete databaseEvent.id
+                        databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
+                        databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
+                        console.log('facebookObj***************', facebookObj)
+                        console.log('dbevent$$$$$', databaseEvent)
+                        if (!isEqual(facebookObj, databaseEvent)){
+                            // console.log("it got hit!!!!!!!!!!!!!!!!!")
+                            dbInstance.update_event(facebookObj)
+                        }
+                    }) 
+                    
+                    :''
+                     }
                     })
+                    })
+                    
                 })
+                
             }
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
