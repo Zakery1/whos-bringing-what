@@ -22,12 +22,11 @@
     }
 
     .requested_items {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        align-items: center;
-        align-content: stretch;
+        justify-content: space-between;
+        background-color: purple;
+        padding: 10px;
+         display:flex;
+         flex-wrap: wrap;
     }
 
     .needed_items {
