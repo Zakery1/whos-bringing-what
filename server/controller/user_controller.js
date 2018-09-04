@@ -2,7 +2,7 @@ const axios = require('axios')
 require("dotenv").config();
 const get = require('lodash/get');
 const SS_KEY = process.env.SMART_STREETS_API
-const isEqual = require('lodash/isequal')
+const isEqual = require('lodash/isEqual')
 
 module.exports = {
     login: (req, res) => {
