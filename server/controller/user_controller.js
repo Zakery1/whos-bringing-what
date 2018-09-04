@@ -1,6 +1,9 @@
 const axios = require('axios')
+require("dotenv").config();
 const get = require('lodash/get');
-module.exports = {
+const SS_KEY = process.env.SMART_STREETS_API
+
+ module.exports = {
     login: (req, res) => {
         const payload = {
             client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -83,7 +86,14 @@ module.exports = {
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
-                 console.log('facebook place',facebookEvent.place)
+
+                    //Smart Streets
+                 
+                 facebookEvent.place.name && !facebookEvent.place.location                 
+                 ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`).then((res) => console.log("res.data-------------", res.data)  ) 
+                 :''
+                 
+                    
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
                         // Check to see if user is going, if user is unsure/interested, event will not be displayed

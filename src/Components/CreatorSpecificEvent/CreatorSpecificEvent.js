@@ -61,7 +61,6 @@ export default class CreatorSpecificEvent extends Component {
             }).catch(error => {
                 console.log('Axios error POST CreatorSpecificEvent', error)
             })
-
         }
     }
 
