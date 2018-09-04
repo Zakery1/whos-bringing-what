@@ -86,13 +86,71 @@ const SS_KEY = process.env.SMART_STREETS_API
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
+                    console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
+                    
 
                     //Smart Streets
                  
-                 facebookEvent.place.name && !facebookEvent.place.location                 
-                 ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`).then((res) => console.log("res.data-------------", res.data)  ) 
+                 facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                 ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
+                 .then((res) => {
+                    //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
+                     facebookEvent.place.location = {
+                        city: res.data[0].components.city_name,
+                        country: "United States",
+                        latitude: res.data[0].metadata.latitude,
+                        longitude: res.data[0].metadata.longitude,
+                        state: res.data[0].components.state_abbreviation,
+                        street: res.data[0].delivery_line_1,
+                        zip: res.data[0].components.zipcode,
+                     };
+                     console.log('whole facebook event', facebookEvent)
+                    }) 
+                    
                  :''
-                 
+
+                 // res.data------------- [ { 
+//     input_index: 0,
+//     candidate_index: 0,
+//     delivery_line_1: '560 S 100 W',
+//     last_line: 'Provo UT 84601-4569',
+//     delivery_point_barcode: '846014569999',
+//     components:
+//      { primary_number: '560',
+//        street_predirection: 'S',
+//        street_name: '100',
+//        street_postdirection: 'W',
+//        city_name: 'Provo',
+//        state_abbreviation: 'UT',
+//        zipcode: '84601',
+//        plus4_code: '4569',
+//        delivery_point: '99',
+//        delivery_point_check_digit: '9' },
+//     metadata:
+//      { record_type: 'H',
+//        zip_type: 'Standard',
+//        county_fips: '49049',
+//        county_name: 'Utah',
+//        carrier_route: 'C013',
+//        congressional_district: '03',
+//        building_default_indicator: 'Y',
+//        rdi: 'Residential',
+//        elot_sequence: '0132',
+//        elot_sort: 'A',
+//        latitude: 40.22702,
+//        longitude: -111.6606,
+//        precision: 'Zip9',
+//        time_zone: 'Mountain',
+//        utc_offset: -7,
+//        dst: true },
+//     analysis:
+//      { dpv_match_code: 'D',
+//        dpv_footnotes: 'AAN1',
+//        dpv_cmra: 'N',
+//        dpv_vacant: 'N',
+//        active: 'N',
+//        footnotes: 'H#' } } ]
+
                     
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
@@ -266,3 +324,5 @@ const SS_KEY = process.env.SMART_STREETS_API
         })
     }
 }
+
+
