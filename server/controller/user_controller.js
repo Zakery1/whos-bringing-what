@@ -1,5 +1,7 @@
 const axios = require('axios')
+require("dotenv").config();
 const get = require('lodash/get');
+const SS_KEY = process.env.SMART_STREETS_API
 const isEqual = require('lodash/isequal')
 
 module.exports = {
@@ -86,6 +88,27 @@ module.exports = {
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
+                    console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
+                    
+
+                    //Smart Streets
+                 
+                 facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                 ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
+                 .then((res) => {
+                    //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
+                     facebookEvent.place.location = {
+                        city: res.data[0].components.city_name,
+                        country: "United States",
+                        latitude: res.data[0].metadata.latitude,
+                        longitude: res.data[0].metadata.longitude,
+                        state: res.data[0].components.state_abbreviation,
+                        street: res.data[0].delivery_line_1,
+                        zip: res.data[0].components.zipcode,
+                     };
+                    //  console.log('whole facebook event', facebookEvent)
+
+
         
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
@@ -124,9 +147,15 @@ module.exports = {
                                     // If they have not been invited yet, linked the event and user through the invitations table
                                     if(invitations.findIndex(invitation => invitation.event_id === databaseEvents[index].id && invitation.user_id === users[0].id) === -1) 
                                     {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
+                                    
                                 })  
+                                
                         })
+                        
                     } 
+                }) 
+                    
+                :''
                     })
                 })
             })
@@ -168,7 +197,23 @@ module.exports = {
                      } else if (facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) !== -1 ) {
                          const index = facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id)
                          const facebookEvent = facebookEvents.data.events.data[index]
-                         let faceBookObj = { 
+                                          
+                            facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                            ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
+                            .then((res) => {
+                    //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
+                     facebookEvent.place.location = {
+                        city: res.data[0].components.city_name,
+                        country: "United States",
+                        latitude: res.data[0].metadata.latitude,
+                        longitude: res.data[0].metadata.longitude,
+                        state: res.data[0].components.state_abbreviation,
+                        street: res.data[0].delivery_line_1,
+                        zip: res.data[0].components.zipcode,
+                     };
+                     console.log('whole facebook event', facebookEvent)
+
+                         let facebookObj = { 
                             event_id: get(facebookEvent, 'id', null),
                             event_name: get(facebookEvent, 'name', null),
                             cover_photo: get(facebookEvent, 'cover.source', null),
@@ -187,13 +232,21 @@ module.exports = {
                         delete databaseEvent.id
                         databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
                         databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
-                        if (!isEqual(faceBookObj, databaseEvent)){
-                            dbInstance.update_event(faceBookObj)
+                        console.log('facebookObj***************', facebookObj)
+                        console.log('dbevent$$$$$', databaseEvent)
+                        if (!isEqual(facebookObj, databaseEvent)){
+                            // console.log("it got hit!!!!!!!!!!!!!!!!!")
+                            dbInstance.update_event(facebookObj)
                         }
+                    }) 
+                    
+                    :''
                      }
                     })
                     })
+                    
                 })
+                
             }
         tradeCodeForAccessToken()
         .then(tradeAccessTokenForUserInfo)
@@ -286,3 +339,5 @@ module.exports = {
         })
     }
 }
+
+
