@@ -1,5 +1,7 @@
 const axios = require('axios')
 const get = require('lodash/get');
+const isEqual = require('lodash/isequal')
+
 module.exports = {
     login: (req, res) => {
         const payload = {
@@ -70,6 +72,7 @@ module.exports = {
                 })
                 return facebookAccessTokenResponse;
         }
+
         function storeEventsInDatabase(facebookAccessTokenResponse){
             let auth0Id = req.session.user.sub.split('|')[1]
 
@@ -83,7 +86,7 @@ module.exports = {
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
-                 console.log('facebook place',facebookEvent.place)
+        
                     // Check events in the Database with the id of the new events coming in, if new events are not in database then keep going
                   if(databaseEvents.findIndex(event => event.event_id === facebookEvent.id) === -1) {
                         // Check to see if user is going, if user is unsure/interested, event will not be displayed
@@ -93,7 +96,7 @@ module.exports = {
                                 eventName: get(facebookEvent, 'name', null),
                                 eventPhoto: get(facebookEvent, 'cover.source', null),
                                 description: get(facebookEvent, 'description', null), 
-                                place: get(facebookEvent, 'place.name'),
+                                place: get(facebookEvent, 'place.name', null),
                                 city: get(facebookEvent, 'place.location.city', null),
                                 country: get(facebookEvent, 'place.location.country', null),
                                 latitude: get(facebookEvent,'place.location.latitude',null),
@@ -137,7 +140,7 @@ module.exports = {
                     // Check to see if events in database that user is linked to are events that the user is still going to
                     databaseEvents.forEach(databaseEvent => {
                         const eventId = databaseEvent.id
-                         // Check event id in the Database with the id of the facebook events coming in, if facebook events are not in database then clear events properly
+                         // Check event id in the Database with the id of the facebook events coming in, if the user is no longer attending the event(on Facebook) then clear the event accordingly
                     if(facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) === -1) {
                         if(databaseEvent.creator_id === auth0Id.toString()){
                             // Delete all invitations that event is connected to
@@ -161,7 +164,34 @@ module.exports = {
                             // Delete invitation that connects user to event 
                             dbInstance.delete_invitation({eventId, userId})
                         })}
-                     }})
+                        // If facebook event has new information that is different from database event
+                     } else if (facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id) !== -1 ) {
+                         const index = facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id)
+                         const facebookEvent = facebookEvents.data.events.data[index]
+                         let faceBookObj = { 
+                            event_id: get(facebookEvent, 'id', null),
+                            event_name: get(facebookEvent, 'name', null),
+                            cover_photo: get(facebookEvent, 'cover.source', null),
+                            description: get(facebookEvent, 'description', null), 
+                            place: get(facebookEvent, 'place.name', null),
+                            city: get(facebookEvent, 'place.location.city', null),
+                            country: get(facebookEvent, 'place.location.country', null),
+                            latitude: get(facebookEvent,'place.location.latitude',null),
+                            longitude: get(facebookEvent,'place.location.longitude',null),
+                            state: get(facebookEvent,'place.location.state',null),
+                            street: get(facebookEvent,'place.location.street',null),
+                            zip: get(facebookEvent,'place.location.zip',null),
+                            start_time: get(facebookEvent,'start_time',null),
+                            creator_id: get(facebookEvent,'admins.data[0].id',null)
+                        }
+                        delete databaseEvent.id
+                        databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
+                        databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
+                        if (!isEqual(faceBookObj, databaseEvent)){
+                            dbInstance.update_event(faceBookObj)
+                        }
+                     }
+                    })
                     })
                 })
             }
