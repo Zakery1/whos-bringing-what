@@ -80,29 +80,29 @@ export default class SpecificEvent extends Component {
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
 
-                <div className='requested_items'>
-                <div style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
-             <table class="requested_items_table">
-                <thead>
-                    <tr>
-                    <th>
-                    <div className='requested_item_name'>
-                    <p>{item.name}</p>
-                    <p>{item.user_id}</p>
-                    </div>
-                    </th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td>
-                <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
-                </td>
-                </tr>
-                </tbody>
-                </table>
+                <div className='requested_items_container' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
+                    <table id="t">
+                        <thead>
+                             <tr>
+                             <th>
+                             <div className='requested_item_name'>
+                             <p>{item.name}</p>
+                             <p>{item.user_id}</p>
+                             </div>
+                             </th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                             <td>
+                            <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
+                            </td>
+                             </tr>
+                            </tbody>
+                         </table>
                 </div>
-                </div>
+
+            
             )
         })
 
@@ -163,7 +163,7 @@ export default class SpecificEvent extends Component {
                 <th>
                 <div className="needed_items">
                    The host is requesting these items:
-                    {loading ? 'Loading Items...' : displayRequestedItems}
+                <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
                 </div>   
                 </th>
                 </tr>
@@ -197,6 +197,7 @@ export default class SpecificEvent extends Component {
             :
             <p>Loading Event...</p>
             }
+            <div className="requested_items_container">
             <div className="requested_items">
             <table class="requested_items_table">
             <thead>
@@ -216,7 +217,8 @@ export default class SpecificEvent extends Component {
                 </div>
             </div>
             </div>
-            
+
+            </div>
             </div>
            
         );
