@@ -2,7 +2,7 @@ const axios = require('axios')
 require("dotenv").config();
 const get = require('lodash/get');
 const SS_KEY = process.env.SMART_STREETS_API
-const isEqual = require('lodash/isequal')
+const isEqual = require('lodash/isEqual')
 
 module.exports = {
     login: (req, res) => {
@@ -88,12 +88,12 @@ module.exports = {
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
-                    console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
+                    // console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
                     
 
                     //Smart Streets
                  
-                 facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                    get(facebookEvent, 'place.name', null) && !get(facebookEvent, 'place.location', null) && get(facebookEvent, 'place.name', null).includes('United States')           
                  ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
                  .then((res) => {
                     //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
@@ -106,7 +106,8 @@ module.exports = {
                         street: res.data[0].delivery_line_1,
                         zip: res.data[0].components.zipcode,
                      };
-                    //  console.log('whole facebook event', facebookEvent)
+                     console.log('whole facebook event', facebookEvent)
+                    console.log('databaseEvents --------', databaseEvents )
 
 
         
@@ -138,7 +139,8 @@ module.exports = {
                             })
                         }
                     // If the facebook event is already in the database 
-                    } else if (databaseEvents.findIndex(event => event.event_id === facebookEvent.id) != -1) { 
+                    } else if (databaseEvents.findIndex(event => event.event_id === facebookEvent.id) !== -1) {
+                        console.log('hit------------------')
                         // Get the index where the event from the database, matches the event that is currently being checked on
                         const index = databaseEvents.findIndex(event => event.event_id === facebookEvent.id)
                         dbInstance.read_user_by_auth0_id({auth0Id}).then(users => {
@@ -241,7 +243,7 @@ module.exports = {
                          const index = facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id)
                          const facebookEvent = facebookEvents.data.events.data[index]
                                           
-                            facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                            get(facebookEvent, 'place.name', null) && !get(facebookEvent, 'place.location', null) && get(facebookEvent, 'place.name', null).includes('United States')           
                             ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
                             .then((res) => {
                     //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
