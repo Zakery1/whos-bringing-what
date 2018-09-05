@@ -10,7 +10,7 @@ import {ic_tag_faces} from 'react-icons-kit/md/ic_tag_faces';
 import {login} from 'react-icons-kit/iconic/login';
 import {logout} from 'react-icons-kit/iconic/logout';
 import {user_circle} from 'react-icons-kit/ikons/user_circle';
-import { withClientState } from 'apollo-link-state';
+// import { withClientState } from 'apollo-link-state';
 
 
 class Nav extends Component {
