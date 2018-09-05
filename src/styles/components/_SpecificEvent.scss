@@ -1,18 +1,54 @@
 
 
 .specific_event_parent {
-    margin-left: 50px;
+    // margin-left: 50px;
     border: 3px solid blue;
+    margin-bottom:80px;
 }
 
+.specific_event_name{
+    background: purple;
+    margin:5px;
+}
 
-.specific_event_event_photo {
-    max-width: 200px;
+.specific_event_photo {
+    // background: green;
+    margin-left:20px;
+    max-width: 300px;
+    padding: 10px;
+}
+.specific_event_map{
+    margin-left:20px;
+    background:yellow;
+}
+.specific_event_info{
+    margin-left:20px;
+    padding: 10px;
+    // background: orange;
 }
 
 .event-map {
-    height: 40vh;
+    height: 30vh;
     width: 55vw;
+}
+
+.requested_items{
+    margin: 5px;
+}
+.p{
+  flex-wrap:wrap;
+}
+.will_bring_table{
+    background:red;
+    padding: 10px;
+    border: 3px solid blue;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.will_bring_items{
+   margin-top:5px;
+    background:green;
 }
 
 @media (min-width: 500px) {
