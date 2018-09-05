@@ -119,20 +119,21 @@ export default class CreatorSpecificEvent extends Component {
                     <table id="t">
                         <thead>
                              <tr>
-                                <th>
-                                <div className='requested_items_grid'>
-                                {editing ? selectedId === item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                                </div>
-                                </th>
+                             <th>
+                             <div className='requested_items_grid'>
+                             {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                             </div>
+                             </th>
                              </tr>
                          </thead>
                          <tbody>
                              <tr>
-                                <td>
-                                {editing ? selectedId === item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
-                                {editing && selectedId === item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                                <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                                </td>
+                             <td>
+                             {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
+                             {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
+                             <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
+                             </td>
+                                
                              </tr>
                             </tbody>
                          </table>
@@ -146,7 +147,7 @@ export default class CreatorSpecificEvent extends Component {
             {event.length 
             ? 
             <div className='specific_event'>
-                <h1 className='specific_event_name'>{event[0].event_name}</h1>
+                <h1> Event name: {event[0].event_name}</h1>
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>

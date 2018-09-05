@@ -105,7 +105,8 @@ body {
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background: #dfdbdd; }
 
 .app_routes_container {
   flex: 5; }
@@ -124,13 +125,11 @@ body {
   color: #395CA9; }
 
 .about_developers {
-  background-color: purple;
   font-size: 40px;
   text-align: center;
   width: 100vw; }
 
 .about_people_container {
-  background: hotpink;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -145,17 +144,19 @@ body {
   flex: 0 0 0px;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 90px; }
+  flex-basis: 90px;
+  border: 3px solid blue;
+  margin: 10px;
+  margin-right: 20px; }
 
 .about_headshot {
   width: 340px; }
 
 .about_creator_name {
-  background: green;
   font-size: 30px; }
 
 .about_creator_details {
-  background: gold; }
+  max-width: 380px; }
 
 .about_profile_pic {
   display: flex;
@@ -164,15 +165,13 @@ body {
   padding: 20px; }
 
 .about_linkedin {
-  background-color: orange;
   font-size: 20px; }
 
 .about_github {
-  background-color: green;
   font-size: 20px; }
 
-.about_footer {
-  height: 70px; }
+.about_github_bottom {
+  margin-bottom: 70px; }
 
 .header_title {
   width: 100%; }
@@ -344,25 +343,21 @@ a {
   margin-bottom: 80px; }
 
 .specific_event_name {
-  background: purple;
   margin: 5px;
   text-align: center; }
 
 .specific_event_photo {
-  background: green;
   margin-left: 20px;
-  max-width: 300px;
+  width: 300px;
   padding: 10px; }
 
 .specific_event_map {
   margin-left: 20px;
-  background: yellow;
   max-width: 100px; }
 
 .specific_event_info {
   margin-left: 20px;
-  padding: 10px;
-  background: orange; }
+  padding: 10px; }
 
 .event-map {
   height: 30vh;
@@ -381,29 +376,61 @@ a {
 
 .will_bring_table {
   text-align: center;
-  background: red;
   max-width: 160px;
-  border: 3px solid blue; }
+  border: 3px solid green; }
 
 .will_bring_items {
   margin: 10px; }
 
 @media (min-width: 500px) {
+  .specific_event_name {
+    font-size: 60px; }
+  .specific_event_photo {
+    margin-left: 220px;
+    margin-right: auto;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 20px; }
+  .specific_event_map {
+    margin-left: 240px;
+    margin-right: auto;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 20px; }
+  .specific_event_info {
+    margin-left: 240px;
+    margin-right: auto;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 30px; }
   .specific_event_parent {
-    margin-left: 210px;
-    border: 3px solid blue; }
+    margin-left: 210px; }
+  .requested_items_table {
+    max-width: 45%;
+    padding: 10px;
+    background: orange; }
+  .will_bring_table {
+    text-align: center;
+    max-width: 45%;
+    border: 3px solid green; }
   .requested_items {
     justify-content: space-between;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap; }
+    padding: 10px; }
   .needed_items {
     align-self: stretch;
     order: 0;
     flex: 0 0 0px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 90px; }
+    flex-basis: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: green;
+    max-height: 1200px;
+    border: solid blue 3px;
+    width: 100%; }
   .will_bring {
     align-self: stretch;
     order: 0;
@@ -481,7 +508,7 @@ h1 {
     background: #08084d; }
 
 table {
-  border: 2px solid black; }
+  border: 2px solid blue; }
 
 body {
   padding: 8px; }
@@ -500,7 +527,7 @@ th {
 th,
 td {
   padding: 5px;
-  border: solid blue 3px; }
+  border: solid purple 3px; }
 
 .big {
   display: none; }
