@@ -198,19 +198,16 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_items_container">
+            items container
             <div className="requested_items">
-            <table class="requested_items_table">
-            <thead>
-                <tr>
-                <th>
+            items
+
+            
                 <div className="needed_items">
                    The host is requesting these items:
                     {loading ? 'Loading Items...' : displayRequestedItems}
                 </div>   
-                </th>
-                </tr>
-            </thead>
-                </table>
+              
                 <div className="will_bring_table">
                     {username} is bringing:
                     {loading ? 'Loading my Items' : displayWillBringItems}

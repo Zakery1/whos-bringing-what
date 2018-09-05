@@ -145,7 +145,7 @@ body {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 90px;
-  border: 3px solid blue;
+  border: 3px solid #3c599b;
   margin: 10px;
   margin-right: 20px; }
 
@@ -261,7 +261,8 @@ body {
 
 .feed_event_photo {
   max-width: 100%;
-  text-align: center; }
+  text-align: center;
+  border: 3px solid #3c599b; }
 
 .feed_logo {
   width: 100%;
@@ -339,7 +340,7 @@ a {
     margin-right: auto; } }
 
 .specific_event_parent {
-  border: 3px solid blue;
+  border: 3px solid #3c599b;
   margin-bottom: 80px; }
 
 .specific_event_name {
@@ -349,7 +350,8 @@ a {
 .specific_event_photo {
   margin-left: 20px;
   width: 300px;
-  padding: 10px; }
+  padding: 10px;
+  border: 3px solid #3c599b; }
 
 .specific_event_map {
   margin-left: 20px;
@@ -390,7 +392,8 @@ a {
     margin-right: auto;
     width: 70%;
     padding: 10px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    border: 3px solid #3c599b; }
   .specific_event_map {
     margin-left: 240px;
     margin-right: auto;
@@ -414,23 +417,27 @@ a {
     text-align: center;
     max-width: 45%;
     border: 3px solid green; }
+  .requested_item_button {
+    border: 3px solid blue; }
+  .requested_items_container {
+    background: green;
+    padding: 5px; }
   .requested_items {
+    background: red;
     justify-content: space-between;
     padding: 10px; }
   .needed_items {
     align-self: stretch;
     order: 0;
-    flex: 0 0 0px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 90px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background: green;
-    max-height: 1200px;
-    border: solid blue 3px;
-    width: 100%; }
+    max-height: 800px;
+    border: solid #3c599b 3px;
+    max-width: 45%;
+    background: yellow; }
   .will_bring {
     align-self: stretch;
     order: 0;
@@ -451,7 +458,7 @@ h1 {
   margin-bottom: 15px; }
 
 .specific_event_table {
-  border: 3px solid blue;
+  border: 3px solid #3c599b;
   width: 50%;
   margin: 10px;
   padding: 10px; }
@@ -466,17 +473,17 @@ h1 {
 
 .creator_event_parent {
   margin-left: 50px;
-  border: 3px solid blue; }
+  border: 3px solid #3c599b; }
 
 @media (min-width: 500px) {
   .creator_event_parent {
     margin-left: 210px;
-    background-color: orange;
-    border: 3px solid blue; } }
+    border: 3px solid #3c599b; } }
 
 .specific_event_event_photo {
-  max-width: 200px;
-  padding: 10px; }
+  width: 70%px;
+  padding: 10px;
+  border: 3px solid #3c599b; }
 
 .myButton {
   border-top: 1px solid #0b293b;
@@ -508,7 +515,7 @@ h1 {
     background: #08084d; }
 
 table {
-  border: 2px solid blue; }
+  border: 2px solid #3c599b; }
 
 body {
   padding: 8px; }

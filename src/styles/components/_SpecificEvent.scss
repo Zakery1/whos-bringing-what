@@ -2,7 +2,7 @@
 
 .specific_event_parent {
     // margin-left: 50px;
-    border: 3px solid blue;
+    border: 3px solid #3c599b;
     margin-bottom:80px;
 }
 
@@ -16,6 +16,7 @@
     margin-left:20px;
     width: 300px;
     padding: 10px;
+    border: 3px solid #3c599b;
 }
 .specific_event_map{
     margin-left:20px;
@@ -41,6 +42,7 @@
 }
 .requested_item_name{
     max-width: 100px;
+   
 }
 .will_bring_table{
     text-align: center;
@@ -66,6 +68,7 @@
         width: 70%;
         padding: 10px;
         margin-bottom: 20px;
+        border: 3px solid #3c599b;
 
     }
     .specific_event_map{
@@ -100,31 +103,37 @@
         max-width: 45%;
         border: 3px solid green;
     }
+
+    .requested_item_button{
+        border: 3px solid blue;
+    }
+
     .requested_items_container{
-        // display: flex;
-        // flex-wrap: wrap
+       background: green;
+        padding:5px;
+        // border: 3px solid blue;
     }
     .requested_items {
+        background: red;
         justify-content: space-between;
         padding: 10px;
-        //  display:flex;
-        //  flex-wrap: wrap;
+       
     }
 
     .needed_items {
         align-self: stretch;
         order: 0;
-        flex: 0 0 0px;
+        // flex: 0 0 0px;
         flex-grow: 0;
         flex-shrink: 0;
-        flex-basis: 90px;
+        // flex-basis: 90px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        background: green;
-        max-height: 1200px; 
-        border: solid blue 3px;
-        width: 100%;
+        max-height: 800px; 
+        border: solid#3c599b 3px;
+        max-width: 45%;
+        background:yellow;
     }
 
     .will_bring {

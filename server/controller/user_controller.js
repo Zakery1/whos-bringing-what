@@ -83,7 +83,7 @@ module.exports = {
              // Request to get all events that user is linked to (attending, interested, created)
             axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
             .then(facebookEvents => {
-                // console.log(facebookEvents.data.events.data)
+                // console.log('facebook events------------++++++++',facebookEvents.data.events.data)
                 // console.log("location ---------------", facebookEvents.data.events.data.place)
 
              // Checking through each event that Facebook gave back
@@ -254,7 +254,7 @@ module.exports = {
                         street: res.data[0].delivery_line_1,
                         zip: res.data[0].components.zipcode,
                      };
-                     console.log('whole facebook event', facebookEvent)
+                    //  console.log('whole facebook event', facebookEvent)
 
                          let facebookObj = { 
                             event_id: get(facebookEvent, 'id', null),
@@ -275,8 +275,8 @@ module.exports = {
                         delete databaseEvent.id
                         databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
                         databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
-                        console.log('facebookObj***************', facebookObj)
-                        console.log('dbevent$$$$$', databaseEvent)
+                        // console.log('facebookObj***************', facebookObj)
+                        // console.log('dbevent$$$$$', databaseEvent)
                         if (!isEqual(facebookObj, databaseEvent)){
                             // console.log("it got hit!!!!!!!!!!!!!!!!!")
                             dbInstance.update_event(facebookObj)
@@ -303,8 +303,8 @@ module.exports = {
                     delete databaseEvent.id
                     databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
                     databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
-                    console.log('facebookObj***************', facebookObj)
-                    console.log('dbevent$$$$$', databaseEvent)
+                    // console.log('facebookObj***************', facebookObj)
+                    // console.log('dbevent$$$$$', databaseEvent)
                     if (!isEqual(facebookObj, databaseEvent)){
                         // console.log("it got hit!!!!!!!!!!!!!!!!!")
                         dbInstance.update_event(facebookObj)
@@ -403,7 +403,7 @@ module.exports = {
                 res.status(200).json(items)
             })
         }).catch(error => {
-            console.log('---- error with unnasignItem', error)
+            console.log('---- error with unasignItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     }
