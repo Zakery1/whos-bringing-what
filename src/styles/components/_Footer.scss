@@ -9,8 +9,15 @@
     color: $facebook-blue;
 }
 
-.footer_about_paragraph_mobile {
-    padding: 50px 20px 80px 20px;
+.footer_about_paragraph{
+    padding: 40px 20px 40px 20px;
     text-align: center;
     line-height: 1.5
+}
+
+@media (min-width: 500px){
+    .footer_about_paragraph{
+        text-align: center;
+
+    } 
 }
