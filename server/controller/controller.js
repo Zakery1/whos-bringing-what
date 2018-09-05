@@ -1,5 +1,13 @@
 module.exports = {
     readUser: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { userId } = req.params
+        dbInstance.read_user({userId})
+        .then(users => {
+            res.status(200).json(users)
+        })
+    },
+    readUserBySession: (req, res) => {
         res.status(200).json({
           id: req.session.user.id,
           username: req.session.user.username,

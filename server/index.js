@@ -31,10 +31,12 @@ app.use(session({
     saveUninitialized: false, 
     resave: false
   }));
+
 app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }))
+
 app.use(express.static( `${__dirname}/../build`));
 
 
@@ -76,7 +78,10 @@ app.get('/send-email', (req,res) => {
 app.get('/auth/callback', uC.login);
 
 // Server request to get user data to display on Navbar
-app.get('/api/user-data', checkLoggedIn, c.readUser);
+app.get('/api/user-data', checkLoggedIn, c.readUserBySession);
+
+// Server request to get user info 
+app.get('/api/user-info/:userId', c.readUser);
 
 // Server request to get user data for auth0_id 
 app.get('/api/user', checkLoggedIn, c.readUserWithAuth0Id)
