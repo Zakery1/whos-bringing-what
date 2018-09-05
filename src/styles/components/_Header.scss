@@ -1,18 +1,48 @@
 .header_parent {
-    // width: 100vw;
     
 }
 
-.header_image_mobile {
-height: 50vh;
-// width: 90vw;
-margin: 20px;
-border: $facebook-blue 2px solid;
+.header_title{
+    width: 100%;
+} 
+
+.title_logo{
+    width: 100%;
 }
 
-.header_image_desktop {
-    width: 60vw;
-    margin: 0 0 0 0;
+.header_image{
+    height: 50vh;
+    margin: 20px;
+    border: $facebook-blue 2px solid;
 }
+
+@media (min-width: 500px) {
+
+    .header_big{
+        // min-height: 60px;
+        width: 100%;
+        margin-left: 70px;  
+        margin-right:auto; 
+    }
+    .header_title{
+        width:800px;
+        margin:auto;
+        
+    }
+    .title_logo{
+        margin: auto;
+        width: 100%;
+    }
+    .header_image{
+        margin-left: 150px;
+        margin-right: auto;
+        height: auto;
+        width: 80%;
+    }
+    .header_parent {
+        margin: 1% 0 1% 10%;
+    }
+}
+
 
 

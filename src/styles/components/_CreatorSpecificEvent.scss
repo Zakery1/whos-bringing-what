@@ -60,12 +60,9 @@ table {
 }
     body {
         padding: 8px;
-        // text-align: center;
       }
       
       table {
-        // width: 30%;
-        // margin: 5px auto;
         table-layout: auto;
       }
       
@@ -77,11 +74,10 @@ table {
       td,
       th {
         border-collapse: collapse;
-      }
-      
-      th,
-      td {
+    }
+    
+    th,
+    td {
         padding: 5px;
-        border: solid blue 3px;
-        // text-align: center;
+        border: solid green 3px;
       }

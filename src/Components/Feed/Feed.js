@@ -92,7 +92,7 @@ class Feed extends Component {
 
  <div className="feed_big">
       <div className="feed_parent big">
-      <div className="feed_title"><img className='logo' src={Logo} alt='logo' /></div>
+      <div className="feed_title"><img className='feed_logo' src={Logo} alt='logo' /></div>
         <Fetcher url='/api/created_events' render={(data) => {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
