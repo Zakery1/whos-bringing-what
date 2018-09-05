@@ -89,8 +89,6 @@ module.exports = {
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
                     console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
-                    
-
                     //Smart Streets
                  
                  facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
@@ -195,9 +193,7 @@ module.exports = {
                                 {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
                                 
                             })  
-                            
                     })
-                    
                 } 
                     })
                 })

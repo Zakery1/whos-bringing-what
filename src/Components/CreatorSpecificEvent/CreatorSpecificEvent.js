@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Grid from '../Grid/Grid';
 import axios from 'axios';
 import Sugar from 'sugar';
+import Items from './Items';
 Sugar.Date.extend()
 
 export default class CreatorSpecificEvent extends Component {
@@ -13,7 +15,8 @@ export default class CreatorSpecificEvent extends Component {
             name: '',
             editing: false,
             selectedId: '',
-            selectedName: ''
+            selectedName: '',
+            deleteWarning: false
         }
     }
     componentDidMount() {
@@ -71,10 +74,21 @@ export default class CreatorSpecificEvent extends Component {
         .then(response => {
             console.log('response',response)
             this.setState({
-                requestedItems: response.data
+                requestedItems: response.data,
+                deleteWarning: !this.state.deleteWarning
             })
         }).catch(error => {
             console.log('Axios error DELETE deleteItem', error)
+        })
+    }
+
+    //warn creator about deleting an item because it will send and email to the person bringing that item
+    deleteWarningChange = (id) => {
+        const theIndex = this.state.requestedItems.findIndex(e => e.id === id)
+        this.setState({
+            selectedId: id,
+            deleteWarning: !this.deleteWarning,
+            selectedName: this.state.selectedName
         })
     }
 
@@ -83,7 +97,6 @@ export default class CreatorSpecificEvent extends Component {
         const index = this.state.requestedItems.findIndex(e => e.id === id)
         this.setState({
             selectedId: id,
-            selectedName: this.state.requestedItems[index].name,
             editing: !this.state.editing
         })
     }
@@ -98,6 +111,15 @@ export default class CreatorSpecificEvent extends Component {
         })
       }
 
+    deleteCancel = (key) => {
+        this.setState((prevState) => {
+            return {
+                deleteWarning: !prevState.deleteWarning,
+                selectedId: '',
+                [key]: !prevState[key]
+              }
+        })
+    }
      // Creator can edit items from requestedItems table
     saveItem = (id) => {
         const eventId = this.props.match.params.id
@@ -114,37 +136,21 @@ export default class CreatorSpecificEvent extends Component {
     render() {
         const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
-            return(
-                <div className='requested_items' key={i}>
-                    <table id="t">
-                        <thead>
-                             <tr>
-                             <th>
-                             <div className='requested_items_grid'>
-                             {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                             </div>
-                             </th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                             <tr>
-                             <td>
-                             {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
-                             {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                             <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                             </td>
-                                
-                             </tr>
-                            </tbody>
-                         </table>
+            return <Items
+             item={item}
+             key={i}
+             editItem={this.editItem}
+             {...{
+                    cancel: this.cancel,
+                    deleteWarningChange: this.deleteWarningChange,
+                    deleteCancel: this.deleteCancel,
+                    saveItem: this.saveItem,
+                    deleteItem: this
+                }
+             }
 
-
-                    {/* {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>} */}
-                    {/* {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button onClick={() => this.editItem(item.id)}>Edit</button> : <button onClick={() => this.editItem(item.id)}>Edit</button>}
-                    {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                    <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button> */}
-                </div>
-            )
+            {...{...this.state}}
+             />
         })
         return (
             
