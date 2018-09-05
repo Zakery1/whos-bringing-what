@@ -36,8 +36,8 @@ export default class CreatorSpecificEvent extends Component {
 
         axios.all([fetchEvent(), fetchRequestedItems()])
         .then(axios.spread((event,requestedItems)=>{
-            console.log('event', event.data)
-            console.log('requestedItems', requestedItems.data)
+            // console.log('event', event.data)
+            // console.log('requestedItems', requestedItems.data)
             this.setState({
                 event: event.data,
                 requestedItems: requestedItems.data,
@@ -134,47 +134,50 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
     render() {
+        console.log(this.state)
         const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
-            // return <Items
-             {/* item={item}
+             return <Items
+             item={item}
              key={i}
              editItem={this.editItem}
+             selectedName={this.selectedName}
              {...{
                     cancel: this.cancel,
                     deleteWarningChange: this.deleteWarningChange,
                     deleteCancel: this.deleteCancel,
                     saveItem: this.saveItem,
-                    deleteItem: this
+                    deleteItem: this.deleteItem,
+                    selectedName: this.selectedName
                 }
              }
 
             {...{...this.state}}
-             /> */}
-            return(
-                <div className='requested_items' key={i}>
-                    <table id="t">
-                        <thead>
-                             <tr>
-                                <th>
-                                <div className='requested_items_grid'>
-                                {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                                </div>
-                                </th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                             <tr>
-                                <td>
-                                {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
-                                {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
-                                <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                                </td>
-                             </tr>
-                            </tbody>
-                         </table>
-                </div>
-            )
+             /> 
+            // return(
+            //     <div className='requested_items' key={i}>
+            //         <table id="t">
+            //             <thead>
+            //                  <tr>
+            //                     <th>
+            //                     <div className='requested_items_grid'>
+            //                     {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+            //                     </div>
+            //                     </th>
+            //                  </tr>
+            //              </thead>
+            //              <tbody>
+            //                  <tr>
+            //                     <td>
+            //                     {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
+            //                     {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
+            //                     <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
+            //                     </td>
+            //                  </tr>
+            //                 </tbody>
+            //              </table>
+            //     </div>
+            // )
         })
         return (
             
