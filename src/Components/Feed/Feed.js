@@ -49,7 +49,7 @@ class Feed extends Component {
                     <Link to={`/creator_specific_event/${event.id}`} key={i}>                     
                       <div className="feed_group">
                       <div className="feed_event_name">{event.event_name}</div>
-                      <div><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
+                      <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
                       <div className="feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={100} />}</div>
                       <div className="feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
                     </div></Link>)}
@@ -92,7 +92,7 @@ class Feed extends Component {
 
  <div className="feed_big">
       <div className="feed_parent big">
-      <div className="feed_title"><img className='logo' src={Logo} alt='logo' /></div>
+      <div className="feed_title"><img className='feed_logo' src={Logo} alt='logo' /></div>
         <Fetcher url='/api/created_events' render={(data) => {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
@@ -101,7 +101,7 @@ class Feed extends Component {
               {result.map((event,i) => <Link to={`/creatorSpecificEvent/${event.id}`} key={i}><div>
               <div className="feed_group">
               <div className="feed_event_name">{event.event_name}</div>
-              <div className="feed_photo"><img className='Feed_eventPhoto' src={event.cover_photo} alt="Displaying event portrait"/></div>
+              <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
               <div className="feed_event_description">{<ReadMoreReact text={event.description ? event.description : ''} max={200} />}</div>
               <div className="feed_event_date">Event starts in {new Date().daysUntil(event.start_time)} days!!!</div>
               </div>
