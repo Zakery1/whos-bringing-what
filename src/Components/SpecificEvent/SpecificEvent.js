@@ -133,7 +133,9 @@ export default class SpecificEvent extends Component {
         })
 
         return (
+
             <div className="specific_event_parent">
+            <div className="specific_event small">
             {event.length 
             ? 
             <div>
@@ -155,12 +157,12 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_items">
-            <table class="blueTable">
+            <table class="requested_items_table">
             <thead>
                 <tr>
                 <th>
                 <div className="needed_items">
-                    Items2 
+                   The host is requesting these items:
                     {loading ? 'Loading Items...' : displayRequestedItems}
                 </div>   
                 </th>
@@ -172,6 +174,49 @@ export default class SpecificEvent extends Component {
                     {loading ? 'Loading my Items' : displayWillBringItems}
                 </div>
             </div>
+            </div>
+
+<div className="specific_event big">
+            {event.length 
+            ? 
+            <div>
+                <h1 className='specific_event_name'>{event[0].event_name}</h1>
+                <img className='specific_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
+                <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
+                <div className='specific_event_info'>
+                <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
+                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+                <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
+                <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
+                <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
+                <p>State: {event[0].state ? event[0].state : 'No state given'}</p>
+                <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
+                <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
+            </div>
+            </div>
+            :
+            <p>Loading Event...</p>
+            }
+            <div className="requested_items">
+            <table class="requested_items_table">
+            <thead>
+                <tr>
+                <th>
+                <div className="needed_items">
+                   The host is requesting these items:
+                    {loading ? 'Loading Items...' : displayRequestedItems}
+                </div>   
+                </th>
+                </tr>
+            </thead>
+                </table>
+                <div className="will_bring_table">
+                    {username} is bringing:
+                    {loading ? 'Loading my Items' : displayWillBringItems}
+                </div>
+            </div>
+            </div>
+            
             </div>
            
         );

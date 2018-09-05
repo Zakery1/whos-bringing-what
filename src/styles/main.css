@@ -104,7 +104,8 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: stretch;
-  align-content: stretch; }
+  align-content: stretch;
+  overflow-x: hidden; }
 
 .app_routes_container {
   flex: 5; }
@@ -332,7 +333,11 @@ a {
     min-height: 80px;
     width: 800px;
     padding: 30px;
-    margin: auto; } }
+    margin: auto; }
+  .feed_event_description {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto; } }
 
 .specific_event_parent {
   border: 3px solid blue;
@@ -340,41 +345,48 @@ a {
 
 .specific_event_name {
   background: purple;
-  margin: 5px; }
+  margin: 5px;
+  text-align: center; }
 
 .specific_event_photo {
+  background: green;
   margin-left: 20px;
   max-width: 300px;
   padding: 10px; }
 
 .specific_event_map {
   margin-left: 20px;
-  background: yellow; }
+  background: yellow;
+  max-width: 100px; }
 
 .specific_event_info {
   margin-left: 20px;
-  padding: 10px; }
+  padding: 10px;
+  background: orange; }
 
 .event-map {
   height: 30vh;
   width: 55vw; }
 
 .requested_items {
-  margin: 5px; }
+  margin: 5px;
+  display: flex;
+  justify-content: space-around; }
 
-.p {
-  flex-wrap: wrap; }
+.requested_items_table {
+  max-width: 160px; }
+
+.requested_item_name {
+  max-width: 100px; }
 
 .will_bring_table {
+  text-align: center;
   background: red;
-  padding: 10px;
-  border: 3px solid blue;
-  margin-top: 10px;
-  margin-bottom: 10px; }
+  max-width: 160px;
+  border: 3px solid blue; }
 
 .will_bring_items {
-  margin-top: 5px;
-  background: green; }
+  margin: 10px; }
 
 @media (min-width: 500px) {
   .specific_event_parent {
@@ -382,7 +394,6 @@ a {
     border: 3px solid blue; }
   .requested_items {
     justify-content: space-between;
-    background-color: purple;
     padding: 10px;
     display: flex;
     flex-wrap: wrap; }
@@ -489,7 +500,7 @@ th {
 th,
 td {
   padding: 5px;
-  border: solid green 3px; }
+  border: solid blue 3px; }
 
 .big {
   display: none; }

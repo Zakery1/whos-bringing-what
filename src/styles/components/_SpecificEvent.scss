@@ -9,10 +9,11 @@
 .specific_event_name{
     background: purple;
     margin:5px;
+    text-align: center;
 }
 
 .specific_event_photo {
-    // background: green;
+    background: green;
     margin-left:20px;
     max-width: 300px;
     padding: 10px;
@@ -20,11 +21,12 @@
 .specific_event_map{
     margin-left:20px;
     background:yellow;
+    max-width: 100px;
 }
 .specific_event_info{
     margin-left:20px;
     padding: 10px;
-    // background: orange;
+    background: orange;
 }
 
 .event-map {
@@ -34,21 +36,27 @@
 
 .requested_items{
     margin: 5px;
+    display: flex;
+    justify-content: space-around;
 }
-.p{
-  flex-wrap:wrap;
+.requested_items_table{
+    max-width:160px;
+    // background:green;
+}
+.requested_item_name{
+    // background:yellow;
+    max-width: 100px;
 }
 .will_bring_table{
+    text-align: center;
     background:red;
-    padding: 10px;
+    max-width: 160px;
     border: 3px solid blue;
-    margin-top:10px;
-    margin-bottom: 10px;
 }
 
 .will_bring_items{
-   margin-top:5px;
-    background:green;
+    // background:green;
+    margin: 10px;
 }
 
 @media (min-width: 500px) {
@@ -59,7 +67,7 @@
 
     .requested_items {
         justify-content: space-between;
-        background-color: purple;
+        // background-color: purple;
         padding: 10px;
          display:flex;
          flex-wrap: wrap;
