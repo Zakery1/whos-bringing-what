@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import { AppContainer } from 'react-hot-loader';
+// import { AppContainer } from 'react-hot-loader';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql'
@@ -18,13 +18,13 @@ const client = new ApolloClient({
 const render = () => {
     ReactDOM.render(
     <ApolloProvider client={client}>
-        <AppContainer>
+        {/* <AppContainer> */}
             <Provider store={store}>
                 <BrowserRouter>    
                     <App />
                 </BrowserRouter>
             </Provider>
-        </AppContainer>
+        {/* </AppContainer> */}
     </ ApolloProvider>
     , document.getElementById('root'));
     // registerServiceWorker();
