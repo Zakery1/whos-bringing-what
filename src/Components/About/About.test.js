@@ -2,13 +2,12 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
 // components 
-import CreatorSpecificEvent from './CreatorSpecificEvent';
+import About from './About';
 
 
-
-describe('CreatorSpecificEvent rendered', () => {
+describe('About rendered', () => {
   it('should render correctly in "debug" mode', () => {
-    const wrapper = shallow(<CreatorSpecificEvent debug />);
+    const wrapper = shallow(<About debug />);
     console.log(wrapper)
     expect(wrapper).toMatchSnapshot();
   });
