@@ -197,9 +197,7 @@ module.exports = {
                                 {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
                                 
                             })  
-                            
                     })
-                    
                 } 
                     })
                 })

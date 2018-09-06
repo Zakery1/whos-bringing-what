@@ -60,8 +60,8 @@ app.get('/send-email', (req,res) => {
 
     //Sendgrid Data Requirements
     const msg = {
-        to: 'whosbringingwhat@yahoo.com',  //recipient
-        from: sender,
+        to: recipient,  //recipient
+        from: 'whosbringingwhat@yahoo.com',
         subject: topic,
         text: text,
        
