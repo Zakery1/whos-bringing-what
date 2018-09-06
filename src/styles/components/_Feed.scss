@@ -14,6 +14,7 @@
     max-width: 100%;
     text-align:center;
     border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 .feed_logo{
     width: 100%;
@@ -43,8 +44,9 @@
 }
 
 .feed_group{
-    border: 3px solid #3c599b;
+    border: 3px  #3c599b;
     margin: 20px;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 
 .feed_event_name{

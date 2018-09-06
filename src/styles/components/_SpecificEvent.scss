@@ -17,6 +17,8 @@
     width: 300px;
     padding: 10px;
     border: 3px solid #3c599b;
+    background: #395CA9;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 .specific_event_map{
     margin-left:20px;
@@ -47,7 +49,8 @@
 .will_bring_table{
     text-align: center;
     max-width: 160px;
-    border: 3px solid green;
+    border: 3px solid #395CA9;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 
 
@@ -69,6 +72,7 @@
         padding: 10px;
         margin-bottom: 20px;
         border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
 
     }
     .specific_event_map{
@@ -101,17 +105,20 @@
     .will_bring_table{
         text-align: center;
         max-width: 45%;
-        border: 3px solid green;
+        border: 3px solid#395CA9;
+        box-shadow: 5px 3px 3px #2f4885;
     }
 
     .requested_item_button{
-        border: 3px solid blue;
+        border: 3px solid #395CA9;
+        box-shadow: 5px 3px 3px #2f4885;
     }
 
     .requested_items_container{
        background: green;
         padding:5px;
         // border: 3px solid blue;
+     
     }
     .requested_items {
         background: red;
@@ -119,21 +126,21 @@
         padding: 10px;
        
     }
+    .requested_list_items{
+       max-width: 100px;
+    }
 
     .needed_items {
         align-self: stretch;
-        order: 0;
-        // flex: 0 0 0px;
-        flex-grow: 0;
-        flex-shrink: 0;
-        // flex-basis: 90px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         max-height: 800px; 
         border: solid#3c599b 3px;
+        box-shadow: 5px 3px 3px #2f4885;
         max-width: 45%;
         background:yellow;
+        padding: 10px;
     }
 
     .will_bring {
