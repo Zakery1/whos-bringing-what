@@ -135,7 +135,9 @@ export default class CreatorSpecificEvent extends Component {
     }
     render() {
         const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
+        console.log(selectedName)
         const displayRequestedItems = requestedItems.map((item,i) => {
+
             // return <Items
              {/* item={item}
              key={i}

@@ -3,6 +3,7 @@ import Andrew from '../../styles/assets/andrew-headshot.png';
 import Zak from '../../styles/assets/zachary-headshot.png';
 import Danielle from '../../styles/assets/danielle-headshot.jpg';
 import {Link} from 'react-router-dom';
+import Grid from '../Grid/Grid';
 
 
 function About() {

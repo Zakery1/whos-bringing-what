@@ -334,6 +334,7 @@ module.exports = {
         res.status(200).redirect('/');
     },
     createRequestedItem: (req, res) => {
+        console.log('req------------', req)
         const dbInstance = req.app.get('db')
         const { eventId } = req.params 
         const { name } = req.body

@@ -248,6 +248,9 @@ body {
   border: none;
   font-size: 15px;
   font-family: "Patua One", cursive; }
+  .nav_desktop_link.active {
+    text-decoration: underline;
+    font-size: 18px; }
 
 .nav_desktop_link:hover {
   cursor: pointer;
