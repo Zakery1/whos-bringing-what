@@ -80,7 +80,7 @@ export default class SpecificEvent extends Component {
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
 
-                <div className='requested_items_container' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
+                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
                     <table id="t">
                         <thead>
                              <tr>
@@ -156,7 +156,7 @@ export default class SpecificEvent extends Component {
             :
             <p>Loading Event...</p>
             }
-            <div className="requested_items">
+            <div className="requested_list_items">
             <table class="requested_items_table">
             <thead>
                 <tr>
@@ -201,7 +201,6 @@ export default class SpecificEvent extends Component {
             items container
             <div className="requested_items">
             items
-
             
                 <div className="needed_items">
                    The host is requesting these items:
