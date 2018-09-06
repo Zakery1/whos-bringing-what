@@ -92,28 +92,9 @@ class CreatorSpecificEvent extends Component {
             })
     }
     render() {
-<<<<<<< HEAD
-        const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
-        console.log(selectedName)
-        const displayRequestedItems = requestedItems.map((item,i) => {
-
-            // return <Items
-             {/* item={item}
-             key={i}
-             editItem={this.editItem}
-             {...{
-                    cancel: this.cancel,
-                    deleteWarningChange: this.deleteWarningChange,
-                    deleteCancel: this.deleteCancel,
-                    saveItem: this.saveItem,
-                    deleteItem: this
-                }
-             }
-=======
         console.log('this.props.user', this.props.data.user)
         console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
         console.log('this.props.event', this.props.getEventQuery.event)
->>>>>>> 878877ba948470918bf2550c38ae307052514891
 
         const { name, editing, selectedId, selectedName } = this.state
 
