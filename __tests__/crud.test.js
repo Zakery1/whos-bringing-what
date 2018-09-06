@@ -33,13 +33,4 @@ test('Update item should return Chicken', () => {
     })
 })
 
-// Additional Icebox 
-// Add Enzyme 
-// Need to create setupTest.js in root directory 
-// In setupTests.js
-// import { configure } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
-// configure({ adapter: new Adapter() });
-
-// yarn add enzyme, enzyme-adapter-react-16
 
