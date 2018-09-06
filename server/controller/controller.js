@@ -1,5 +1,28 @@
 module.exports = {
     readUser: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { userId } = req.params
+        dbInstance.read_user({userId})
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            res.status(500).json({message: error})
+        })
+    },
+    readUserWithEventId: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { eventId } = req.params
+        dbInstance.read_user_by_auth0_id_with_event_id({eventId})
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            res.status(500).json({message: error})
+        })
+
+    },
+    readUserBySession: (req, res) => {
         res.status(200).json({
           id: req.session.user.id,
           username: req.session.user.username,
