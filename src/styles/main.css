@@ -183,8 +183,7 @@ body {
 .header_image {
   height: 50vh;
   margin: 20px;
-  border: #395CA9 2px solid;
-  box-shadow: 5px 3px 3px #2f4885; }
+  border: #395CA9 2px; }
 
 @media (min-width: 500px) {
   .header_big {
@@ -201,9 +200,7 @@ body {
     margin-left: 150px;
     margin-right: auto;
     height: auto;
-    width: 80%; 
-    background: #395CA9;
-    box-shadow: 5px 3px 3px #2f4885;}
+    width: 80%; }
   .header_parent {
     margin: 1% 0 1% 10%; } }
 
@@ -288,7 +285,7 @@ body {
   text-align: center; }
 
 .feed_group {
-  border: 3px solid #3c599b;
+  border: 3px  #3c599b;
   margin: 20px;
   box-shadow: 5px 3px 3px #2f4885; }
 
@@ -387,7 +384,8 @@ a {
 .will_bring_table {
   text-align: center;
   max-width: 160px;
-  border: 3px solid green; }
+  border: 3px solid #395CA9;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 .will_bring_items {
   margin: 10px; }
@@ -401,9 +399,8 @@ a {
     width: 70%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 3px solid #3c599b; 
-    background: #395CA9;
-    box-shadow: 5px 3px 3px #2f4885;}
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885; }
   .specific_event_map {
     margin-left: 240px;
     margin-right: auto;
@@ -426,9 +423,11 @@ a {
   .will_bring_table {
     text-align: center;
     max-width: 45%;
-    border: 3px solid green; }
+    border: 3px solid #395CA9;
+    box-shadow: 5px 3px 3px #2f4885; }
   .requested_item_button {
-    border: 3px solid blue; }
+    border: 3px solid #395CA9;
+    box-shadow: 5px 3px 3px #2f4885; }
   .requested_items_container {
     background: green;
     padding: 5px; }
@@ -445,6 +444,7 @@ a {
     flex-direction: column;
     max-height: 800px;
     border: solid #3c599b 3px;
+    box-shadow: 5px 3px 3px #2f4885;
     max-width: 45%;
     background: yellow;
     padding: 10px; }
@@ -471,7 +471,8 @@ h1 {
   border: 3px solid #3c599b;
   width: 50%;
   margin: 10px;
-  padding: 10px; }
+  padding: 10px;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 .specific_event_item {
   display: flex;
@@ -483,17 +484,20 @@ h1 {
 
 .creator_event_parent {
   margin-left: 50px;
-  border: 3px solid #3c599b; }
+  border: 3px solid #3c599b;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 @media (min-width: 500px) {
   .creator_event_parent {
     margin-left: 210px;
-    border: 3px solid #3c599b; } }
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885; } }
 
 .specific_event_event_photo {
   width: 70%px;
   padding: 10px;
-  border: 3px solid #3c599b; }
+  border: 3px solid #3c599b;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 .myButton {
   border-top: 1px solid #0b293b;
@@ -525,7 +529,8 @@ h1 {
     background: #08084d; }
 
 table {
-  border: 2px solid #3c599b; }
+  border: 2px solid #3c599b;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 body {
   padding: 8px; }
@@ -544,7 +549,8 @@ th {
 th,
 td {
   padding: 5px;
-  border: solid purple 3px; }
+  border: solid purple 3px;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 .big {
   display: none; }
@@ -572,8 +578,7 @@ td {
   .nav_container {
     height: 100vh; }
   .header_image_desktop {
-    border: #395CA9 2px solid;
-    box-shadow: 5px 3px 3px #2f4885; }
+    border: #395CA9 2px solid; }
   .footer_parent {
     margin: 0% 0 0% 10%; }
   .footer_app_name {
