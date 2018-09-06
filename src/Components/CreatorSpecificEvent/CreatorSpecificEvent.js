@@ -1,51 +1,20 @@
 import React, { Component } from 'react';
-import Grid from '../Grid/Grid';
-import axios from 'axios';
 import Sugar from 'sugar';
-import Items from './Items';
+import { graphql, compose } from 'react-apollo';
+import { getRequestedItemsQuery, getEventQuery, getUserQuery, addItemMutation, deleteItemMutation, updateItemMutation } from '../../queries/queries';
+const get = require('lodash/get');
 Sugar.Date.extend()
 
-export default class CreatorSpecificEvent extends Component {
+class CreatorSpecificEvent extends Component {
     constructor() {
         super()
         this.state = {
-            event: [],
-            requestedItems: [],
-            loading: false,
             name: '',
             editing: false,
             selectedId: '',
             selectedName: '',
             deleteWarning: false
         }
-    }
-    componentDidMount() {
-        const eventId = this.props.match.params.id
-
-        this.setState({
-            loading: true
-        })
-
-        function fetchEvent() {
-            return axios.get(`/api/event/${eventId}`);
-        }
-        
-        function fetchRequestedItems() {
-            return axios.get(`/api/requested_items/${eventId}`);
-        }
-
-        axios.all([fetchEvent(), fetchRequestedItems()])
-        .then(axios.spread((event,requestedItems)=>{
-            console.log('event', event.data)
-            console.log('requestedItems', requestedItems.data)
-            this.setState({
-                event: event.data,
-                requestedItems: requestedItems.data,
-                loading: false
-            })
-        })).catch(error => {
-            console.log('Axios error ALL on SpecificEvent', error)
-        })
     }
 
     handleInput = (e) => {
@@ -56,47 +25,34 @@ export default class CreatorSpecificEvent extends Component {
     // Creator can add items to requestedItems table
     addItem = () => {
         const eventId = this.props.match.params.id
-        if(this.state.name.length) {
-            axios.post(`/api/post_requested_item/${eventId}`, {name: this.state.name})
-            .then(items => {
-                console.log('items',items)
-                this.setState({requestedItems: [...this.state.requestedItems].concat(items.data[0]), name: ''})
-            }).catch(error => {
-                console.log('Axios error POST CreatorSpecificEvent', error)
-            })
-        }
+        this.props.addItemMutation({
+            variables: {
+                name: this.state.name, 
+                eventId, 
+                userId: this.props.data.user.id
+            },
+            refetchQueries: [{query: getRequestedItemsQuery, variables: {eventId: this.props.match.params.id}}]
+        })
+        this.setState({name: ''})
     }
 
     // Creator can delete items from requestedItems table 
-    deleteItem = (id) => {
-        const eventId = this.props.match.params.id
-        axios.delete(`/api/delete_requested_item/${id}/${eventId}`)
-        .then(response => {
-            console.log('response',response)
-            this.setState({
-                requestedItems: response.data,
-                deleteWarning: !this.state.deleteWarning
-            })
-        }).catch(error => {
-            console.log('Axios error DELETE deleteItem', error)
+    deleteItem = (itemId) => {
+        this.props.deleteItemMutation({
+            variables: {
+                itemId
+            },
+            refetchQueries: [{query: getRequestedItemsQuery, variables: {eventId: this.props.match.params.id}}]
         })
     }
 
-    //warn creator about deleting an item because it will send and email to the person bringing that item
-    deleteWarningChange = (id) => {
-        const theIndex = this.state.requestedItems.findIndex(e => e.id === id)
-        this.setState({
-            selectedId: id,
-            deleteWarning: !this.deleteWarning,
-            selectedName: this.state.selectedName
-        })
-    }
 
     // Set user to be able to edit item
     editItem = (id) => {
-        const index = this.state.requestedItems.findIndex(e => e.id === id)
+        const index = this.props.getRequestedItemsQuery.requesteditems.findIndex(e => e.id === id)
         this.setState({
             selectedId: id,
+            selectedName: this.props.getRequestedItemsQuery.requesteditems[index].name,
             editing: !this.state.editing
         })
     }
@@ -121,38 +77,30 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
      // Creator can edit items from requestedItems table
-    saveItem = (id) => {
-        const eventId = this.props.match.params.id
-        axios.patch(`/api/patch_requested_item/${id}/${eventId}`, {name: this.state.selectedName})
-        .then(response => {
+    saveItem = (itemId) => {
+        this.props.updateItemMutation({
+            variables: {
+                itemId,
+                name: this.state.selectedName 
+            },
+            refetchQueries: [{query: getRequestedItemsQuery, variables: {eventId: this.props.match.params.id}}]
+        })
             this.setState({
                 selectedId: '',
                 selectedName: '',
-                editing: !this.state.editing,
-                requestedItems: response.data
+                editing: !this.state.editing
             })
-        })
     }
     render() {
-        const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
-        const displayRequestedItems = requestedItems.map((item,i) => {
-            // return <Items
-             {/* item={item}
-             key={i}
-             editItem={this.editItem}
-             {...{
-                    cancel: this.cancel,
-                    deleteWarningChange: this.deleteWarningChange,
-                    deleteCancel: this.deleteCancel,
-                    saveItem: this.saveItem,
-                    deleteItem: this
-                }
-             }
+        console.log('this.props.user', this.props.data.user)
+        console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
+        console.log('this.props.event', this.props.getEventQuery.event)
 
-            {...{...this.state}}
-             /> */}
+        const { name, editing, selectedId, selectedName } = this.state
+
+        const displayRequestedItems = this.props.getRequestedItemsQuery.requesteditems ? this.props.getRequestedItemsQuery.requesteditems.map(item => {
             return(
-                <div className='requested_items' key={i}>
+                <div className='requested_items' key={item.id}>
                     <table id="t">
                         <thead>
                              <tr>
@@ -174,36 +122,36 @@ export default class CreatorSpecificEvent extends Component {
                              </tr>
                             </tbody>
                          </table>
-                </div>
+                </div> 
             )
-        })
+        }) : ''
         return (
             
             <div className="creator_event_parent">
         
-            {event.length 
+            {this.props.data.loading 
             ? 
+            <p>Loading Event...</p>
+            :
             <div className='specific_event'>
-                <h1> Event name: {event[0].event_name}</h1>
-                <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                <p>Start Time: {new Date().long(event[0].start_time)}</p>
-                <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
-                <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
-                <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
-                <p>State: {event[0].state ? event[0].state : 'No state given'}</p>
-                <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
-                <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
+                <h1 className='specific_event_name'>{get(this.props, "getEventQuery.event.event_name", "No Event Name given") }</h1>
+                <img className='specific_event_event_photo' src={get(this.props, "getEventQuery.event.cover_photo", "")} alt="Displaying event portrait"/>
+                <p>Description: {get(this.props, "getEventQuery.event.description", 'No description written')}</p>
+                <p>Start Time: {new Date().long(get(this.props, "getEventQuery.event.start_time", ""))}</p>
+                <p>Place: {get(this.props, "getEventQuery.event.place", 'No place given' )}</p>
+                <p>Street: {get(this.props, "getEventQuery.event.street", 'No street given')}</p>
+                <p>City: {get(this.props, "getEventQuery.event.city", 'No city given')}</p>
+                <p>State: {get(this.props, "getEventQuery.event.state", 'No state given')}</p>
+                <p>Zip: {get(this.props, "getEventQuery.event.zip", 'No zipcode given' )}</p>
+                <p>Country: {get(this.props, "getEventQuery.event.country",'No country given')}</p>
                 
 
             </div>
-            :
-            <p>Loading Event...</p>
             }
             <div className='specific_event_table'>
             <h1>Requested Items:</h1>
             <div className='specific_event_item'>
-            {loading ? 'Loading Items...' : displayRequestedItems}
+            {this.props.data.loading ? 'Loading Items...' : displayRequestedItems}
             </div>
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
             <button className='myButton' onClick={() => this.addItem()}>Add Item</button>
@@ -213,3 +161,19 @@ export default class CreatorSpecificEvent extends Component {
         );
     }
 } 
+export default compose(
+    graphql(getRequestedItemsQuery, {
+        options: props => ({variables: {eventId: props.match.params.id}}),
+        name: "getRequestedItemsQuery"
+    }),
+    graphql(getEventQuery, {
+        options: props => ({variables: {eventId: props.match.params.id}}),
+        name: "getEventQuery"
+    }),
+    graphql(getUserQuery, {
+        options: props => ({variables: {eventId: props.match.params.id}})
+    }),
+    graphql(addItemMutation, {name: "addItemMutation"}),
+    graphql(deleteItemMutation, {name: "deleteItemMutation"}),
+    graphql(updateItemMutation, {name: "updateItemMutation"})
+)(CreatorSpecificEvent);

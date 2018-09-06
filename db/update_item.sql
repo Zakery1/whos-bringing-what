@@ -1,3 +1,4 @@
 UPDATE requesteditems 
 SET name = ${name}
-WHERE id = ${itemId};
+WHERE id = ${itemId}
+RETURNING *;
