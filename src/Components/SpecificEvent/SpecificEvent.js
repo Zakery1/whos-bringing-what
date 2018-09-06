@@ -203,8 +203,8 @@ export default class SpecificEvent extends Component {
             items
             
                 <div className="needed_items">
-                   The host is requesting these items:
-                    {loading ? 'Loading Items...' : displayRequestedItems}
+                   <div className="needed_items_host">The host is requesting these items:</div>
+                   <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
                 </div>   
               
                 <div className="will_bring_table">
