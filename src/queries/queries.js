@@ -47,20 +47,26 @@ const getUserQuery = gql `
 `
 const addItemMutation = gql `
   mutation($eventId: ID!, $userId: ID!, $name: String!) {
-      id
-      name
+      addItem(eventId: $eventId, userId: $userId, name: $name) {
+          id
+          name
+      }
   }
 `
 const deleteItemMutation = gql `
 mutation($itemId: ID!) {
-    id
-    name
+    deleteItem(itemId: $itemId) {
+        id
+        name
+    }
 }
 `
 const updateItemMutation = gql `
-mutation($eventId: ID!, $name: String!) {
-    id
-    name
+mutation($itemId: ID!, $name: String!) {
+    updateItem(itemId: $itemId, name: $name) {
+        id
+        name
+    }
 }
 `
 
