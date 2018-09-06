@@ -1,4 +1,4 @@
-
+@import '../variables';
 
 .specific_event_parent {
     // margin-left: 50px;
@@ -7,7 +7,6 @@
 }
 
 .specific_event_name{
-
     margin:5px;
     text-align: center;
 }
@@ -30,8 +29,11 @@
 }
 
 .event-map {
-    height: 30vh;
-    width: 55vw;
+        height: 30vh;
+        width: 90vw;
+        margin: auto;
+        border: 2px $facebook-blue solid;
+        margin-bottom: 15px;
 }
 
 .requested_items{
@@ -150,6 +152,13 @@
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: 90px;
+    }
+    .event-map {
+        height: 30vh;
+        width: 55vw;
+        margin: auto;
+        border: 2px $facebook-blue solid;
+        margin-bottom: 15px;
     }
 
 }

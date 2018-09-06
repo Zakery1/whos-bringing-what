@@ -67,10 +67,11 @@ function About() {
            <div className="about_name"> <h4 className="about_creator_name">Zachary Graham</h4> </div>
            {/* <div className="About_description"> <p className="About_creatorDetails">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div> */}
            <div className="about_linkedin"><Link to='/Zak'>Linkedin </Link></div>
-           <div className="about_github"><Link to='/Zak1'> Github</Link></div> 
-                  <Grid />
+
+                 
     
           </div>
+          <Grid />
         </div>
         </div>
 

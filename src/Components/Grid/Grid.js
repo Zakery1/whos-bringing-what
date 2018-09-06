@@ -17,10 +17,11 @@ class Grid extends Component {
 
 
   sendEmail = _ => {
-    this.props.deleteItem()
+    
     const { email } = this.state;
     fetch(`http://127.0.0.1:4000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
       .catch(err => console.error(err))
+      this.showEmailForm()
   }
 
   showEmailForm() {
@@ -65,7 +66,7 @@ class Grid extends Component {
             onChange={e => this.setState({ email: { ...email, text: e.target.value } })} />
           <div style={spacer} />
           <button className='myButton' onClick={this.sendEmail}> Send Email </button>
-        </div>  : <button className='myButton' onClick={() => this.showEmailForm()}>Delete</button> }
+        </div>  : <button className='myButton' onClick={() => this.showEmailForm()}>Send us an email!</button> }
 
       </div>
     );

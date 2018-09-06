@@ -371,7 +371,10 @@ a {
 
 .event-map {
   height: 30vh;
-  width: 55vw; }
+  width: 90vw;
+  margin: auto;
+  border: 2px #395CA9 solid;
+  margin-bottom: 15px; }
 
 .requested_items {
   margin: 5px;
@@ -457,7 +460,13 @@ a {
     flex: 0 0 0px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 90px; } }
+    flex-basis: 90px; }
+  .event-map {
+    height: 30vh;
+    width: 55vw;
+    margin: auto;
+    border: 2px #395CA9 solid;
+    margin-bottom: 15px; } }
 
 .requested_items {
   display: flex;
