@@ -6,6 +6,21 @@ module.exports = {
         .then(users => {
             res.status(200).json(users)
         })
+        .catch(error => {
+            res.status(500).json({message: error})
+        })
+    },
+    readUserWithEventId: (req, res) => {
+        const dbInstance = req.app.get('db')
+        const { eventId } = req.params
+        dbInstance.read_user_by_auth0_id_with_event_id({eventId})
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            res.status(500).json({message: error})
+        })
+
     },
     readUserBySession: (req, res) => {
         res.status(200).json({

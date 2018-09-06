@@ -335,12 +335,12 @@ module.exports = {
     },
     createRequestedItem: (req, res) => {
         const dbInstance = req.app.get('db')
-        const { eventId } = req.params 
+        const { eventId, userId } = req.params 
         const { name } = req.body
         dbInstance.create_item({
             name,
             eventId,
-            userId: req.session.user ? req.session.user.id : 1,
+            userId,
             spokenfor: false
         })
         .then(items => {
@@ -352,13 +352,10 @@ module.exports = {
     },
     deleteRequestedItem: (req, res) => {
         const dbInstance = req.app.get('db')
-        const { itemId, eventId } = req.params
+        const { itemId } = req.params
         dbInstance.delete_item({itemId})
-        .then(() => {
-            dbInstance.read_items({eventId})
-            .then(items => {
+        .then(items => {
                 res.status(200).json(items)
-            })
         }).catch(error => {
             console.log('---- error with deleteRequestedItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
@@ -367,13 +364,10 @@ module.exports = {
     updateRequestedItem: (req, res) => {
         const dbInstance = req.app.get('db')
         const { name } = req.body
-        const { itemId, eventId } = req.params
+        const { itemId } = req.params
         dbInstance.update_item({name, itemId})
-        .then(() => {
-            dbInstance.read_items({eventId})
-            .then(items => {
+        .then(items => {
                 res.status(200).json(items)
-            })
         }).catch(error => {
             console.log('---- error with updateRequestedItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
