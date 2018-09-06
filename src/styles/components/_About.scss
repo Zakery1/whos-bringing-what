@@ -4,14 +4,14 @@
 }
 
 .about_developers{
-    background-color: purple;
+    // background-color: purple;
     font-size: 40px;
     text-align: center;
     width: 100vw;
 }
 
 .about_people_container {
-    background: hotpink;
+    // background: hotpink;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -29,6 +29,9 @@
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 90px;
+    border: 3px solid #3c599b;
+    margin: 10px;
+    margin-right: 20px;
 }
 
 .about_headshot {
@@ -38,12 +41,13 @@
 }
 
 .about_creator_name {
-    background: green;
+    // background: green;
     font-size: $creator-name-font-size;
 }
 
 .about_creator_details {
-    background: gold;
+    // background: gold;
+    max-width: 380px;
 }
 
 .about_profile_pic{
@@ -54,17 +58,19 @@
 
 }
 .about_linkedin{
-    background-color: orange;
+    // background-color: orange;
     font-size: 20px;
 }
 .about_github{
-    background-color:green;
+    // background-color:green;
     font-size:20px;
     
 }
 
-.about_footer{
-    height:70px;
+
+.about_github_bottom{
+    margin-bottom: 70px;
 }
+
 
 

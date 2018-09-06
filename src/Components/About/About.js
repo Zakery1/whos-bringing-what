@@ -21,7 +21,7 @@ function About() {
             <div className="about_github"><Link to='/Danielle1'> Github</Link></div> 
           </div>
 
-          <div className="a">
+          <div className="about_person">
            <div className="about_profile_pic"> <img className="about_headshot" src={Andrew} alt="Andrew Headshot" /></div>
            <div className="about_name"> <h4 className="about_creatorName">Andrew Nam</h4> </div>
            <div className="about_description"><p className="about_creator_details">Andrew is from Dallas and enjoys working with Node.js!</p> </div>
@@ -35,16 +35,14 @@ function About() {
            <div className="about_description"> <p className="about_creator_details">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div>
            <div className="about_linkedin"><Link to='/Zak'>Linkedin </Link></div>
            <div className="about_github"><Link to='/Zak1'> Github</Link></div> 
-           <div className="about_footer"></div>
           </div>
-
+           <div className="about_github_bottom"></div>
           </div>
-
         </div>
 
 
-        <div className="about_developers big">About the Developers: (big) 
-
+        <div className="about_developers big">
+          <div className="about_title">About the Developers:</div>
         <div className="about_people_container">
 
           <div className="about_person">
@@ -69,10 +67,8 @@ function About() {
            {/* <div className="About_description"> <p className="About_creatorDetails">Zachary is from Phoenix and takes a keen interest in working with APIs.</p></div> */}
            <div className="about_linkedin"><Link to='/Zak'>Linkedin </Link></div>
            <div className="about_github"><Link to='/Zak1'> Github</Link></div> 
-                  
-           <div className="about_footer">
-            
-           </div>
+                  <Grid />
+    
           </div>
         </div>
         </div>
