@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Grid from '../Grid/Grid';
+
 import axios from 'axios';
 import Sugar from 'sugar';
-import Items from './Items';
+
 Sugar.Date.extend()
 
 export default class CreatorSpecificEvent extends Component {
@@ -82,15 +82,6 @@ export default class CreatorSpecificEvent extends Component {
         })
     }
 
-    //warn creator about deleting an item because it will send and email to the person bringing that item
-    deleteWarningChange = (id) => {
-        const theIndex = this.state.requestedItems.findIndex(e => e.id === id)
-        this.setState({
-            selectedId: id,
-            deleteWarning: !this.deleteWarning,
-            selectedName: this.state.selectedName
-        })
-    }
 
     // Set user to be able to edit item
     editItem = (id) => {
@@ -136,21 +127,7 @@ export default class CreatorSpecificEvent extends Component {
     render() {
         const { event, requestedItems, loading, name, editing, selectedId, selectedName } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
-            // return <Items
-             {/* item={item}
-             key={i}
-             editItem={this.editItem}
-             {...{
-                    cancel: this.cancel,
-                    deleteWarningChange: this.deleteWarningChange,
-                    deleteCancel: this.deleteCancel,
-                    saveItem: this.saveItem,
-                    deleteItem: this
-                }
-             }
-
-            {...{...this.state}}
-             /> */}
+        
             return(
                 <div className='requested_items' key={i}>
                     <table id="t">
