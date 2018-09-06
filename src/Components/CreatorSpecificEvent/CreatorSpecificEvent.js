@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Sugar from 'sugar';
+import Grid from '../Grid/Grid';
+
 Sugar.Date.extend()
 
 export default class CreatorSpecificEvent extends Component {
@@ -162,6 +164,7 @@ export default class CreatorSpecificEvent extends Component {
             :
             <p>Loading Event...</p>
             }
+            <Grid eventId={this.state.eventId} />
             <div className='specific_event_table'>
             <h1>Requested Items:</h1>
             <div className='specific_event_item'>
@@ -171,7 +174,6 @@ export default class CreatorSpecificEvent extends Component {
             <button className='myButton' onClick={() => this.addItem()}>Add Item</button>
             </div>
             </div>
-           
         );
     }
 } 

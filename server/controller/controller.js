@@ -1,3 +1,5 @@
+const sgMail = require('@sendgrid/mail');
+
 module.exports = {
     readUser: (req, res) => {
         res.status(200).json({
@@ -85,4 +87,28 @@ module.exports = {
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     },
+    
+    readUsersInvitedEventEmail: (req, res) => {
+        const sender  = req.session.user.email
+        const { subject, text  } = req.body
+        const dbInstance = req.app.get('db')
+        const { eventId } = req.params
+        dbInstance.read_users_invited_event(+eventId)
+        .then(users => {
+            const emailArray = users.map(user => user.email)
+            const msg = {
+                to: emailArray,  //recipient
+                from: sender,
+                subject: topic,
+                text: text
+            }
+            sgMail.send(msg)
+
+            res.send('success!')
+        })
+        .catch(error => {
+            console.log('---- error with readUsersInvitedEvent', error)
+            res.status(500).json({message: 'Server error. See server terminal'})
+        })
+    }
 } 

@@ -68,7 +68,7 @@ export default class HostSpecificEvent extends Component {
             ? 
             <div>
                 <h1> Name: {event[0].event_name} *You are hosting*</h1>
-                <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
+                <div className='specific_event_map'><EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>

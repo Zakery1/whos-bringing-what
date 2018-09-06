@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -14,9 +15,15 @@ class Grid extends Component {
     }
   }
 
+
   sendEmail = _ => {
     const { email } = this.state;
-    fetch(`http://127.0.0.1:4000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
+
+
+    axios.get(`/send-email/${this.props.match.params.id}`, {email} ).then(response => {
+      console.log(response);
+    })
+    fetch(`http://127.0.0.1:4000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`).then(response => response.json()).then(response => response) //query string url
       .catch(err => console.error(err))
   }
 
@@ -26,7 +33,19 @@ class Grid extends Component {
     })
   }
 
+
+
+  componentDidMount(){
+    axios.get('/api/users_invited_event/:eventId', ).then(response => {
+      this.setState({
+        posts: response.data
+      })
+    })
+    }
+
   render() {
+    console.log(this.props.match.params.id)
+    console.log(this.state)
     const { email } = this.state;
     const spacer = {
       margin: 10
@@ -44,11 +63,6 @@ class Grid extends Component {
       
           {/* <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} /> */}
-          <div style={spacer} />
-          <label> Your Email </label>
-          <br />
-          <input value={email.sender}
-            onChange={e => this.setState({ email: { ...email, sender: e.target.value } })} />
           <div style={spacer} />
           <label> Subject </label>
           <br />
@@ -68,4 +82,4 @@ class Grid extends Component {
   }
 }
 
-export default Grid;
+export default withRouter(Grid);

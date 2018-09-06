@@ -302,7 +302,7 @@ body {
 .feed_event_date {
   font-size: 20px;
   text-align: center;
-  color: #3c599b; }
+  color: #2b3b63; }
 
 .feed_footer {
   height: 85px; }
@@ -501,6 +501,11 @@ th,
 td {
   padding: 5px;
   border: solid blue 3px; }
+
+.specific_event_map {
+  margin-left: 20px;
+  background: yellow;
+  max-width: 100px; }
 
 .big {
   display: none; }

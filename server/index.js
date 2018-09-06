@@ -53,24 +53,7 @@ app.get('/', (req, res) => {
 });
 
 //SendGrid Emailer
-app.get('/send-email', (req,res) => {
-    
-    //Get Variables from query string in the search bar
-    const { recipient, sender, topic, text } = req.query; 
-
-    //Sendgrid Data Requirements
-    const msg = {
-        to: 'whosbringingwhat@yahoo.com',  //recipient
-        from: sender,
-        subject: topic,
-        text: text,
-       
-    }
-
-    //Send Email
-    sgMail.send(msg)
-    .then((msg) => console.log(text));
-});
+app.get('/send-email/:eventId', c.readUsersInvitedEventEmail)
 
 // Server request to login
 app.get('/auth/callback', uC.login);
@@ -93,6 +76,8 @@ function checkLoggedIn(req, res, next) {
        });
     }
   }
+
+
 
 // Server request to logout 
 app.post('/api/auth/logout', uC.logout);
