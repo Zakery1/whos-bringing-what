@@ -102,24 +102,22 @@ class CreatorSpecificEvent extends Component {
             return(
                 <div className='requested_items' key={item.id}>
                     <table id="t">
-                        <thead>
-                             <tr>
-                             <th>
+                    
+                            
                              <div className='requested_items_grid'>
                              {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
                              </div>
-                             </th>
-                             </tr>
-                         </thead>
+                             
+                         
                          <tbody>
-                             <tr>
-                             <td>
+                            
+                            
                              {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
                              {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
                              <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                             </td>
+                             
                                 
-                             </tr>
+                             
                             </tbody>
                          </table>
                 </div> 
