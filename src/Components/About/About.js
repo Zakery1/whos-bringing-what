@@ -11,9 +11,9 @@ function About() {
       <div className="about_parent">
 
       <div className="about_developers small">About the Developers:
-
+      <Grid />
         <div className="about_people_container">
-
+          
           <div className="about_person">
            <div className="about_profile_pic"> <img className="about_headshot" src={Danielle} alt="Danielle Headshot" /> </div>
             <div className="about_name"> <h4 className="about_creator_name" >Danielle Lyn</h4></div>
@@ -37,6 +37,7 @@ function About() {
            <div className="about_linkedin"><Link to='/Zak'>Linkedin </Link></div>
            <div className="about_github"><Link to='/Zak1'> Github</Link></div> 
           </div>
+      
            <div className="about_github_bottom"></div>
           </div>
         </div>
@@ -74,7 +75,7 @@ function About() {
           <Grid />
         </div>
         </div>
-
+  
       </div>
     );
   }

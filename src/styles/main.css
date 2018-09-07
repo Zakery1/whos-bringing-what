@@ -124,6 +124,9 @@ body {
 .home_header {
   color: #395CA9; }
 
+.about_parent {
+  color: #395CA9; }
+
 .about_developers {
   font-size: 40px;
   text-align: center;
@@ -563,6 +566,77 @@ td {
   padding: 5px;
   border: solid purple 3px;
   box-shadow: 5px 3px 3px #2f4885; }
+
+.specific_event_parent {
+  color: #395CA9; }
+
+.icon_profile_photo {
+  margin-top: 5px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #395CA9; }
+
+.host_event_name {
+  text-align: center;
+  margin-top: 20px; }
+
+.specific_event_event_photo {
+  margin: 0 0 0 25px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #3c599b;
+  background: #395CA9;
+  box-shadow: 5px 3px 3px #2f4885; }
+
+.host_event_info {
+  margin: 20px;
+  text-align: center; }
+
+.host_event_info > p {
+  margin: 8px;
+  font-size: 14px; }
+
+.needed_items {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center; }
+
+.my_items_title {
+  font-size: 30px;
+  text-align: center;
+  align-self: stretch;
+  order: 0;
+  flex: 0 0 0px;
+  flex-grow: 0;
+  flex-shrink: 0; }
+
+.requested_items_list {
+  align-self: stretch;
+  order: 0;
+  flex: 0 0 0px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-bottom: 80px; }
+
+.individual_bring_item {
+  margin: 20px auto 10px auto;
+  font-size: 20px;
+  border: 2px solid #395CA9;
+  max-width: 200px;
+  padding-bottom: 20px; }
+
+h2 {
+  width: 43vw; }
+
+@media (min-width: 500px) {
+  .specific_event_event_photo {
+    margin-left: none;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #3c599b;
+    background: #395CA9;
+    box-shadow: 5px 3px 3px #2f4885; } }
 
 .big {
   display: none; }
