@@ -5,6 +5,8 @@ import { getRequestedItemsQuery, getEventQuery, getUserQuery, addItemMutation, d
 const get = require('lodash/get');
 Sugar.Date.extend()
 
+
+
 class CreatorSpecificEvent extends Component {
     constructor() {
         super()
@@ -67,15 +69,6 @@ class CreatorSpecificEvent extends Component {
         })
       }
 
-    deleteCancel = (key) => {
-        this.setState((prevState) => {
-            return {
-                deleteWarning: !prevState.deleteWarning,
-                selectedId: '',
-                [key]: !prevState[key]
-              }
-        })
-    }
      // Creator can edit items from requestedItems table
     saveItem = (itemId) => {
         this.props.updateItemMutation({
@@ -92,9 +85,9 @@ class CreatorSpecificEvent extends Component {
             })
     }
     render() {
-        console.log('this.props.user', this.props.data.user)
-        console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
-        console.log('this.props.event', this.props.getEventQuery.event)
+        // console.log('this.props.user', this.props.data.user)
+        // console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
+        // console.log('this.props.event', this.props.getEventQuery.event)
 
         const { name, editing, selectedId, selectedName } = this.state
 

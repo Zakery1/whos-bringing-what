@@ -65,7 +65,7 @@ class Grid extends Component {
             onChange={e => this.setState({ email: { ...email, text: e.target.value } })} />
           <div style={spacer} />
           <button className='myButton' onClick={this.sendEmail}> Send Email </button>
-        </div>  : <button className='myButton' onClick={() => this.showEmailForm()}>Delete</button> }
+        </div>  : <button className='myButton' onClick={() => this.showEmailForm()}>Send us an Email</button> }
 
       </div>
     );
