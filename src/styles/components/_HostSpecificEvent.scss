@@ -17,12 +17,14 @@
 }
 
 .specific_event_event_photo {
-    margin: 0 0 0 25px;
+    margin-left: 25px;
+    // margin: 0 0 0 200px;
     width: 300px;
     padding: 10px;
     border: 1px solid #3c599b;
     background: #395CA9;
     box-shadow: 5px 3px 3px #2f4885;
+
 }
 
 
@@ -33,10 +35,10 @@
 
 .host_event_info > p {
     margin: 8px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
-.needed_items {
+.host_needed_items {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -56,20 +58,30 @@
 }
 
 .requested_items_list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    // justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+    max-width: 700px;
+    margin-bottom: 40px;
+    
+}
+
+.individual_bring_item {
+    margin: auto;
+    font-size: 20px;
+    border: 2px solid $facebook-blue;
+    max-width: 200px;
+    padding-bottom: 20px;
+    text-align: center;
     align-self: stretch;
     order: 0;
     flex: 0 0 0px;
     flex-grow: 0;
     flex-shrink: 0;
-    margin-bottom: 80px;
-}
-
-.individual_bring_item {
-    margin: 20px auto 10px auto;
-    font-size: 20px;
-    border: 2px solid $facebook-blue;
-    max-width: 200px;
-    padding-bottom: 20px;
+    flex-basis: 90px;
 
 }
 
@@ -81,14 +93,67 @@ h2 {
 
 @media (min-width: 500px){
 
-    
     .specific_event_event_photo {
-        margin-left: none;
-        width: 300px;
+        margin-left: 240px;
+        width: 700px;
         padding: 10px;
         border: 1px solid #3c599b;
         background: #395CA9;
         box-shadow: 5px 3px 3px #2f4885;
     }
+
+    .host_event .info {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: stretch;
+    }
+
+    .host_needed_items {
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+        // overflow: hidden;
+        justify-content: space-around;
+    }
+    
+    .individual_bring_item {
+        margin-right: 50px;
+        margin-bottom: 10px;
+    }
+
+    .my_items_title {
+        align-self: stretch;
+        order: 0;
+        flex: 0 0 0px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-bottom: 20px;
+    }
+
+    .requested_items_list {
+        margin-left: 250px;
+        max-height: 400px;
+        align-self: stretch;
+        order: 0;
+        flex: 0 0 0px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-bottom: 500px;
+    }
+
+    .host_event_info {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            align-content: stretch;
+    }
+    
 
 }
