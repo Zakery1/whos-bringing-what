@@ -34,3 +34,4 @@ describe('CreatorSpecificEvent rendered', () => {
 // Test specific event component to see if it is rendering a child component, Google Map 
 // Test to see if Google map is being passed down the proper props 
 // Test button click to properly setState 
+// Implement sinon to stub a promise and test to see if stub works
