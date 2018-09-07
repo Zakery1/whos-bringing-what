@@ -573,25 +573,6 @@ td {
   border: solid purple 3px;
   box-shadow: 5px 3px 3px #2f4885; }
 
-<<<<<<< HEAD
-.host_specific_name {
-  background: red; }
-
-.host_specific_reminder {
-  background: green; }
-
-.host_specific_map {
-  background: orange; }
-
-.specific_event_event_photo {
-  background: pink; }
-
-.host_specific_requested_items {
-  background: purple; }
-
-.host_specific_needed_items {
-  background: yellow; }
-=======
 .specific_event_parent {
   color: #395CA9; }
 
@@ -710,7 +691,6 @@ h2 {
     justify-content: space-around;
     align-items: center;
     align-content: stretch; } }
->>>>>>> b974fc4d4d12c3e5110d3f966ebd31cbc0a9d910
 
 .big {
   display: none; }
