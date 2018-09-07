@@ -56,6 +56,8 @@ export default class HostSpecificEvent extends Component {
         const { users, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             const index = users.findIndex(e => e.id === item.user_id)
+            console.log(item.id,item)
+            console.log(users[index].username,index)
             return(
                 <div key={i}>
                   <p className="individual_bring_item">  {item.spokenfor ? <img className="icon_profile_photo" src={users[index].profile_pic} alt="Displaying user bringing item"/> : <img className="icon_profile_photo" src={users[index].profile_pic} alt="Displaying user bringing item"/>} <br/> {users[index].username} is bringing: <br/> {item.name} </p>
