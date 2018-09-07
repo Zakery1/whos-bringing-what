@@ -13,10 +13,11 @@ h1{
     margin-bottom: 15px;
 }
 .specific_event_table{
-   border: 3px solid blue;
+   border: 3px solid #3c599b;
     width: 50%;
     margin: 10px;
-    padding: 10px
+    padding: 10px;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 .specific_event_item{
     display: flex;
@@ -33,20 +34,24 @@ h1{
 
 .creator_event_parent{
     margin-left: 50px;
-    border: 3px solid blue;
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 @media (min-width: 500px) {
     .creator_event_parent {
         margin-left: 210px;
-        background-color: orange;
-        border: 3px solid blue;
+        // background-color: orange;
+        border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
      
     }
 
 }
 .specific_event_event_photo {
-    max-width: 200px;
+    width: 70%px;
     padding: 10px;
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 
 .myButton{
@@ -56,7 +61,8 @@ h1{
 
 
 table {
-    border: 2px solid black;
+    border: 2px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885;
 }
     body {
         padding: 8px;
@@ -82,6 +88,7 @@ table {
       th,
       td {
         padding: 5px;
-        border: solid blue 3px;
+        border: solid purple 3px;
+        box-shadow: 5px 3px 3px #2f4885;
         // text-align: center;
       }

@@ -2,7 +2,7 @@ const axios = require('axios')
 require("dotenv").config();
 const get = require('lodash/get');
 const SS_KEY = process.env.SMART_STREETS_API
-const isEqual = require('lodash/isequal')
+const isEqual = require('lodash/isEqual')
 
 module.exports = {
     login: (req, res) => {
@@ -83,17 +83,17 @@ module.exports = {
              // Request to get all events that user is linked to (attending, interested, created)
             axios.get(`https://graph.facebook.com/me?fields=events{id,name,cover,description,place,rsvp_status,start_time,admins}&access_token=${facebookAccessTokenResponse.data.identities[0].access_token}`)
             .then(facebookEvents => {
-                // console.log(facebookEvents.data.events.data)
+                // console.log('facebook events------------++++++++',facebookEvents.data.events.data)
                 // console.log("location ---------------", facebookEvents.data.events.data.place)
 
              // Checking through each event that Facebook gave back
              facebookEvents.data.events.data.forEach(facebookEvent => {
-                    console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
+                    // console.log('facebook event place <<<<<<<<<<<<', facebookEvent.place)
                     
 
                     //Smart Streets
                  
-                 facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                    get(facebookEvent, 'place.name', null) && !get(facebookEvent, 'place.location', null) && get(facebookEvent, 'place.name', null).includes('United States')           
                  ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
                  .then((res) => {
                     //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
@@ -106,7 +106,8 @@ module.exports = {
                         street: res.data[0].delivery_line_1,
                         zip: res.data[0].components.zipcode,
                      };
-                    //  console.log('whole facebook event', facebookEvent)
+                     console.log('whole facebook event', facebookEvent)
+                    console.log('databaseEvents --------', databaseEvents )
 
 
         
@@ -138,7 +139,8 @@ module.exports = {
                             })
                         }
                     // If the facebook event is already in the database 
-                    } else if (databaseEvents.findIndex(event => event.event_id === facebookEvent.id) != -1) { 
+                    } else if (databaseEvents.findIndex(event => event.event_id === facebookEvent.id) !== -1) {
+                        console.log('hit------------------')
                         // Get the index where the event from the database, matches the event that is currently being checked on
                         const index = databaseEvents.findIndex(event => event.event_id === facebookEvent.id)
                         dbInstance.read_user_by_auth0_id({auth0Id}).then(users => {
@@ -195,9 +197,7 @@ module.exports = {
                                 {dbInstance.create_invitation({eventId: databaseEvents[index].id, userId})}
                                 
                             })  
-                            
                     })
-                    
                 } 
                     })
                 })
@@ -241,7 +241,7 @@ module.exports = {
                          const index = facebookEvents.data.events.data.findIndex(event => event.id === databaseEvent.event_id)
                          const facebookEvent = facebookEvents.data.events.data[index]
                                           
-                            facebookEvent.place.name && !facebookEvent.place.location && facebookEvent.place.name.includes('United States')           
+                            get(facebookEvent, 'place.name', null) && !get(facebookEvent, 'place.location', null) && get(facebookEvent, 'place.name', null).includes('United States')           
                             ? axios.get(`https://us-street.api.smartystreets.com/street-address?street=${facebookEvent.place.name}&address-type=us-street-freeform&auth-id=${process.env.SMART_STREETS_AUTH_ID}&auth-token=${SS_KEY}`)
                             .then((res) => {
                     //  console.log("res.data-------------", res.data, 'facebookEvent@@@@@@@@', facebookEvent)  
@@ -254,7 +254,7 @@ module.exports = {
                         street: res.data[0].delivery_line_1,
                         zip: res.data[0].components.zipcode,
                      };
-                     console.log('whole facebook event', facebookEvent)
+                    //  console.log('whole facebook event', facebookEvent)
 
                          let facebookObj = { 
                             event_id: get(facebookEvent, 'id', null),
@@ -275,8 +275,8 @@ module.exports = {
                         delete databaseEvent.id
                         databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
                         databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
-                        console.log('facebookObj***************', facebookObj)
-                        console.log('dbevent$$$$$', databaseEvent)
+                        // console.log('facebookObj***************', facebookObj)
+                        // console.log('dbevent$$$$$', databaseEvent)
                         if (!isEqual(facebookObj, databaseEvent)){
                             // console.log("it got hit!!!!!!!!!!!!!!!!!")
                             dbInstance.update_event(facebookObj)
@@ -303,8 +303,8 @@ module.exports = {
                     delete databaseEvent.id
                     databaseEvent.latitude === null ? '' : databaseEvent.latitude = +databaseEvent.latitude 
                     databaseEvent.longitude === null ? '' : databaseEvent.longitude  = +databaseEvent.longitude
-                    console.log('facebookObj***************', facebookObj)
-                    console.log('dbevent$$$$$', databaseEvent)
+                    // console.log('facebookObj***************', facebookObj)
+                    // console.log('dbevent$$$$$', databaseEvent)
                     if (!isEqual(facebookObj, databaseEvent)){
                         // console.log("it got hit!!!!!!!!!!!!!!!!!")
                         dbInstance.update_event(facebookObj)
@@ -334,13 +334,14 @@ module.exports = {
         res.status(200).redirect('/');
     },
     createRequestedItem: (req, res) => {
+        console.log('req------------', req)
         const dbInstance = req.app.get('db')
-        const { eventId } = req.params 
+        const { eventId, userId } = req.params 
         const { name } = req.body
         dbInstance.create_item({
             name,
             eventId,
-            userId: req.session.user ? req.session.user.id : 1,
+            userId,
             spokenfor: false
         })
         .then(items => {
@@ -352,13 +353,10 @@ module.exports = {
     },
     deleteRequestedItem: (req, res) => {
         const dbInstance = req.app.get('db')
-        const { itemId, eventId } = req.params
+        const { itemId } = req.params
         dbInstance.delete_item({itemId})
-        .then(() => {
-            dbInstance.read_items({eventId})
-            .then(items => {
+        .then(items => {
                 res.status(200).json(items)
-            })
         }).catch(error => {
             console.log('---- error with deleteRequestedItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
@@ -367,13 +365,10 @@ module.exports = {
     updateRequestedItem: (req, res) => {
         const dbInstance = req.app.get('db')
         const { name } = req.body
-        const { itemId, eventId } = req.params
+        const { itemId } = req.params
         dbInstance.update_item({name, itemId})
-        .then(() => {
-            dbInstance.read_items({eventId})
-            .then(items => {
+        .then(items => {
                 res.status(200).json(items)
-            })
         }).catch(error => {
             console.log('---- error with updateRequestedItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
@@ -403,7 +398,7 @@ module.exports = {
                 res.status(200).json(items)
             })
         }).catch(error => {
-            console.log('---- error with unnasignItem', error)
+            console.log('---- error with unasignItem', error)
             res.status(500).json({message: 'Server error. See server terminal'})
         })
     }

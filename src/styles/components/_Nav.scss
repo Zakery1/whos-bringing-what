@@ -1,8 +1,8 @@
 @import '../variables';
 
 .nav_parent {
-    background: $facebook-blue;
-    border: 2px solid white;
+    background: #395CA9;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 
 .button:hover {
@@ -41,7 +41,7 @@
 }
 
 
-.nav_desktop_link {
+.nav_desktop_link  {
     margin: 40px 50px 75px 50px;
     color: white;
     text-decoration: none;
@@ -49,6 +49,11 @@
     border: none;
     font-size: $primary-font-size-paragraph-small;
     font-family: $primary-font-family;
+
+    &.active {
+        text-decoration: underline;
+        font-size: 18px;
+    }
 }
 
 .nav_desktop_link:hover {

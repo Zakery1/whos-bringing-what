@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Marker } from "react-google-maps";
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+
 
 class EventMarker extends Component {
 

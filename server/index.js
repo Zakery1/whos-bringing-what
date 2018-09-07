@@ -1,5 +1,5 @@
 const express = require("express");
-const expressGraphQL = require("express-graphql");
+const expressGraphQL = require('express-graphql');
 const massive = require("massive");
 const session = require("express-session");
 const bodyParser = require("body-parser");
@@ -31,10 +31,14 @@ app.use(session({
     saveUninitialized: false, 
     resave: false
   }));
+
+app.use(cors()); //utilize Cors so the browser doesn't restrict data, without it Sendgrid  not send!
+
 app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }))
+
 app.use(express.static( `${__dirname}/../build`));
 
 
@@ -46,7 +50,7 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 
-app.use(cors()); //utilize Cors so the browser doesn't restrict data, without it Sendgrid  not send!
+
 // Welcome page of the express server: 
 app.get('/', (req, res) => {
     res.send("Welcome to the Sendgrid Emailing Server"); 
@@ -76,7 +80,13 @@ app.get('/send-email', (req,res) => {
 app.get('/auth/callback', uC.login);
 
 // Server request to get user data to display on Navbar
-app.get('/api/user-data', checkLoggedIn, c.readUser);
+app.get('/api/user-data', checkLoggedIn, c.readUserBySession);
+
+// Server request to get user info 
+app.get('/api/user-info/:userId', c.readUser);
+
+// Server request to get user info 
+app.get('/api/user-event/:eventId', c.readUserWithEventId);
 
 // Server request to get user data for auth0_id 
 app.get('/api/user', checkLoggedIn, c.readUserWithAuth0Id)
@@ -114,16 +124,18 @@ app.get('/api/event/:eventId', c.readEvent);
 app.get('/api/requested_items/:eventId', c.readRequestedItems);
 
 // Server request to POST requestedItems by Creator of Event
-app.post('/api/post_requested_item/:eventId', uC.createRequestedItem);
+app.post('/api/post_requested_item/:eventId/:userId', uC.createRequestedItem);
 
 // Server request to DELETE requestedItems by Creator of Event
-app.delete('/api/delete_requested_item/:itemId/:eventId', uC.deleteRequestedItem);
+app.delete('/api/delete_requested_item/:itemId', uC.deleteRequestedItem);
 
 // Server request to UPDATE requestedItems by Creator of Event
-app.patch('/api/patch_requested_item/:itemId/:eventId', uC.updateRequestedItem);
+app.patch('/api/patch_requested_item/:itemId', uC.updateRequestedItem);
 
+// Server request to Assign item to user
 app.patch('/api/patch_spoken_for_item/:eventId/:userId/:itemId', uC.updateSpokenForItem)
 
+// Server request to Un-assign item to user
 app.patch('/api/patch_assigned_item/:eventId/:itemId', uC.unassignItem)
 
 app.get('*', (req, res)=>{

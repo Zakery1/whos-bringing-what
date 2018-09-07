@@ -10,14 +10,15 @@ import {ic_tag_faces} from 'react-icons-kit/md/ic_tag_faces';
 import {login} from 'react-icons-kit/iconic/login';
 import {logout} from 'react-icons-kit/iconic/logout';
 import {user_circle} from 'react-icons-kit/ikons/user_circle';
-import { withClientState } from 'apollo-link-state';
+// import { withClientState } from 'apollo-link-state';
 
 
 class Nav extends Component {
   constructor() {
     super() 
     this.state={
-      username: ''
+      username: '',
+      currentPage: "feed"
     }
   }
 
@@ -65,9 +66,10 @@ class Nav extends Component {
 
           <div className="nav_container big">
               <span className="nav_desktop_link" >Welcome <p>{username ? username : ""}</p></span>
-               <Link to="/" className="nav_desktop_link" data-cy="Home">Home</Link>
-               {username ? <Link to="/feed" className="nav_desktop_link" data-cy="Feed">Feed</Link> : ''}
-               <Link to="/about" className="nav_desktop_link" data-cy="About">About</Link>
+              
+               <Link to="/" onClick={() => this.setState({currentPage: "home"})} className={"nav_desktop_link " + (this.state.currentPage==="home" ? "active" : "" )} data-cy="Home">Home</Link>
+               {username ? <Link to="/feed" onClick={() => this.setState({currentPage: "feed"})} className={"nav_desktop_link " + (this.state.currentPage==="feed" ? "active" : "" )} data-cy="Feed">Feed</Link> : ''}
+               <Link to="/about" onClick={() => this.setState({currentPage: "about"})} className={"nav_desktop_link " + (this.state.currentPage==="about" ? "active" : "" )} data-cy="About">About</Link>
               {username ? <Link className="nav_desktop_link" data-cy="Logout" onClick={()=>this.logout()} to='/'>Logout</Link> 
               : <span className="nav_desktop_link" data-cy="login1" onClick={() => {this.login()}}>Login</span>}
           </div>
