@@ -54,10 +54,25 @@ export default class HostSpecificEvent extends Component {
         const displayRequestedItems = requestedItems.map((item,i) => {
             const index = users.findIndex(e => e.id === item.user_id)
             return(
-                <div key={i}>
-                    <h2 style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } >{item.name}</h2>
-                    <p>Assigned to: {users[index].username}</p>
+                <div className='items_assigned' key={i}>
+                <table class="will_bring_items">
+                    <thead>
+                    <tr>
+                    <th>
+                        <h2 style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } >{item.name}</h2>
+                    </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td>
+                        <p>Assigned to: {users[index].username}</p>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
                 </div>
+
             )
         })
        
@@ -67,10 +82,11 @@ export default class HostSpecificEvent extends Component {
             {event.length 
             ? 
             <div>
-                <h1> Name: {event[0].event_name} *You are hosting*</h1>
-                <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
+                <h1 className='host_specific_name'>{event[0].event_name}</h1>
+                <h1 className='host_specific_reminder'> *You are hosting this event*</h1>
+                <div className='host_specific_map'><EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
+                <div className='host_specific_event_info'><p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                 <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
@@ -79,12 +95,13 @@ export default class HostSpecificEvent extends Component {
                 <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
                 <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
             </div>
+            </div>
             :
             <p>Loading Event...</p>
             }
             
-            <div className="requested_items">
-                <div className="needed_items">
+            <div className="host_specific_requested_items">
+                <div className="host_specific_needed_items">
                     <h1>Items</h1> 
                     {loading ? 'Loading Items...' : displayRequestedItems}
                 </div>

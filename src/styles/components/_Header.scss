@@ -14,6 +14,7 @@
     height: 50vh;
     margin: 20px;
     border: $facebook-blue 2px ;
+    box-shadow: 5px 3px 3px #2f4885;
 }
 
 @media (min-width: 500px) {
@@ -38,6 +39,8 @@
         margin-right: auto;
         height: auto;
         width: 80%;
+        border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
     }
     .header_parent {
         margin: 1% 0 1% 10%;

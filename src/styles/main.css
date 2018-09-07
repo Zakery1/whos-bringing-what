@@ -183,7 +183,8 @@ body {
 .header_image {
   height: 50vh;
   margin: 20px;
-  border: #395CA9 2px; }
+  border: #395CA9 2px;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 @media (min-width: 500px) {
   .header_big {
@@ -200,7 +201,9 @@ body {
     margin-left: 150px;
     margin-right: auto;
     height: auto;
-    width: 80%; }
+    width: 80%;
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885; }
   .header_parent {
     margin: 1% 0 1% 10%; } }
 
@@ -290,6 +293,7 @@ body {
 .feed_group {
   border: 3px  #3c599b;
   margin: 20px;
+  border: 3px solid #3c599b;
   box-shadow: 5px 3px 3px #2f4885; }
 
 .feed_event_name {
@@ -397,6 +401,8 @@ a {
   margin: 10px; }
 
 @media (min-width: 500px) {
+  .requested_items_each {
+    padding: 5px; }
   .specific_event_name {
     font-size: 60px; }
   .specific_event_photo {
@@ -563,6 +569,24 @@ td {
   padding: 5px;
   border: solid purple 3px;
   box-shadow: 5px 3px 3px #2f4885; }
+
+.host_specific_name {
+  background: red; }
+
+.host_specific_reminder {
+  background: green; }
+
+.host_specific_map {
+  background: orange; }
+
+.specific_event_event_photo {
+  background: pink; }
+
+.host_specific_requested_items {
+  background: purple; }
+
+.host_specific_needed_items {
+  background: yellow; }
 
 .big {
   display: none; }
