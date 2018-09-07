@@ -15,6 +15,7 @@ export default class SpecificEvent extends Component {
     }
     componentDidMount() {
         axios.get('/api/user-data').then(response => {
+            console.log("specific event response****", response)
             this.setState({
               username: response.data.username,
               userId: response.data.id
@@ -75,31 +76,18 @@ export default class SpecificEvent extends Component {
     }
 
     render() {
-
+        console.log(this)
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
 
                 <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
-                    <table id="t">
-                        <thead>
-                             <tr>
-                             <th>
+                                           
                              <div className='requested_item_name'>
                              <p>{item.name}</p>
                              <p>{item.user_id}</p>
                              </div>
-                             </th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                             <tr>
-                             <td>
                             <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
-                            </td>
-                             </tr>
-                            </tbody>
-                         </table>
                 </div>
 
             
@@ -111,23 +99,18 @@ export default class SpecificEvent extends Component {
         const displayWillBringItems = willBringItems.map((item,i) => {
             return(
                 <div className='items_bringing' key={i}>
-                <table class="will_bring_items">
-                    <thead>
-                    <tr>
-                    <th>
+                <div class="will_bring_items">
                     <p>{item.name}</p>
                     <p>{item.user_id}</p>
-                    </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
+
+                
+                
                     <td>
                     <button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button>
                     </td>
-                    </tr>
-                    </tbody>
-                    </table>
+                    
+                    
+                    </div>
                 </div>
             )
         })
@@ -157,18 +140,12 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_list_items">
-            <table class="requested_items_table">
-            <thead>
-                <tr>
-                <th>
+            <div class="requested_items_table">
                 <div className="needed_items">
                    The host is requesting these items:
                 <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
                 </div>   
-                </th>
-                </tr>
-            </thead>
-                </table>
+                </div>
                 <div className="will_bring_table">
                     {username} is bringing:
                     {loading ? 'Loading my Items' : displayWillBringItems}
@@ -203,7 +180,6 @@ export default class SpecificEvent extends Component {
             items
             
                 <div className="needed_items">
-                   <div className="needed_items_host">The host is requesting these items:</div>
                    <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
                 </div>   
               

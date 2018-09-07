@@ -101,27 +101,15 @@ class CreatorSpecificEvent extends Component {
         const displayRequestedItems = this.props.getRequestedItemsQuery.requesteditems ? this.props.getRequestedItemsQuery.requesteditems.map(item => {
             return(
                 <div className='requested_items' key={item.id}>
-                    <table id="t">
-                        <thead>
-                             <tr>
-                             <th>
+                     
                              <div className='requested_items_grid'>
                              {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
                              </div>
-                             </th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                             <tr>
-                             <td>
+                
                              {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
                              {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
                              <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                             </td>
-                                
-                             </tr>
-                            </tbody>
-                         </table>
+                        
                 </div> 
             )
         }) : ''
@@ -142,14 +130,13 @@ class CreatorSpecificEvent extends Component {
                 <p>Street: {get(this.props, "getEventQuery.event.street", 'No street given')}</p>
                 <p>City: {get(this.props, "getEventQuery.event.city", 'No city given')}</p>
                 <p>State: {get(this.props, "getEventQuery.event.state", 'No state given')}</p>
-                <p>Zip: {get(this.props, "getEventQuery.event.zip", 'No zipcode given' )}</p>
+                <p>Zip: {get(this.props, "getEventQuery.event.zip", 'No zip code given' )}</p>
                 <p>Country: {get(this.props, "getEventQuery.event.country",'No country given')}</p>
-                
 
             </div>
             }
             <div className='specific_event_table'>
-            <h1>Requested Items:</h1>
+            <h1 className="specific_items_title">Requested Items:</h1>
             <div className='specific_event_item'>
             {this.props.data.loading ? 'Loading Items...' : displayRequestedItems}
             </div>
