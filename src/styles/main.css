@@ -596,9 +596,6 @@ table {
   border: 2px solid #3c599b;
   box-shadow: 5px 3px 3px #2f4885; }
 
-body {
-  padding: 8px; }
-
 table {
   table-layout: auto; }
 
@@ -717,8 +714,8 @@ h2 {
     flex-shrink: 0;
     margin-bottom: 20px; }
   .requested_items_list {
-    margin-left: 250px;
-    max-height: 400px;
+    margin-left: 260px;
+    max-height: 800px;
     align-self: stretch;
     order: 0;
     flex: 0 0 0px;

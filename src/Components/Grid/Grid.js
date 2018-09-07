@@ -42,11 +42,10 @@ class Grid extends Component {
     return (
       <div className="Grid">
         {this.state.sendEmail ? 
-        <div style={{ marginTop: 10 }} >
 
+        <div style={{ marginTop: 10 }} >
           {/* <label> Recipient </label> */}
           <button className='myButton' onClick={()=>this.showEmailForm()}>Cancel</button>
-      
           {/* <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} /> */}
           <div style={spacer} />
