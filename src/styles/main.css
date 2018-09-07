@@ -186,7 +186,8 @@ body {
 .header_image {
   height: 50vh;
   margin: 20px;
-  border: #395CA9 2px; }
+  border: #395CA9 2px;
+  box-shadow: 5px 3px 3px #2f4885; }
 
 @media (min-width: 500px) {
   .header_big {
@@ -203,7 +204,9 @@ body {
     margin-left: 150px;
     margin-right: auto;
     height: auto;
-    width: 80%; }
+    width: 80%;
+    border: 3px solid #3c599b;
+    box-shadow: 5px 3px 3px #2f4885; }
   .header_parent {
     margin: 1% 0 1% 10%; } }
 
@@ -293,6 +296,7 @@ body {
 .feed_group {
   border: 3px  #3c599b;
   margin: 20px;
+  border: 3px solid #3c599b;
   box-shadow: 5px 3px 3px #2f4885; }
 
 .feed_event_name {
@@ -400,6 +404,8 @@ a {
   margin: 10px; }
 
 @media (min-width: 500px) {
+  .requested_items_each {
+    padding: 5px; }
   .specific_event_name {
     font-size: 60px; }
   .specific_event_photo {
