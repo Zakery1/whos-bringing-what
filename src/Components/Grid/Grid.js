@@ -43,25 +43,23 @@ class Grid extends Component {
       <div className="Grid">
         {this.state.sendEmail ? 
         <div style={{ marginTop: 10 }} >
-          <h4> Send Email </h4>
+
           {/* <label> Recipient </label> */}
           <button className='myButton' onClick={()=>this.showEmailForm()}>Cancel</button>
       
           {/* <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} /> */}
           <div style={spacer} />
-          <label> Your Email </label>
-          <br />
+          <p style={{fontSize: "25px"}}> Your Email Address </p>
+          
           <input value={email.sender}
             onChange={e => this.setState({ email: { ...email, sender: e.target.value } })} />
           <div style={spacer} />
-          <label> Subject </label>
-          <br />
+          <p style={{fontSize: "25px"}}> Subject </p >
           <input value={email.subject}
             onChange={e => this.setState({ email: { ...email, subject: e.target.value } })} />
           <div style={spacer} />
-          <label> Message </label>
-          <br />
+          <p style={{fontSize: "25px"}}> Message </p >
           <textarea rows={3} value={email.text} style={textArea}
             onChange={e => this.setState({ email: { ...email, text: e.target.value } })} />
           <div style={spacer} />

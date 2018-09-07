@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EventMapContainer from '../GoogleMaps/EventMapContainer';
+import {user_circle} from 'react-icons-kit/ikons/user_circle';
+import { Icon } from 'react-icons-kit';
+import {tick} from 'react-icons-kit/ikons/tick'
 import Sugar from 'sugar';
 Sugar.Date.extend()
 
@@ -49,28 +52,14 @@ export default class HostSpecificEvent extends Component {
    
 
     render() {
-
+        
         const { users, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             const index = users.findIndex(e => e.id === item.user_id)
             return(
-                <div className='items_assigned' key={i}>
-                <table class="will_bring_items">
-                    <thead>
-                    <tr>
-                    <th>
-                        <h2 style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } >{item.name}</h2>
-                    </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                    <td>
-                        <p>Assigned to: {users[index].username}</p>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
+                <div key={i}>
+                  <p className="individual_bring_item">  {item.spokenfor ? <img className="icon_profile_photo" src={users[index].profile_pic} alt="Displaying user bringing item"/> : ''} <br/> {users[index].username} is bringing: {item.name} </p>
+
                 </div>
 
             )
@@ -94,20 +83,17 @@ export default class HostSpecificEvent extends Component {
                 <p>State: {event[0].state ? event[0].state : 'No state given'}</p>
                 <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
                 <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
-            </div>
+             </div>
             </div>
             :
             <p>Loading Event...</p>
             }
             
-            <div className="host_specific_requested_items">
-                <div className="host_specific_needed_items">
-                    <h1>Items</h1> 
-                    {loading ? 'Loading Items...' : displayRequestedItems}
+                <div className="host_needed_items">
+                  <h1 className="my_items_title">My Item Requests</h1> 
+                  <div className="requested_items_list"> {loading ? 'Loading Items...' : displayRequestedItems} </div> 
                 </div>
-            
 
-            </div>
             </div>
         );
     }
