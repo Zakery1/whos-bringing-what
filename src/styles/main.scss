@@ -16,9 +16,11 @@
 @import './components/Nav';
 @import './components/Feed';
 @import './components/SpecificEvent';
-@import './components/_CreatorSpecificEvent';
-@import './components/_HostSpecificEvent';
+@import './components/CreatorSpecificEvent';
+@import './components/HostSpecificEvent';
 
 
 // ===== Responsive ===== // 
 @import 'responsive';
+
+
