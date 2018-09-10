@@ -76,7 +76,6 @@ export default class SpecificEvent extends Component {
     }
 
     render() {
-        console.log(this)
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(

@@ -5,6 +5,11 @@ import { getRequestedItemsQuery, getEventQuery, getUserQuery, addItemMutation, d
 const get = require('lodash/get');
 Sugar.Date.extend()
 
+export const cancel = (prevState) => ({
+    editing: !prevState.editing,
+    selectedId: ''
+})
+
 class CreatorSpecificEvent extends Component {
     constructor() {
         super()
@@ -57,25 +62,10 @@ class CreatorSpecificEvent extends Component {
         })
     }
 
-    cancel = (key) => {
-        this.setState((prevState)=> {
-            return {
-              editing: !prevState.editing,
-              selectedId: '',
-              [key]: !prevState[key]
-            }
-        })
-      }
-
-    deleteCancel = (key) => {
-        this.setState((prevState) => {
-            return {
-                deleteWarning: !prevState.deleteWarning,
-                selectedId: '',
-                [key]: !prevState[key]
-              }
-        })
+    cancel = () => {
+        this.setState(cancel)
     }
+
      // Creator can edit items from requestedItems table
     saveItem = (itemId) => {
         this.props.updateItemMutation({
@@ -108,7 +98,7 @@ class CreatorSpecificEvent extends Component {
                              </div>
                 
                              {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
-                             {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel(item.id)}>Cancel</button> : ''}                   
+                             {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel()}>Cancel</button> : ''}                   
                              <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
                         
                 </div> 
@@ -142,13 +132,14 @@ class CreatorSpecificEvent extends Component {
             {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
             </div>
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
-            <button className='myButton' onClick={() => this.addItem()}>Add Item</button>
+            <button id='addButton' type="button" className='myButton' onClick={() => this.addItem()}>Add Item</button>
             </div>
             </div>
            
         );
     }
 } 
+
 export default compose(
     graphql(getRequestedItemsQuery, {
         options: props => ({variables: {eventId: props.match.params.id}}),
@@ -165,3 +156,5 @@ export default compose(
     graphql(deleteItemMutation, {name: "deleteItemMutation"}),
     graphql(updateItemMutation, {name: "updateItemMutation"})
 )(CreatorSpecificEvent);
+
+export { CreatorSpecificEvent };
