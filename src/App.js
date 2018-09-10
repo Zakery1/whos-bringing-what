@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import routes from './routes';
 import Nav from './Components/Nav/Nav';
+import Error from './Components/Error/Error';
 
 class App extends Component {
   componentDidMount(){
@@ -9,8 +10,9 @@ class App extends Component {
   
   render() {
     return (
+      <Error>
       <div className="App">
-
+          
           <div className="app_nav_container big">
             <Nav/>
           </div>
@@ -23,6 +25,7 @@ class App extends Component {
           </div>
 
       </div>
+      </Error>
     );
   }
 }
