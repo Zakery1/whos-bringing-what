@@ -59,7 +59,7 @@ function About() {
            <div className="about_profile_pic"> <img className="about_headshot" src={Andrew} alt="Andrew Headshot" /></div>
            <div className="About_name"> <h4 className="About_creator_name">Andrew Nam</h4> </div>
            <div className="about_description"><p className="about_creator_details">Andrew is from Dallas and enjoys utilizing testing.</p> </div>
-           <div className="about_linkedin"><a href="https://www.linkedin.com/in/andrew-nam-ba3644a6/">Linkedin </a></div>
+           <div className="about_linkedin"><a href="https://www.linkedin.com/in/andrewknam/">Linkedin </a></div>
            <div className="about_github"><a href="https://github.com/Clayakn">GitHub </a></div>
           </div>
 

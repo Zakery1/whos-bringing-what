@@ -18,7 +18,6 @@ class CreatorSpecificEvent extends Component {
             editing: false,
             selectedId: '',
             selectedName: '',
-            deleteWarning: false
         }
     }
 
@@ -27,6 +26,7 @@ class CreatorSpecificEvent extends Component {
         const value = e.target.value
         this.setState({[name]: value})
     }
+    
     // Creator can add items to requestedItems table
     addItem = () => {
         const eventId = this.props.match.params.id
