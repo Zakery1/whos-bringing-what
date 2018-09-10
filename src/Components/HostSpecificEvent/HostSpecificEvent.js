@@ -52,8 +52,9 @@ export default class HostSpecificEvent extends Component {
    
 
     render() {
-        
+            
         const { users, event, requestedItems, loading } = this.state
+        console.log(users)
         const displayRequestedItems = requestedItems.map((item,i) => {
             const index = users.findIndex(e => e.id === item.user_id)
             console.log(item.id,item)

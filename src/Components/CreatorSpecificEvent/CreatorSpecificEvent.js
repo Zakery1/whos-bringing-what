@@ -128,7 +128,7 @@ class CreatorSpecificEvent extends Component {
             <div className='specific_event_table'>
             <h1 className="specific_items_title">Requested Items:</h1>
             <div className='specific_event_item'>
-            {this.props.data.loading ? 'Loading Items...' : displayRequestedItems}
+            {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
             </div>
             <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
             <button id='addButton' type="button" className='myButton' onClick={() => this.addItem()}>Add Item</button>

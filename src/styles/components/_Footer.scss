@@ -14,10 +14,24 @@
     text-align: center;
     line-height: 1.5
 }
+.footer_image{
+    height: 50vh;
+    margin: 20px;
+    border: $facebook-blue 2px ;
+    box-shadow: 5px 3px 3px #2f4885;
+}
 
 @media (min-width: 500px){
     .footer_about_paragraph{
         text-align: center;
 
     } 
+    .footer_image{
+        margin-left: 150px;
+        margin-right: auto;
+        height: auto;
+        width: 80%;
+        border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
+    }
 }

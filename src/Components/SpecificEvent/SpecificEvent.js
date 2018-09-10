@@ -80,13 +80,12 @@ export default class SpecificEvent extends Component {
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
 
-                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
-                                           
-                             <div className='requested_item_name'>
+                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>              
+                     <div className='requested_item_name'>
                              <p>{item.name}</p>
                              <p>{item.user_id}</p>
-                             </div>
-                            <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
+                     </div>
+                    <div className='requested_item_button'><button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button></div>
                 </div>
 
             
@@ -97,18 +96,14 @@ export default class SpecificEvent extends Component {
 
         const displayWillBringItems = willBringItems.map((item,i) => {
             return(
-                <div className='items_bringing' key={i}>
-                <div class="will_bring_items">
-                    <p>{item.name}</p>
-                    <p>{item.user_id}</p>
 
-                
-                
-                    <td>
-                    <button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button>
-                    </td>
-                    
-                    
+                <div className='items_bringing' key={i}>
+                    <div className="will_bring_items">
+                        <div className='will_bring_name'>
+                        <p>{item.name}</p>
+                        <p>{item.user_id}</p>
+                        </div>
+                        <div className='requested_item_button'><button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button></div>
                     </div>
                 </div>
             )
@@ -139,15 +134,15 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_list_items">
-            <div class="requested_items_table">
-                <div className="needed_items">
-                   The host is requesting these items:
-                <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
-                </div>   
-                </div>
-                <div className="will_bring_table">
-                    {username} is bringing:
-                    {loading ? 'Loading my Items' : displayWillBringItems}
+                    <div className="requested_items_table">
+                    <div className="needed_items">
+                    The host is requesting these items:
+                    <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
+                    </div>   
+                    </div>
+                 <div className="will_bring_table">
+                     {username} is bringing:
+                     {loading ? 'Loading my Items' : displayWillBringItems}
                 </div>
             </div>
             </div>
@@ -174,23 +169,22 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_items_container">
-            items container
-            <div className="requested_items">
-            items
-            
-                <div className="needed_items">
-                   <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
-                </div>   
-              
-                <div className="will_bring_table">
-                    {username} is bringing:
-                    {loading ? 'Loading my Items' : displayWillBringItems}
+                <div className="requested_items">
+                    <div className="needed_items">
+                        <div className="needed_text">  The host would like you to bring:
+                         <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
+                        </div>  
+                    </div> 
+                    <div >
+                    <div>{username} is bringing:</div>
+                        <div className="will_bring_table">
+                            {loading ?   'Loading my Items' : <div>{displayWillBringItems}</div>}
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-
-            </div>
-            </div>
+ </div>
+</div>
            
         );
     }
