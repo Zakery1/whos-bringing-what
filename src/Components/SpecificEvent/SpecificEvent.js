@@ -159,7 +159,7 @@ export default class SpecificEvent extends Component {
             <div>
                 <h1 className='specific_event_name'>{event[0].event_name}</h1>
                 <img className='specific_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
-                <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
+                {/* <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div> */}
                 <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
                 <p>Start Time: {new Date().long(event[0].start_time)}</p>
