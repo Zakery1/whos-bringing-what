@@ -1,37 +1,34 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
-// import sinon from 'sinon';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
 
 
+import { cancel, creatorEvent } from  './CreatorSpecificEvent';
 // components 
-import CreatorSpecificEvent from './CreatorSpecificEvent';
-
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
-});
+import  { CreatorSpecificEvent } from './CreatorSpecificEvent';
 
 
 
+// Testing Cancel functionality
+describe('Pure Function Cancel', () => {
+  it('should change editing and seletedId', () => {
+    const state = { editing: true, selectedId: 5 }
+    const newState = cancel(state)
 
-describe('CreatorSpecificEvent rendered', () => {
+    expect(newState.editing).toBeFalsy()
+    expect(newState.selectId).toBeUndefined()
+  })
+})
 
-  it('should render correctly in "debug" mode', () => {
-    const wrapper = mount(
-      <ApolloProvider client={client}>
-        <CreatorSpecificEvent location={ '/creatorSpecificEvent' } match={{params: {id: 1}}}/>
-      </ApolloProvider>)
-      // console.log(wrapper)
-      expect(wrapper).toMatchSnapshot();
+
+// Find button that adds an Item and see if it setState properly
+describe('CreatorSpecificEvent', () => {
+  it('should clear certain states through setState', () => {
+    const wrapper = shallow(
+  <CreatorSpecificEvent  addItemMutation={() => "hello"} data={{loading: true, user: {id: 1}}} match={{params: {id: 1}}} getRequestedItemsQuery={{requesteditems: [1,2,3]}}/>);
+    wrapper.setState({name: "Bob"});
+    wrapper.find('#addButton').simulate('click');
+    expect(wrapper.state().name).toBeFalsy();
   });
-
 });
 
-// Notes for Jest / Enzyme 
 
-// Test a pure function, most likely a cancel function or a setState  function 
-// Test specific event component to see if it is rendering a child component, Google Map 
-// Test to see if Google map is being passed down the proper props 
-// Test button click to properly setState 
-// Implement sinon to stub a promise and test to see if stub works
+
