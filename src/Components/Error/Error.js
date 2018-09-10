@@ -12,7 +12,6 @@ class ErrorBoundary extends Component {
         this.setState({hasError: !this.state.hasError})
     }
     render() {
-        console.log("error page", this.props)
         if(this.state.hasError) {
             return (
                 <div>
