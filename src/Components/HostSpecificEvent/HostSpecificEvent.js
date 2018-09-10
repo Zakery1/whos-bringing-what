@@ -5,6 +5,7 @@ import {user_circle} from 'react-icons-kit/ikons/user_circle';
 import { Icon } from 'react-icons-kit';
 import {tick} from 'react-icons-kit/ikons/tick'
 import Sugar from 'sugar';
+const get = require('lodash/get');
 Sugar.Date.extend()
 
 export default class HostSpecificEvent extends Component {
@@ -74,11 +75,12 @@ export default class HostSpecificEvent extends Component {
             ? 
             <div className="host_event info">
                 <h1 className="host_event_name"> {event[0].event_name} <br/> *You are hosting*</h1>
-                {/* <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /> */}
+                <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} />
                 <img className='specific_event_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <div className="host_event_info">
                     <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                    <p>Start Time: {new Date().long(event[0].start_time)}</p>
+                    
+                    <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>
                     <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                     <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                     <p>City: {event[0].city ? event[0].city : 'No city given'}</p>

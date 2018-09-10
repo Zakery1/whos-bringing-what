@@ -85,6 +85,8 @@ class CreatorSpecificEvent extends Component {
         // console.log('this.props.user', this.props.data.user)
         // console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
         // console.log('this.props.event', this.props.getEventQuery.event)
+        console.log(Date.create(get(this.props, "getEventQuery.event.start_time", "")))
+        
 
         const { name, editing, selectedId, selectedName } = this.state
 
@@ -115,7 +117,7 @@ class CreatorSpecificEvent extends Component {
                 <h1 className='specific_event_name'>{get(this.props, "getEventQuery.event.event_name", "No Event Name given") }</h1>
                 <img className='specific_event_event_photo' src={get(this.props, "getEventQuery.event.cover_photo", "")} alt="Displaying event portrait"/>
                 <p>Description: {get(this.props, "getEventQuery.event.description", 'No description written')}</p>
-                <p>Start Time: {new Date().long(get(this.props, "getEventQuery.event.start_time", ""))}</p>
+                <p>Start Time: {`${Date.create(get(this.props, "getEventQuery.event.start_time", ""))}`}</p>
                 <p>Place: {get(this.props, "getEventQuery.event.place", 'No place given' )}</p>
                 <p>Street: {get(this.props, "getEventQuery.event.street", 'No street given')}</p>
                 <p>City: {get(this.props, "getEventQuery.event.city", 'No city given')}</p>
