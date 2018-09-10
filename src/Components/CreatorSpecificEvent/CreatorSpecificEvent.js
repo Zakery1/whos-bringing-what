@@ -92,9 +92,10 @@ class CreatorSpecificEvent extends Component {
             })
     }
     render() {
-        console.log('this.props.user', this.props.data.user)
-        console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
-        console.log('this.props.event', this.props.getEventQuery.event)
+        // console.log('this.props.user', this.props.data.user)
+        // console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
+        // console.log('this.props.event', this.props.getEventQuery.event)
+        console.log(this.props, "this props")
 
         const { name, editing, selectedId, selectedName } = this.state
 
