@@ -6,24 +6,23 @@ import {updateUser} from '../../redux/reducer';
 import {connect} from 'react-redux';
 
 
-function Home() {
+function Home(props) {
  
    return (
      <div className="home_parent">
-     
-       {/* <h1 className="Home_header">Home</h1> */}
-       {/* {this.props.user ? <Greeting /> : null} */}
-       {/* <Greeting /> */}
        <Header />
+       {props.user.username ? "" : <Greeting />}
        <Footer />
      </div>
    );
-
  }
 
 
 const mapStateToProps = state => {
-  return state;
+  const {user} = state;
+  return{
+    user 
+  }
 }
 
 export default connect(mapStateToProps)(Home);
