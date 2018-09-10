@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { cancel, creatorEvent } from  './CreatorSpecificEvent';
+import { cancel } from  './CreatorSpecificEvent';
 // components 
 import  { CreatorSpecificEvent } from './CreatorSpecificEvent';
 
