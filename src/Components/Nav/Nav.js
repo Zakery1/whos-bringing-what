@@ -75,7 +75,7 @@ class Nav extends Component {
           </div>
 
           <div className="nav_container big">
-              <span className="nav_desktop_link" >Welcome <p>{username ? username : ""}</p></span>
+              <div className="nav_desktop_link" >Welcome <p>{username ? username : ""}</p></div>
               
                <Link to="/" onClick={() => this.setState({currentPage: "home"})} className={"nav_desktop_link " + (this.state.currentPage==="home" ? "active" : "" )} data-cy="Home">Home</Link>
                {username ? <Link to="/feed" onClick={() => this.setState({currentPage: "feed"})} className={"nav_desktop_link " + (this.state.currentPage==="feed" ? "active" : "" )} data-cy="Feed">Feed</Link> : ''}

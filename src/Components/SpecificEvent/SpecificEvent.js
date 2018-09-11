@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EventMapContainer from '../GoogleMaps/EventMapContainer';
 import Sugar from 'sugar';
-Sugar.Date.extend()
+Sugar.Date.extend();
+const get = require('lodash/get');
 
 export default class SpecificEvent extends Component {
     state={
@@ -76,7 +77,6 @@ export default class SpecificEvent extends Component {
     }
 
     render() {
-        console.log(this)
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
@@ -122,7 +122,8 @@ export default class SpecificEvent extends Component {
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+
+                <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                 <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                 <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
@@ -157,7 +158,8 @@ export default class SpecificEvent extends Component {
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+                <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>
+
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                 <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                 <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
