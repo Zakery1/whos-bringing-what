@@ -177,10 +177,10 @@ export default class SpecificEvent extends Component {
                         </div>  
                     </div> 
                     <div >
-                    <div>{username} is bringing:</div>
-                        <div className="will_bring_table">
-                            {loading ?   'Loading my Items' : <div>{displayWillBringItems}</div>}
-                        </div>
+                        <div>{username} is bringing:</div>
+                            <div className="will_bring_table">
+                                {loading ?   'Loading my Items' : <div>{displayWillBringItems}</div>}
+                            </div>
                     </div>
                 </div>
             </div>

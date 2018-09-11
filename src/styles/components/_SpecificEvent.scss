@@ -57,17 +57,21 @@
     // max-width: 160px;
     border: 3px solid #395CA9;
     box-shadow: 5px 3px 3px #2f4885;
-    background: green;
 
-    align-self: stretch;
+   
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
         min-height: 200px; 
         max-height:600px;
         padding: 10px;
 }
 
+.will_bring_table > div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
 
 .will_bring_items {
     // margin: 10px;
@@ -145,16 +149,22 @@
     }
     .will_bring_table{
         text-align: center;
-        
+        display: flex;
+        justify-content: center;
         border: 3px solid#395CA9;
         box-shadow: 5px 3px 3px #2f4885;
     }
 
     .will_bring_table > div {
+        align-items: center;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items:center;
+        flex-wrap: wrap;
+        margin:0 auto;
+       max-width: 400px;
+        // border: solid#3c599b 3px;
+        // box-shadow: 5px 3px 3px #2f4885;
+        
+        padding: 10px;
     }
 
     .requested_item_button{
@@ -173,21 +183,30 @@
         padding: 10px;
        
     }
+
+    .requested_items > div {
+        flex: 1;
+       
+    }
+
+
     .requested_list_items{
        max-width: 100px;
     }
 
+    .needed_items {
+       
+    }
+
     .needed_items_items {
-        align-self: stretch;
+       
+        align-items: center;
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
-        min-height: 200px; 
-        max-height:600px;
+        max-width: 400px;
         border: solid#3c599b 3px;
         box-shadow: 5px 3px 3px #2f4885;
-        background:yellow;
-        padding: 10px;
+         padding: 10px;
     }
 
     .will_bring {

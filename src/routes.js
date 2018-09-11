@@ -6,6 +6,8 @@ import Feed from './Components/Feed/Feed';
 import SpecificEvent from './Components/SpecificEvent/SpecificEvent';
 import HostSpecificEvent from './Components/HostSpecificEvent/HostSpecificEvent';
 import CreatorSpecificEvent from './Components/CreatorSpecificEvent/CreatorSpecificEvent';
+import PrivateRoute from './Components/Nav/Nav';
+
 
 export default (
         <Switch>
@@ -15,7 +17,7 @@ export default (
             <Route path="/specificEvent/:id" component={SpecificEvent}/>
             <Route path="/hostSpecificEvent/:id" component={HostSpecificEvent}/>
             <Route path="/creatorSpecificEvent/:id" component={CreatorSpecificEvent}/>
-            <Route path="/Danielle" component={() => window.location='https://www.linkedin.com/in/danielle-cucinotta-38b79527'}/>
+            <Route path="/Danielle" component={() => window.location='https://www.linkedin.com/in/daniellecucinotta/'}/>
             <Route path="/Danielle1" component={() => window.location='https://github.com/DanielleLyn'}/>
             <Route path="/Andrew" component={() => window.location='https://www.linkedin.com/in/andrew-nam-ba3644a6/'}/> 
             <Route path="/Andrew1" component={() => window.location='https://github.com/Clayakn'}/>
