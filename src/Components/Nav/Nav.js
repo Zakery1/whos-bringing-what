@@ -1,5 +1,5 @@
 import React, { Component }from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser } from '../../redux/reducer';
 import axios from 'axios';
@@ -46,8 +46,18 @@ class Nav extends Component {
       window.alert('Successfully logged out')
     }).catch(error => console.log('error',error))
   }
+
+
+  
     render() {
       const { username } = this.state
+      const PrivateRoute = ({ component: Component, ...rest }) => (
+        <Route {...rest} render={(props) => (
+          props.user.username
+            ? <Component {...props} />
+            : <Redirect to='/' />
+        )} />
+      )
       return (
         <div className="nav_parent">
 
