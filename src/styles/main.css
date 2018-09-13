@@ -354,11 +354,13 @@ a {
 
 .specific_event_parent {
   border: 3px solid #3c599b;
-  margin-bottom: 80px; }
+  margin-bottom: 80px;
+  font-size: 15px; }
 
 .specific_event_name {
   margin: 5px;
-  text-align: center; }
+  text-align: center;
+  font-size: 30px; }
 
 .specific_event_photo {
   margin-left: 20px;
@@ -368,7 +370,8 @@ a {
   box-shadow: 5px 3px 3px #2f4885; }
 
 .specific_event_map {
-  margin-left: 20px;
+  margin-left: 15px;
+  margin-top: 12px;
   max-width: 100px; }
 
 .specific_event_info {
@@ -378,7 +381,12 @@ a {
 .event-map {
   height: 30vh;
   width: 90vw;
-  margin: auto;
+  border: 2px #395CA9 solid;
+  margin-bottom: 15px; }
+
+.specific_event_photo {
+  height: 30vh;
+  width: 90vw;
   border: 2px #395CA9 solid;
   margin-bottom: 15px; }
 
@@ -418,6 +426,28 @@ a {
   border: 3px solid #395CA9;
   box-shadow: 5px 3px 3px #2f4885;
   margin: 4px; }
+
+.needed_items {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: space-evenly;
+  min-height: 200px;
+  max-height: 600px;
+  border: solid #3c599b 3px;
+  box-shadow: 5px 3px 3px #2f4885;
+  background: yellow;
+  padding: 10px;
+  max-height: 100%; }
+
+.requested_items_each {
+  align-self: stretch;
+  order: 0;
+  flex: 0 0 0px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 90px; }
 
 @media (min-width: 500px) {
   .needed_text {
@@ -691,11 +721,13 @@ td {
 
 .host_needed_items {
   display: flex;
+  margin: 0;
   flex-direction: column;
   flex-wrap: wrap;
   text-align: center; }
 
 .my_items_title {
+  margin-left: 20px;
   font-size: 30px;
   text-align: center;
   align-self: stretch;
@@ -744,13 +776,6 @@ h2 {
     justify-content: space-around;
     align-items: center;
     align-content: stretch; }
-  .host_needed_items {
-    margin-left: 0px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: space-around; }
   .individual_bring_item {
     margin-right: 50px;
     margin-bottom: 10px; }

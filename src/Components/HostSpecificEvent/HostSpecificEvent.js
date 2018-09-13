@@ -88,15 +88,16 @@ export default class HostSpecificEvent extends Component {
                     <p>Zip: {event[0].zip ? event[0].zip : 'No zipcode given'}</p>
                     <p>Country: {event[0].country ? event[0].country : 'No country given'}</p>
                 </div>  
+                <h1 className="my_items_title">My Item Requests</h1> 
+                <div className="host_needed_items">
+                  
+                  <div className="requested_items_list"> {loading ? 'Loading Items...' : displayRequestedItems} </div> 
+                </div>
             </div>
             :
             <p>Loading Event...</p>
             }
             
-                <div className="host_needed_items">
-                  <h1 className="my_items_title">My Item Requests</h1> 
-                  <div className="requested_items_list"> {loading ? 'Loading Items...' : displayRequestedItems} </div> 
-                </div>
 
             </div>
         );
