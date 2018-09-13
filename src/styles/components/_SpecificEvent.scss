@@ -89,6 +89,9 @@
 
 
 @media (min-width: 500px) {
+    .specific_event_container{
+        
+    }
     .needed_text{
         display: flex;
         flex-direction: column;
@@ -98,7 +101,6 @@
     }
    
     .requested_items_each{
-    
         border: 3px solid #395CA9;
         box-shadow: 5px 3px 3px #2f4885;
         margin: 4px;
@@ -147,25 +149,25 @@
         background: orange;
     
     }
+
+    .will_bring_title{
+        text-align: center;
+    }
     .will_bring_table{
         text-align: center;
         display: flex;
         justify-content: center;
         border: 3px solid#395CA9;
         box-shadow: 5px 3px 3px #2f4885;
-    }
 
-    .will_bring_table > div {
         align-items: center;
         display: flex;
         flex-wrap: wrap;
         margin:0 auto;
-       max-width: 400px;
-        // border: solid#3c599b 3px;
-        // box-shadow: 5px 3px 3px #2f4885;
-        
+       max-width: 400px;       
         padding: 10px;
     }
+
 
     .requested_item_button{
         border: 3px solid #395CA9;

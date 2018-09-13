@@ -152,7 +152,7 @@ export default class SpecificEvent extends Component {
 <div className="specific_event big">
             {event.length 
             ? 
-            <div>
+            <div classname='specefic_event_container'>
                 <h1 className='specific_event_name'>{event[0].event_name}</h1>
                 <img className='specific_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
@@ -179,9 +179,9 @@ export default class SpecificEvent extends Component {
                         </div>  
                     </div> 
                     <div >
-                        <div>{username} is bringing:</div>
+                        <div className='will_bring_title'>{username} is bringing:</div>
                             <div className="will_bring_table">
-                                {loading ?   'Loading my Items' : <div>{displayWillBringItems}</div>}
+                                {loading ?   'Loading my Items' : displayWillBringItems}
                             </div>
                     </div>
                 </div>
