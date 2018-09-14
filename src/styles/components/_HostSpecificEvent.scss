@@ -39,6 +39,7 @@
 
 .host_needed_items {
     display: flex;
+    margin: 0;
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
@@ -46,6 +47,7 @@
 }
 
 .my_items_title {
+    margin-left: 20px;
     font-size: 30px;
     text-align: center;
     align-self: stretch;
@@ -110,13 +112,7 @@ h2 {
     }
 
     .host_needed_items {
-        margin-left: 0px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        text-align: center;
-        // overflow: hidden;
-        justify-content: space-around;
+
     }
     
     .individual_bring_item {

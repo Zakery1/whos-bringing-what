@@ -93,15 +93,15 @@ class CreatorSpecificEvent extends Component {
         const displayRequestedItems = this.props.getRequestedItemsQuery.requesteditems ? this.props.getRequestedItemsQuery.requesteditems.map(item => {
             return(
                 <div className='requested_items' key={item.id}>
-                     
-                             <div className='requested_items_grid'>
-                             {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
-                             </div>
-                
+                     <div className='requested_items_name'>
+                        {editing ? selectedId == item.id ? <input name='selectedName' value={selectedName} onChange={(e) => this.handleInput(e)}/> : <p>{item.name}</p> : <p>{item.name}</p>}
+                        <p>{item.user_id}</p>
+                    <div className='requested_items_buttons'>
                              {editing ? selectedId == item.id ? <button className='myButton' onClick={() => this.saveItem(item.id)}>Save</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button> : <button className='myButton' onClick={() => this.editItem(item.id)}>Edit</button>}
                              {editing && selectedId == item.id ? <button className='myButton' onClick={() => this.cancel()}>Cancel</button> : ''}                   
                              <button className='myButton' onClick={() => this.deleteItem(item.id)}>Delete</button>
-                        
+                    </div>
+                    </div>    
                 </div> 
             )
         }) : ''
@@ -128,13 +128,15 @@ class CreatorSpecificEvent extends Component {
             </div>
             }
             <div className='specific_event_table'>
-            <h1 className="specific_items_title">Requested Items:</h1>
-            <div className='specific_event_item'>
-            {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
-            </div>
-            <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
-            <button id='addButton' type="button" className='myButton' onClick={() => this.addItem()}>Add Item</button>
-            </div>
+                <div className="specific_items_title">Requested Items:</div>
+                    <div className='specific_event_item'>
+                    {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
+                    </div>
+                <div className='specific_event_add_item'>
+                    <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
+                    <button id='addButton' type="button" className='myButton' onClick={() => this.addItem()}>Add Item</button>
+                </div>
+                </div>
             </div>
            
         );
