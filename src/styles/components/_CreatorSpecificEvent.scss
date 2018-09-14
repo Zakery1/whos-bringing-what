@@ -75,23 +75,27 @@ h1{
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
+
+    margin-left: 0px;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
 }
 .specific_event_item{
     display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
     justify-content: center;
-    height:350px;
     align-content: flex-start;
 
-    margin-left: 250px;
+    
     max-height: 400px;
     align-self: stretch;
-    order: 0;
-    flex: 0 0 0px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-bottom: 500px;
+ 
+
+    align-items: center;
+  
+    max-width: 400px;
+    padding: 10px;
 }
 .specific_event_name{
     text-align: center;
