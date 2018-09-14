@@ -364,7 +364,9 @@ a {
 
 .specific_event_photo {
   margin-left: 20px;
-  width: 300px;
+  margin-bottom: 15px;
+  width: 90vw;
+  height: 30vw;
   border: 3px solid #3c599b;
   background: #395CA9;
   box-shadow: 5px 3px 3px #2f4885; }
@@ -379,12 +381,6 @@ a {
   padding: 10px; }
 
 .event-map {
-  height: 30vh;
-  width: 90vw;
-  border: 2px #395CA9 solid;
-  margin-bottom: 15px; }
-
-.specific_event_photo {
   height: 30vh;
   width: 90vw;
   border: 2px #395CA9 solid;
@@ -435,9 +431,6 @@ a {
   align-items: space-evenly;
   min-height: 200px;
   max-height: 600px;
-  border: solid #3c599b 3px;
-  box-shadow: 5px 3px 3px #2f4885;
-  background: yellow;
   padding: 10px;
   max-height: 100%; }
 
@@ -590,23 +583,22 @@ h1 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  text-align: center; }
+  text-align: center;
+  margin-left: 0px;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
 
 .specific_event_item {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  height: 350px;
   align-content: flex-start;
-  margin-left: 250px;
   max-height: 400px;
   align-self: stretch;
-  order: 0;
-  flex: 0 0 0px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-bottom: 500px; }
+  align-items: center;
+  max-width: 400px;
+  padding: 10px; }
 
 .specific_event_name {
   text-align: center;
