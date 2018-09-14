@@ -46,7 +46,7 @@ class Feed extends Component {
                 <div className="feed_event">Events I'm hosting:</div>
             {result.map((event,i) => {
                   return(
-                    <Link to={`/creator_specific_event/${event.id}`} key={i}>                     
+                    <Link to={`/creatorSpecificEvent/${event.id}`} key={i}>                     
                       <div className="feed_group">
                       <div className="feed_event_name">{event.event_name}</div>
                       <div className="feed_photo"><img className='feed_event_photo' src={event.cover_photo} alt="Displaying event portrait"/></div>
