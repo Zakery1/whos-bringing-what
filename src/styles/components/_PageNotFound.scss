@@ -1,0 +1,85 @@
+@import '../variables';
+
+
+.sad_pic {
+    height: 300px;
+}
+
+.page_not_found_parent {
+    margin: 100px 0 0px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+
+}
+
+.pic {
+    width: 80px;
+    color: $facebook-blue;
+}
+
+.error {
+    margin: 80px auto 80px ;
+    font-size: 40px;
+    text-align: center;
+    color: $facebook-blue;
+}
+
+.icon {
+    color: $facebook-blue;
+}
+
+.pnf_body {
+    // align-self: stretch;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px;
+    
+}
+
+@media (min-width: 500px) {
+
+.sad_pic {
+    height: 300px;
+}
+
+.page_not_found_parent {
+    margin: 100px 0 0px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+
+}
+
+.pic {
+    width: 100px;
+}
+
+.error {
+    margin-top: 80px;
+    font-size: 40px;
+}
+
+.icon {
+
+}
+
+.pnf_body {
+    // align-self: stretch;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px;
+    
+}
+
+}

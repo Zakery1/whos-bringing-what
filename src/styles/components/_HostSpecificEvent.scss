@@ -20,8 +20,7 @@
     margin-left: 25px;
     // margin: 0 0 0 200px;
     width: 300px;
-    padding: 10px;
-    border: 1px solid #3c599b;
+    border: 3px solid #3c599b;
     background: #395CA9;
     box-shadow: 5px 3px 3px #2f4885;
 
@@ -40,6 +39,7 @@
 
 .host_needed_items {
     display: flex;
+    margin: 0;
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
@@ -47,6 +47,7 @@
 }
 
 .my_items_title {
+    margin-left: 20px;
     font-size: 30px;
     text-align: center;
     align-self: stretch;
@@ -96,8 +97,7 @@ h2 {
     .specific_event_event_photo {
         margin-left: 240px;
         width: 700px;
-        padding: 10px;
-        border: 1px solid #3c599b;
+        border: 3px solid #3c599b;
         background: #395CA9;
         box-shadow: 5px 3px 3px #2f4885;
     }
@@ -112,13 +112,7 @@ h2 {
     }
 
     .host_needed_items {
-        margin-left: 0px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        text-align: center;
-        // overflow: hidden;
-        justify-content: space-around;
+
     }
     
     .individual_bring_item {
@@ -136,8 +130,8 @@ h2 {
     }
 
     .requested_items_list {
-        margin-left: 250px;
-        max-height: 400px;
+        margin-left: 260px;
+        max-height: 800px;
         align-self: stretch;
         order: 0;
         flex: 0 0 0px;

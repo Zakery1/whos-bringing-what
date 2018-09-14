@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EventMapContainer from '../GoogleMaps/EventMapContainer';
 import Sugar from 'sugar';
-Sugar.Date.extend()
+Sugar.Date.extend();
+const get = require('lodash/get');
 
 export default class SpecificEvent extends Component {
     state={
@@ -15,6 +16,7 @@ export default class SpecificEvent extends Component {
     }
     componentDidMount() {
         axios.get('/api/user-data').then(response => {
+            console.log("specific event response****", response)
             this.setState({
               username: response.data.username,
               userId: response.data.id
@@ -75,31 +77,16 @@ export default class SpecificEvent extends Component {
     }
 
     render() {
-
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
             return(
 
-                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>
-                    <table id="t">
-                        <thead>
-                             <tr>
-                             <th>
-                             <div className='requested_item_name'>
+                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>              
+                     <div className='requested_item_name'>
                              <p>{item.name}</p>
                              <p>{item.user_id}</p>
-                             </div>
-                             </th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                             <tr>
-                             <td>
-                            <button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button>
-                            </td>
-                             </tr>
-                            </tbody>
-                         </table>
+                     </div>
+                    <div className='requested_item_button'><button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button></div>
                 </div>
 
             
@@ -110,24 +97,15 @@ export default class SpecificEvent extends Component {
 
         const displayWillBringItems = willBringItems.map((item,i) => {
             return(
+
                 <div className='items_bringing' key={i}>
-                <table class="will_bring_items">
-                    <thead>
-                    <tr>
-                    <th>
-                    <p>{item.name}</p>
-                    <p>{item.user_id}</p>
-                    </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                    <td>
-                    <button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
+                    <div className="will_bring_items">
+                        <div className='will_bring_name'>
+                        <p>{item.name}</p>
+                        <p>{item.user_id}</p>
+                        </div>
+                        <div className='requested_item_button'><button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button></div>
+                    </div>
                 </div>
             )
         })
@@ -144,7 +122,8 @@ export default class SpecificEvent extends Component {
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+
+                <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                 <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                 <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
@@ -157,21 +136,15 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_list_items">
-            <table class="requested_items_table">
-            <thead>
-                <tr>
-                <th>
-                <div className="needed_items">
-                   The host is requesting these items:
-                <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
-                </div>   
-                </th>
-                </tr>
-            </thead>
-                </table>
-                <div className="will_bring_table">
-                    {username} is bringing:
-                    {loading ? 'Loading my Items' : displayWillBringItems}
+                    <div className="requested_items_table">
+                    <div className="needed_items">
+                    The host is requesting these items:
+                    <div className="needed_items_each">{loading ? 'Loading Items...' : displayRequestedItems}</div>
+                    </div>   
+                    </div>
+                 <div className="will_bring_table">
+                     {username} is bringing:
+                     {loading ? 'Loading my Items' : displayWillBringItems}
                 </div>
             </div>
             </div>
@@ -179,13 +152,14 @@ export default class SpecificEvent extends Component {
 <div className="specific_event big">
             {event.length 
             ? 
-            <div>
+            <div classname='specefic_event_container'>
                 <h1 className='specific_event_name'>{event[0].event_name}</h1>
                 <img className='specific_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
                 <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
-                <p>Start Time: {new Date().long(event[0].start_time)}</p>
+                <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>
+
                 <p>Place: {event[0].place ? event[0].place : 'No place given'}</p>
                 <p>Street: {event[0].street ? event[0].street : 'No street given'}</p>
                 <p>City: {event[0].city ? event[0].city : 'No city given'}</p>
@@ -198,24 +172,22 @@ export default class SpecificEvent extends Component {
             <p>Loading Event...</p>
             }
             <div className="requested_items_container">
-            items container
-            <div className="requested_items">
-            items
-            
-                <div className="needed_items">
-                   <div className="needed_items_host">The host is requesting these items:</div>
-                   <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
-                </div>   
-              
-                <div className="will_bring_table">
-                    {username} is bringing:
-                    {loading ? 'Loading my Items' : displayWillBringItems}
+                <div className="requested_items">
+                    <div className="needed_items">
+                        <div className="needed_text">  The host would like you to bring:
+                         <div className="needed_items_items"> {loading ? 'Loading Items...' : displayRequestedItems}</div>
+                        </div>  
+                    </div> 
+                    <div >
+                        <div className='will_bring_title'>{username} is bringing:</div>
+                            <div className="will_bring_table">
+                                {loading ?   'Loading my Items' : displayWillBringItems}
+                            </div>
+                    </div>
                 </div>
             </div>
-            </div>
-
-            </div>
-            </div>
+ </div>
+</div>
            
         );
     }

@@ -1,13 +1,64 @@
 @import '../mixins';
 
 .requested_items{
-    display:flex;
-  flex-wrap: wrap;
+    align-items: center;
+//     display:flex;
+//   flex-wrap: wrap;
+//   margin: auto;
+//   font-size: 20px;
+//   border: 2px solid $facebook-blue;
+//   max-width: 200px;
+//   padding-bottom: 20px;
+//   text-align: center;
+//   align-self: stretch;
+//   order: 0;
+//   flex: 0 0 0px;
+//   flex-grow: 0;
+//   flex-shrink: 0;
+//   flex-basis: 90px;
        
+}
+
+.specific_event_add_item{
+    border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
+}
+.requested_items_name{
+    border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
+}
+.requested_items_buttons{
+    border: 3px solid #3c599b;
+        box-shadow: 5px 3px 3px #2f4885;
+}
+
+
+.icon_profile_photo {
+    margin-top: 5px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid $facebook-blue;
+}
+
+.individual_bring_item {
+    margin: auto;
+    font-size: 20px;
+    border: 2px solid $facebook-blue;
+    max-width: 200px;
+    padding-bottom: 20px;
+    text-align: center;
+    align-self: stretch;
+    order: 0;
+    flex: 0 0 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90px;
+
 }
 .specific_event{
     margin-bottom:30px;
-    padding: 10px
+    margin-left: 220px;
+  
 }
 h1{
     margin-bottom: 15px;
@@ -18,16 +69,37 @@ h1{
     margin: 10px;
     padding: 10px;
     box-shadow: 5px 3px 3px #2f4885;
+    align-items:center;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+
+    margin-left: 0px;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
 }
 .specific_event_item{
     display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
     justify-content: center;
-    height:350px;
-	// align-items: center;
     align-content: flex-start;
-    // width: 50%;
+
+    
+    max-height: 400px;
+    align-self: stretch;
+ 
+
+    align-items: center;
+  
+    max-width: 400px;
+    padding: 10px;
+}
+.specific_event_name{
+    text-align: center;
+    margin-top: 20px;
 }
 
 
@@ -36,7 +108,19 @@ h1{
     margin-left: 50px;
     border: 3px solid #3c599b;
     box-shadow: 5px 3px 3px #2f4885;
+    color: $facebook-blue;
 }
+
+.specific_event_table{
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    // overflow: hidden;
+    justify-content: space-around;
+ }
+
 @media (min-width: 500px) {
     .creator_event_parent {
         margin-left: 210px;
@@ -49,7 +133,6 @@ h1{
 }
 .specific_event_event_photo {
     width: 70%px;
-    padding: 10px;
     border: 3px solid #3c599b;
     box-shadow: 5px 3px 3px #2f4885;
 }
@@ -58,16 +141,18 @@ h1{
     @include button
 }
 
+.individual_bring_item {
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
 
 
 table {
     border: 2px solid #3c599b;
     box-shadow: 5px 3px 3px #2f4885;
 }
-    body {
-        padding: 8px;
-        // text-align: center;
-      }
+
       
       table {
         // width: 30%;

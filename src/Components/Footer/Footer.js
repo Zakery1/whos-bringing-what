@@ -1,4 +1,7 @@
 import React from 'react';
+import friendsMobile from '../../styles/assets/friendsMobile.jpg';
+import friendsDesktop from '../../styles/assets/friendsDesktop.jpg';
+
 
 
 function Footer() {
@@ -6,13 +9,13 @@ function Footer() {
       <div className="footer_parent">
       <div className="footer small">
           <div className="footer_parent">
-            <p className="footer_about_paragraph">There’s nothing better than getting together with your friends, but the process of planning events can be a surefire way to get a headache.  That’s where “Who's Bringing What?” comes in.</p>
+          <img className="footer_image" src={friendsMobile} alt="friends"/>
           </div>
           </div>
 
       <div className="footer big">
           <div className="footer_parent">
-            <p className="footer_about_paragraph">There’s nothing better than getting together with your friends, but the process of planning events can be a surefire way to get a headache.  That’s where “Who's Bringing What?” comes in.</p>
+          <img className="footer_image" src={friendsDesktop} alt="friends"/>
           </div>
          </div> 
         </div>

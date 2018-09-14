@@ -113,7 +113,7 @@ class Feed extends Component {
           const result = data.filter(thing => new Date(thing.start_time).isPast() === false)
           return ( 
             <div>             
-              <div className="feed_event"><p>Events I'm invited to:</p></div>
+              <div className="feed_event"><p>Events I am Attending:</p></div>
               {result.map((event,i) => user[0].auth0_id === event.creator_id 
               ?  
               <Link to={`/hostSpecificEvent/${event.id}`} key={i}><div>         
