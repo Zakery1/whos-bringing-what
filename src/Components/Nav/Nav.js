@@ -18,7 +18,7 @@ class Nav extends Component {
     super() 
     this.state={
       username: '',
-      currentPage: "feed"
+      currentPage: "home"
     }
   }
 
