@@ -20,14 +20,14 @@ const RequestedItemType = new GraphQLObjectType({
         event: { 
             type: EventType,
             resolve(parent, args) {
-                return axios.get(`${window.location.origin}/api/event/${parent.event_id}`)
+                return axios.get(`http://localhost:4000/api/event/${parent.event_id}`)
                 .then(res =>  res.data[0])
             } 
         },
         user: {
             type: UserType,
             resolve(parent, args) {
-                return axios.get(`${window.location.origin}/api/user-info/${parent.user_id}`)
+                return axios.get(`http://localhost:4000//api/user-info/${parent.user_id}`)
                 .then(res => res.data[0])
             }
         }, 
@@ -78,7 +78,7 @@ const RootQuery = new GraphQLObjectType({
                 eventId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, { eventId }) {
-                return axios.get(`https://whosbringingwhat.org/api/requested_items/${eventId}`).then(res => res.data)
+                return axios.get(`http://localhost:4000/api/requested_items/${eventId}`).then(res => res.data)
             }
         },
         event: {
@@ -87,7 +87,7 @@ const RootQuery = new GraphQLObjectType({
                eventId: { type: new GraphQLNonNull(GraphQLID) } 
             },
             resolve(parent, { eventId }) {
-                return axios.get(`https://whosbringingwhat.org/api/event/${eventId}`).then(res => res.data[0])
+                return axios.get(`http://localhost:4000/api/event/${eventId}`).then(res => res.data[0])
             }
         }, 
         user: {
@@ -96,7 +96,7 @@ const RootQuery = new GraphQLObjectType({
                 eventId: { type: new GraphQLNonNull(GraphQLID) } 
             }, 
             resolve(parent, { eventId }) {
-                return axios.get(`https://whosbringingwhat.org/api/user-event/${eventId}`).then(res => res.data[0])
+                return axios.get(`http://localhost:4000/api/user-event/${eventId}`).then(res => res.data[0])
             }
         }
     } 
@@ -113,7 +113,7 @@ const Mutations = new GraphQLObjectType({
                 name: { type: GraphQLString }
             },
             resolve(parent, { eventId, userId, name }) {
-                return axios.post(`https://whosbringingwhat.org/api/post_requested_item/${eventId}/${userId}`, { name })
+                return axios.post(`http://localhost:4000/api/post_requested_item/${eventId}/${userId}`, { name })
                 .then(res => res.data[0])
             }
         }, 
@@ -123,7 +123,7 @@ const Mutations = new GraphQLObjectType({
                 itemId: {type: new GraphQLNonNull(GraphQLID)}
             },
             resolve(parent, { itemId }) {
-                return axios.delete(`https://whosbringingwhat.org/api/delete_requested_item/${itemId}`)
+                return axios.delete(`http://localhost:4000/api/delete_requested_item/${itemId}`)
                 .then(res => res.data[0])
             },
         },
@@ -134,7 +134,7 @@ const Mutations = new GraphQLObjectType({
                 name: { type: GraphQLString }
             },
             resolve(parent, { itemId, name }) {
-                return axios.patch(`https://whosbringingwhat.org/api/patch_requested_item/${itemId}`, { name })
+                return axios.patch(`http://localhost:4000/api/patch_requested_item/${itemId}`, { name })
                 .then(res => res.data[0])
             }
         }
