@@ -85,11 +85,11 @@ class CreatorSpecificEvent extends Component {
         // console.log('this.props.user', this.props.data.user)
         // console.log('this.props.items', this.props.getRequestedItemsQuery.requesteditems)
         // console.log('this.props.event', this.props.getEventQuery.event)
-        console.log(Date.create(get(this.props, "getEventQuery.event.start_time", "")))
+        // console.log(Date.create(get(this.props, "getEventQuery.event.start_time", "")))
         
 
         const { name, editing, selectedId, selectedName } = this.state
-
+        console.log(this.props.getRequestedItemsQuery.requesteditems)
         const displayRequestedItems = this.props.getRequestedItemsQuery.requesteditems ? this.props.getRequestedItemsQuery.requesteditems.map(item => {
             return(
                 <div className='requested_items' key={item.id}>
@@ -104,7 +104,9 @@ class CreatorSpecificEvent extends Component {
                     </div>    
                 </div> 
             )
-        }) : ''
+        }) : '';
+
+        
         return (
             
             <div className="creator_event_parent">
@@ -113,11 +115,11 @@ class CreatorSpecificEvent extends Component {
             ? 
             <p>Loading Event...</p>
             :
-            <div className='specific_event'>
+            <div className="creator_specific_event_top">
                 <h1 className='specific_event_name'>{get(this.props, "getEventQuery.event.event_name", "No Event Name given") }</h1>
-                <img className='specific_event_event_photo' src={get(this.props, "getEventQuery.event.cover_photo", "")} alt="Displaying event portrait"/>
+                <img className='creator_event_photo' src={get(this.props, "getEventQuery.event.cover_photo", "")} alt="Displaying event portrait"/>
                 <p>Description: {get(this.props, "getEventQuery.event.description", 'No description written')}</p>
-                <p>Start Time: {`${Date.create(get(this.props, "getEventQuery.event.start_time", ""))}`}</p>
+                <p className="creator_start_time">Start Time: {`${Date.create(get(this.props, "getEventQuery.event.start_time", ""))}`}</p>
                 <p>Place: {get(this.props, "getEventQuery.event.place", 'No place given' )}</p>
                 <p>Street: {get(this.props, "getEventQuery.event.street", 'No street given')}</p>
                 <p>City: {get(this.props, "getEventQuery.event.city", 'No city given')}</p>
@@ -127,7 +129,7 @@ class CreatorSpecificEvent extends Component {
 
             </div>
             }
-            <div className='specific_event_table'>
+            <div className='creator_specific_event_bottom'>
                 <div className="specific_items_title">Requested Items:</div>
                     <div className='specific_event_item'>
                     {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
