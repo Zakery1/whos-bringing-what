@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 
 function Home(props) {
- 
+  console.log('window.location', window.location)
    return (
      <div className="home_parent">
        <Header />
