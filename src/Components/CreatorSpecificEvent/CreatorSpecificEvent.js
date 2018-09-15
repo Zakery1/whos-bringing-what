@@ -118,6 +118,7 @@ class CreatorSpecificEvent extends Component {
             <div className="creator_specific_event_top">
                 <h1 className='specific_event_name'>{get(this.props, "getEventQuery.event.event_name", "No Event Name given") }</h1>
                 <img className='creator_event_photo' src={get(this.props, "getEventQuery.event.cover_photo", "")} alt="Displaying event portrait"/>
+            <div className="specific_event_top_info">
                 <p>Description: {get(this.props, "getEventQuery.event.description", 'No description written')}</p>
                 <p className="creator_start_time">Start Time: {`${Date.create(get(this.props, "getEventQuery.event.start_time", ""))}`}</p>
                 <p>Place: {get(this.props, "getEventQuery.event.place", 'No place given' )}</p>
@@ -126,7 +127,7 @@ class CreatorSpecificEvent extends Component {
                 <p>State: {get(this.props, "getEventQuery.event.state", 'No state given')}</p>
                 <p>Zip: {get(this.props, "getEventQuery.event.zip", 'No zip code given' )}</p>
                 <p>Country: {get(this.props, "getEventQuery.event.country",'No country given')}</p>
-
+                </div>
             </div>
             }
             <div className='creator_specific_event_bottom'>
@@ -134,7 +135,7 @@ class CreatorSpecificEvent extends Component {
                     <div className='specific_event_item'>
                     {this.props.data.loading ? 'Loading Items...' : displayRequestedItems.length ? displayRequestedItems : "Type item and click add item!"}
                     </div>
-                <div className='specific_event_add_item'>
+                <div className='creator_specific_event_add_item'>
                     <input onChange={(e) => this.handleInput(e)} name='name' value={name} type='text' placeholder="Add item" />
                     <button id='addButton' type="button" className='myButton' onClick={() => this.addItem()}>Add Item</button>
                 </div>

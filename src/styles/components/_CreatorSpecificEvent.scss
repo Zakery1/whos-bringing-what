@@ -20,6 +20,11 @@
         align-items: center;
         align-content: center;
         width: 100vw;
+
+        .specific_event_name{
+            margin: 25px 0 25px 0;
+        }
+
         .creator_event_photo {
             margin: 5px 0 5px 0;
             width: 100vw;
@@ -32,9 +37,24 @@
             border: 3px solid #3c599b;
             box-shadow: 5px 3px 3px #2f4885;
         }
-        .creator_start_time {
+
+        .specific_event_top_info {
+            p {
+                font-size: 25px;
+            }
+            align-content: center;
+            
+            margin: auto;
+            margin-top: 30px;
             text-align: center;
+            // display: flex;
+            align-items: center;
+            align-content: center;
+            .creator_start_time {
+                text-align: center;
+            }
         }
+
     }
 
     .creator_specific_event_bottom {
@@ -43,22 +63,29 @@
         flex-direction: column;
         flex-wrap: wrap;
         text-align: center;
-        // overflow: hidden;
+        // overflow: auto;
         justify-content: space-around;
- }
-}
+        width: 100vw;
+        .specific_items_title {
+            margin-top: 20px;
+            font-size: 40px;
+        }
+        .specific_event_item {
+            width: 90vw;
+            margin: auto;
+            overflow: auto;
+            margin-bottom: 50px;
+            // padding-bottom: 200px;
+        }
+        input {
+            font-size: 15px;
+        }
+        p {
+            font-size: 20px;
+        }
 
-
-
-.specific_event_name{
-    
-}
-
-
-
-
-
-.specific_event_add_item{
+.creator_specific_event_add_item{
+    margin: 0 15vw 200px 15vw;
     border: 3px solid #3c599b;
         box-shadow: 5px 3px 3px #2f4885;
 }
@@ -138,6 +165,13 @@ h1{
 }
 
 
+}
+
+
+}
+
+
+
 
 
 
@@ -149,15 +183,79 @@ h1{
         // background-color: orange;
         border: 3px solid #3c599b;
         box-shadow: 5px 3px 3px #2f4885;
-     
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    .creator_specific_event_top {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            width: 100vw;
+            .creator_event_photo {
+                align-self: stretch;
+                order: 0;
+                flex: 0 0 0px;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 90px;
+                margin: auto;
+                width: 60vw;
+                border: 3px solid #3c599b;
+                box-shadow: 5px 3px 3px #2f4885;
+            }
+    }
+    .creator_specific_event_bottom {
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+        // overflow: auto;
+        justify-content: space-around;
+        width: 100vw;
+        .specific_items_title {
+            
+        }
+
+        .specific_event_item {
+            // width: 90vw;
+            margin: auto;
+            overflow: initial;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: space-evenly;
+            align-content: space-around;
+            .requested_items {
+                align-self: stretch;
+                order: 0;
+                flex: 0 0 0px;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 90px;
+                .requested_items_buttons {
+                    margin: 0 5px 0 5px;
+                }
+            }
     }
 
+    .creator_specific_event_add_item {
+       margin: auto;
+       margin-bottom: 100px;
+        
+    }
+    }
 }
-.specific_event_event_photo {
-    width: 70%;
-    border: 3px solid #3c599b;
-    box-shadow: 5px 3px 3px #2f4885;
 }
+
 
 .myButton{
     @include button
@@ -199,3 +297,4 @@ table {
         box-shadow: 5px 3px 3px #2f4885;
         // text-align: center;
       }
+    
