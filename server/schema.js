@@ -1,6 +1,7 @@
 const graphql = require("graphql");
 const axios = require("axios");
 
+
 const { 
     GraphQLObjectType, 
     GraphQLString, 
@@ -11,6 +12,9 @@ const {
     GraphQLList, 
     GraphQLNonNull 
 } = graphql;
+
+// Localhost Server: http://localhost:4000
+// Live Site: https://whosbringingwhat.org
 
 const RequestedItemType = new GraphQLObjectType({
     name: 'RequestedItem',
@@ -27,7 +31,7 @@ const RequestedItemType = new GraphQLObjectType({
         user: {
             type: UserType,
             resolve(parent, args) {
-                return axios.get(`http://localhost:4000//api/user-info/${parent.user_id}`)
+                return axios.get(`http://localhost:4000/api/user-info/${parent.user_id}`)
                 .then(res => res.data[0])
             }
         }, 
