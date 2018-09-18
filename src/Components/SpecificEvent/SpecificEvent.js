@@ -83,7 +83,7 @@ export default class SpecificEvent extends Component {
             console.log(item, "specific event")
             return(
 
-                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>              
+                <div className='requested_items_each' style={item.spokenfor ? { opacity: '.2'} : { textDecoration: 'none'} } key={i}>              
                      <div className='requested_item_name'>
                              <p>{item.name}</p>
                              <div className='requested_item_button'><button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button></div>
