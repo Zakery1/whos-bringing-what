@@ -1,7 +1,27 @@
 @import '../variables';
 
 .specific_event_parent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: space-around;
+    align-content: stretch;
     color: $facebook-blue;
+    .host_event_info {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .host_event_map {
+        margin-left: 14px;
+    }
+
+    .host_event_name {
+        text-align: center;
+        margin: 20px 0 20px 0;
+        font-size: 30px;
+    }
 }
 
 .icon_profile_photo {
@@ -11,10 +31,7 @@
     border: 2px solid $facebook-blue;
 }
 
-.host_event_name {
-    text-align: center;
-    margin-top: 20px;
-}
+
 
 .specific_event_event_photo {
     margin-left: 25px;
@@ -27,10 +44,7 @@
 }
 
 
-.host_event_info {
-    margin: 20px;
-    text-align: center;
-}
+
 
 .host_event_info > p {
     margin: 8px;
