@@ -77,16 +77,18 @@ export default class SpecificEvent extends Component {
     }
 
     render() {
+        // console.log(this.state.requestedItems,'specific evens requested items')
         const { username, event, requestedItems, loading } = this.state
         const displayRequestedItems = requestedItems.map((item,i) => {
+            console.log(item, "specific event")
             return(
 
-                <div className='requested_items_each' style={item.spokenfor ? { textDecoration: 'line-through'} : { textDecoration: 'none'} } key={i}>              
+                <div className='requested_items_each' style={item.spokenfor ? { opacity: '.2'} : { textDecoration: 'none'} } key={i}>              
                      <div className='requested_item_name'>
                              <p>{item.name}</p>
-                             <p>{item.user_id}</p>
+                             <div className='requested_item_button'><button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button></div>
                      </div>
-                    <div className='requested_item_button'><button className='myButton' onClick={() => this.spokenFor(item.id)} disabled={item.spokenfor}>Click to bring</button></div>
+
                 </div>
 
             
@@ -102,7 +104,7 @@ export default class SpecificEvent extends Component {
                     <div className="will_bring_items">
                         <div className='will_bring_name'>
                         <p>{item.name}</p>
-                        <p>{item.user_id}</p>
+
                         </div>
                         <div className='requested_item_button'><button className='myButton' onClick={() => this.unassignItem(item.id)}>Unassign item</button></div>
                     </div>
@@ -118,9 +120,9 @@ export default class SpecificEvent extends Component {
             ? 
             <div>
                 <h1 className='specific_event_name'>{event[0].event_name}</h1>
-                <img className='host_specific_event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
+                <img className='event_photo' src={event[0].cover_photo} alt="Displaying event portrait"/>
                 <div className='specific_event_map'> <EventMapContainer longitude={event[0].longitude} latitude={event[0].latitude} /></div>
-                <div className='specific_event_info'>
+            <div className='specific_event_info'>
                 <p>Description: {event[0].description ? event[0].description : 'No description written'}</p>
 
                 <p>Start Time: {`${Date.create(get(event[0], "start_time", ""))}`}</p>

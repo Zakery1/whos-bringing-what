@@ -10,8 +10,10 @@ import store from './redux/store';
 
 import { AppContainer } from 'react-hot-loader';
 
+const serverURL = window.location.host.includes("localhost") ? "http://localhost:4000" : "https://whosbringingwhat.org"
+
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql'
+    uri: `${serverURL}/graphql`
 });
 
 // import registerServiceWorker from './registerServiceWorker';

@@ -1,6 +1,7 @@
 const graphql = require("graphql");
 const axios = require("axios");
 
+
 const { 
     GraphQLObjectType, 
     GraphQLString, 
@@ -11,6 +12,9 @@ const {
     GraphQLList, 
     GraphQLNonNull 
 } = graphql;
+
+// Localhost Server: http://localhost:4000
+// Live Site: https://whosbringingwhat.org
 
 const RequestedItemType = new GraphQLObjectType({
     name: 'RequestedItem',
